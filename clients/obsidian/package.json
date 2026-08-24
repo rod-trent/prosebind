@@ -9,7 +9,7 @@
     "bundle": "esbuild src/main.ts --bundle --platform=node --target=node20 --format=cjs --external:obsidian --external:electron --outfile=main.js --minify"
   },
   "devDependencies": {
-    "esbuild": "^0.24.0",
+    "esbuild": "^0.28.2",
     "obsidian": "^1.7.2"
   },
   "dependencies": {
