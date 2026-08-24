@@ -41,18 +41,55 @@ Once Tier 2 existed, the same benchmark became winnable. The passage-contradicti
 reads each chapter cold, with no bible and no oracle, and every finding still has to
 quote the passage and survive re-anchoring.
 
-20 stories, balanced, seed 11, grok-4.6:
+**The full benchmark**, 413 of 414 stories (one timed out repeatedly), grok-4.6 at
+chapter scope, 6.7 hours of compute:
 
 ```
                  predicted flawed   predicted clean
-  actually flawed          7                 3
-  actually clean           0                10
+  actually flawed        135                71
+  actually clean          12               195
 
-  accuracy 85.0%   precision 100.0%   recall 70.0%   F1 0.824
+  accuracy 79.9%   precision 91.8%   recall 65.5%   F1 0.765
 ```
 
-**Zero false positives** — the number § 12 says matters — across both 20-story runs.
-Recall of 70% means it misses three flawed stories in ten.
+Accuracy carries ±3.9 points at 95% confidence. This is a measurement, not a signal.
+
+### The small samples were optimistic
+
+Worth recording, because it is the more useful lesson:
+
+| | accuracy | precision | recall | F1 |
+| --- | --- | --- | --- | --- |
+| n = 20 | 85.0% | 100.0% | 70.0% | 0.824 |
+| **n = 413** | **79.9%** | **91.8%** | **65.5%** | **0.765** |
+
+Every figure moved the wrong way, and precision moved most: 100% at n=20 became 91.8%
+at full scale. Twelve false positives existed the whole time; twenty stories simply
+could not see them. The ±16-point caveat on the small run was not boilerplate.
+
+### The false positives are not all false
+
+Twelve of 207 clean stories drew a finding. Several look like genuine inconsistencies in
+the unmodified source — these are 19th-century Gutenberg texts, many of them
+translations:
+
+> *"The name here is Ha Yun; the passage has already named him Ha Yon."*
+
+> *"The same Mecca visits are first described as daily and then as only every Friday."*
+
+FlawedFictions labels a story clean when no error was **injected**, not when none
+exists. So true precision is probably somewhat above 91.8% — but that is a claim we have
+not verified story by story, and the reported number stays as measured.
+
+Others are genre misreadings. One flagged a tree described as a pine after the passage
+had it turn into a two-headed serpent, which is a folk-tale transformation rather than a
+contradiction.
+
+### Recall is the real weakness
+
+It misses roughly a third of injected errors. That is the honest ceiling of a single
+lens reading one chapter with no oracle, and it is where the work is if this number
+needs to be better.
 
 ### Scope turned out to matter more than anything else
 
@@ -82,11 +119,16 @@ swap. Correct label, different error.
 
 ### Caveats that matter
 
-- **n = 20.** At that size 85% carries roughly ±16 points at 95% confidence. It is a
-  signal, not a measurement.
-- **53 seconds and one API call per chapter.** This is background work, not interactive.
-- **The anchor gate never fired.** Zero findings were dropped across every run — grok-4.6
-  quoted faithfully every time. The gate is untested against a model that does not.
+- **58 seconds and one API call per chapter.** The full run took 6.7 hours of compute.
+  This is background work at a session boundary, not something that runs as you type.
+- **The anchor gate fired three times** across 413 stories — findings whose quote could
+  not be located in the passage, discarded rather than reported. A 0.7% hallucinated-
+  citation rate, and three findings that would otherwise have sent a writer hunting for
+  a line that does not exist.
+- **One story is missing.** `flawed_fictions_320` timed out on every attempt. It is
+  excluded rather than counted as a miss.
+- **This is one model and one lens.** Nothing here says how a different frontier model
+  would score, and the numbers should not be quoted as though it did.
 
 ---
 

@@ -15,8 +15,8 @@
 tells you when the story contradicts itself — inside the editor you already use.
 
 Draft 1 · August 2026 · Status: all three tiers built and measured. Tier 0 is model-free;
-Tier 1 runs on a local model; Tier 2 needs a frontier one and scores F1 0.824 on
-FlawedFictions with grok-4.6. The Anthropic provider remains unverified.
+Tier 1 runs on a local model; Tier 2 needs a frontier one and scores F1 0.765 on the
+full FlawedFictions benchmark with grok-4.6. The Anthropic provider remains unverified.
 
 ---
 
@@ -415,9 +415,14 @@ this, alongside ConStory-Bench, NCP-Bench and NarraBench.
 > what the batch competitors already do and what the literature says works poorly. The
 > gate needs rewriting, not passing.
 >
-> **Update, same day.** Tier 2 was built and scored: 85% accuracy, precision 100%,
-> recall 70%, F1 0.824 on 20 balanced stories with grok-4.6 at chapter scope. So the
-> gate is reachable after all — by the tier built for judgment, not by the rule engine.
+> **Update, same day.** Tier 2 was built and run on the full benchmark: 413 of 414
+> stories, grok-4.6 at chapter scope, 6.7 hours. **Accuracy 79.9% (±3.9), precision
+> 91.8%, recall 65.5%, F1 0.765.** The gate is reachable after all — by the tier built
+> for judgment, not by the rule engine.
+>
+> A 20-story sample had reported 85% / 100% / 0.824. Every figure was optimistic, and
+> precision most: twelve false positives existed throughout and a small sample could not
+> see them. Publish full-set numbers or none.
 >
 > This does not undercut § 4. The scope experiment is direct evidence *for* it: the same
 > stories at scene scope scored recall 40%, at chapter scope 70%, and neither run passed

@@ -11,8 +11,9 @@ you own.
 > you configure it to.** Read [DESIGN.md](DESIGN.md) for the argument this repository
 > exists to execute.
 >
-> **FlawedFictions has now been run: Prosebind scores exactly chance on it.** That is a
-> real result about what this architecture is for, not a bug — see Benchmarks below.
+> **FlawedFictions, full set:** Tier 2 scores F1 0.765 (413 stories, grok-4.6); Tier 0
+> scores exactly chance. Both are real results about what each tier is for — see
+> Benchmarks below.
 
 ## Tier 1 — extraction from prose
 
@@ -61,14 +62,22 @@ highest-value contribution to [`benchmarks/`](benchmarks).
 
 ### FlawedFictions
 
-**Tier 2 scores F1 0.824 with zero false positives. Tier 0 scores exactly chance.**
-Both numbers are real, and the gap between them is the clearest statement of what each
-tier is for.
+**Run on the full benchmark** — 413 of 414 stories, grok-4.6, chapter scope, 6.7 hours:
 
 ```
-Tier 2 (grok-4.6, chapter scope, 20 stories, seed 11)
-  accuracy 85.0%   precision 100.0%   recall 70.0%   F1 0.824
+                 predicted flawed   predicted clean
+  actually flawed        135                71
+  actually clean          12               195
+
+  accuracy 79.9%   precision 91.8%   recall 65.5%   F1 0.765     (±3.9 points)
 ```
+
+**Tier 0 on the same benchmark scores exactly chance, F1 0.000.** The gap between them
+is the clearest statement of what each tier is for.
+
+A 20-story sample had said 85.0% / precision 100% / F1 0.824. Every figure was
+optimistic, precision most of all — twelve false positives existed the whole time and
+twenty stories could not see them.
 
 Scope mattered more than anything else. Same stories, same model, same seed:
 
@@ -81,8 +90,14 @@ A contradiction whose halves sit in different scenes is invisible to a lens that
 ever sees one of them. Still never whole-manuscript — that constraint is what §4 argues
 for, and this is direct evidence of it.
 
-Caveats: n=20, so ±16 points; 53 seconds and one API call per chapter; and the anchor
-gate never fired, so it remains untested against a model that quotes badly.
+Caveats: 58 seconds and one API call per chapter, so this is session-boundary work, not
+something that runs as you type; recall of 65.5% means it misses a third of injected
+errors; and several of the twelve false positives look like genuine inconsistencies in
+the unmodified Gutenberg originals, which the benchmark labels clean because no error
+was *injected*.
+
+The anchor gate fired 3 times in 413 stories — hallucinated citations discarded rather
+than shown. A 0.7% rate, and the first live evidence that gate does anything.
 
 Full analysis, including why Tier 0 cannot do this, in
 [benchmarks/FLAWEDFICTIONS.md](benchmarks/FLAWEDFICTIONS.md).
