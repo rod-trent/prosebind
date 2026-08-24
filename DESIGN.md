@@ -394,7 +394,8 @@ this, alongside ConStory-Bench, NCP-Bench and NarraBench.
 
 **Do not build a benchmark — win the ones that exist, and publish the numbers.**
 
-> **Correction, 2026-08-24. We ran FlawedFictions. Prosebind scores exactly chance.**
+> **Correction, 2026-08-24. We ran FlawedFictions. Tier 0 scores exactly chance;
+> Tier 2 scores F1 0.824 with zero false positives.**
 >
 > 30 stories, balanced: 0 true positives, 0 false positives, 50.0% accuracy, F1 0.000.
 > Five of eight Tier 0 checks were structurally unable to fire, because they need facts
@@ -414,10 +415,17 @@ this, alongside ConStory-Bench, NCP-Bench and NarraBench.
 > what the batch competitors already do and what the literature says works poorly. The
 > gate needs rewriting, not passing.
 >
-> **Replacement gate:** publish FlawedFictions numbers *with the explanation of why they
-> are what they are*, and compete where the architecture actually claims an advantage —
-> false-positive rate on clean prose, and detection against a writer-authored bible. If
-> Tier 2 is built, score it here too, and expect it to look like everyone else's.
+> **Update, same day.** Tier 2 was built and scored: 85% accuracy, precision 100%,
+> recall 70%, F1 0.824 on 20 balanced stories with grok-4.6 at chapter scope. So the
+> gate is reachable after all — by the tier built for judgment, not by the rule engine.
+>
+> This does not undercut § 4. The scope experiment is direct evidence *for* it: the same
+> stories at scene scope scored recall 40%, at chapter scope 70%, and neither run passed
+> the whole book to the model. Keeping the passage small enough to reason over, but large
+> enough to contain both halves of the contradiction, is the entire claim.
+>
+> **Replacement gate:** publish the numbers per tier, with the explanation of what each
+> tier can and cannot do. One number for "Prosebind" would be a lie in both directions.
 >
 > The run was still worth it. It found two real bugs the internal harness could not:
 > `name-variant` treating capitalisation as a misspelling (a false positive on a *clean*

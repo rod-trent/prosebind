@@ -31,7 +31,64 @@ model, then Tier 0 checks the story against it; any finding predicts "flawed".
   No check fired on any story.
 ```
 
-**Prosebind scores exactly chance. It detects nothing.**
+**Tier 0 scores exactly chance. It detects nothing.** Tier 2 scores F1 0.824 on the
+same benchmark — see below. The rest of this section explains why Tier 0 cannot, because
+that reason is architectural and worth understanding before reading the Tier 2 numbers.
+
+## Tier 2 changes the answer
+
+Once Tier 2 existed, the same benchmark became winnable. The passage-contradiction lens
+reads each chapter cold, with no bible and no oracle, and every finding still has to
+quote the passage and survive re-anchoring.
+
+20 stories, balanced, seed 11, grok-4.6:
+
+```
+                 predicted flawed   predicted clean
+  actually flawed          7                 3
+  actually clean           0                10
+
+  accuracy 85.0%   precision 100.0%   recall 70.0%   F1 0.824
+```
+
+**Zero false positives** — the number § 12 says matters — across both 20-story runs.
+Recall of 70% means it misses three flawed stories in ten.
+
+### Scope turned out to matter more than anything else
+
+The same 20 stories, the same model, the same seed. Only the passage size changed:
+
+| scope | accuracy | precision | recall | F1 |
+| --- | --- | --- | --- | --- |
+| scene | 70.0% | 100% | 40% | 0.571 |
+| **chapter** | **85.0%** | **100%** | **70%** | **0.824** |
+
+Recall nearly doubled. A contradiction whose halves sit in different scenes is invisible
+to a lens that only ever sees one of them — so the passage has to be large enough to
+contain both ends of the thing it is looking for. Chapter is now the default. This is
+still well inside § 7: chapter-scoped, never whole-manuscript.
+
+The finding surfaced by accident. An earlier run analysed scenes *and* chapters, which
+duplicated every finding; fixing the duplication narrowed the window and dropped recall
+from 100% to 40%, which is what prompted the controlled comparison.
+
+### What it actually caught
+
+Four of five true positives in the first sample matched the planted error exactly — the
+ornamented drinking-horn later called a plain wooden cup, shelves described as
+worm-eaten and then well-maintained. One was right for a *different* reason: it found a
+genuine contradiction about who escaped a fire rather than the planted sword-for-spear
+swap. Correct label, different error.
+
+### Caveats that matter
+
+- **n = 20.** At that size 85% carries roughly ±16 points at 95% confidence. It is a
+  signal, not a measurement.
+- **53 seconds and one API call per chapter.** This is background work, not interactive.
+- **The anchor gate never fired.** Zero findings were dropped across every run — grok-4.6
+  quoted faithfully every time. The gate is untested against a model that does not.
+
+---
 
 ## Why — and why this is not a tuning problem
 
@@ -66,15 +123,27 @@ for inference from cold text. **They are different tasks.**
 ## What this means for the v1 gate
 
 DESIGN.md §11 set the v1 gate as *"Published benchmark scores beat the batch tools."*
-That gate is **not reachable by Tier 0 plus Tier 1 bootstrap, at any level of polish.**
+It is **not reachable by Tier 0 plus Tier 1 bootstrap, at any level of polish** — for the
+architectural reason above. It *is* reachable by Tier 2, which is the honest shape of the
+answer: this benchmark asks for inference from cold text, and only the tier built for
+judgment can supply it.
 
-Beating FlawedFictions requires reasoning over the story itself — Tier 2, a frontier
-model reading the whole text. Which is precisely what the batch competitors already do,
-and precisely what §4's own evidence says works poorly: state-of-the-art models
-"struggle regardless of the reasoning effort allowed."
+That leaves §4's argument intact rather than undermined. §4 says long context degrades on
+this task, and the fix is to keep the passage small enough to reason over. The scope
+experiment is direct evidence for exactly that: chapter-scoped analysis beat scene-scoped
+because the passage must *contain* both halves of the contradiction, and neither run
+passed the whole book to the model. A batch tool handing 90,000 words to one call is
+doing something different from a chapter-at-a-time lens, and the difference is the point.
 
-So the gate as written asks us to win at the game we argued is the wrong game. It needs
-rewriting, not passing. See the correction in §11.
+What the tiers are actually for, stated plainly:
+
+| | Tier 0 | Tier 2 |
+| --- | --- | --- |
+| Needs | A bible the writer wrote | Nothing |
+| Proves | Contradiction against declared canon | Nothing — it asks |
+| FlawedFictions | F1 0.000 | F1 0.824 |
+| Cost | Free, milliseconds | ~53s and an API call per chapter |
+| Runs | Every pause | Session boundaries, opt-in |
 
 ## What the run was actually worth
 

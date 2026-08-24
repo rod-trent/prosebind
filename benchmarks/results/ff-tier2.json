@@ -1,0 +1,179 @@
+{
+  "options": {
+    "limit": 20,
+    "seed": 11,
+    "out": "C:\\Code\\Writing Agent\\benchmarks\\results\\ff-tier2.json"
+  },
+  "model": "xai:grok-4.6",
+  "outcomes": [
+    {
+      "id": "flawed_fictions_10",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 69.831324
+    },
+    {
+      "id": "flawed_fictions_107",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 44.7470346
+    },
+    {
+      "id": "flawed_fictions_118",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 35.77484730000001
+    },
+    {
+      "id": "flawed_fictions_223",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 29.853417799999995
+    },
+    {
+      "id": "flawed_fictions_240",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 58.44174700000001
+    },
+    {
+      "id": "flawed_fictions_241",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 27.09148919999998
+    },
+    {
+      "id": "flawed_fictions_252",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Two men are now on foot behind Worson."
+      ],
+      "dropped": 0,
+      "seconds": 80.98117780000001
+    },
+    {
+      "id": "flawed_fictions_255",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same man is now called a farmer."
+      ],
+      "dropped": 0,
+      "seconds": 143.47701440000003
+    },
+    {
+      "id": "flawed_fictions_277",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 40.440818900000075
+    },
+    {
+      "id": "flawed_fictions_290",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 34.81953220000002
+    },
+    {
+      "id": "flawed_fictions_3",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 55.91323830000008
+    },
+    {
+      "id": "flawed_fictions_338",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 84.13252800000005
+    },
+    {
+      "id": "flawed_fictions_355",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 111.06087040000001
+    },
+    {
+      "id": "flawed_fictions_378",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 51.445733099999956
+    },
+    {
+      "id": "flawed_fictions_380",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 41.17543549999991
+    },
+    {
+      "id": "flawed_fictions_401",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 43.17881550000003
+    },
+    {
+      "id": "flawed_fictions_404",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 56.72228950000007
+    },
+    {
+      "id": "flawed_fictions_46",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The Rajah's plan is treated as a failure after the passage has already shown it working.",
+        "The boys are again close friends living in camaraderie."
+      ],
+      "dropped": 0,
+      "seconds": 33.772253800000065
+    },
+    {
+      "id": "flawed_fictions_6",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 46.722859600000085
+    },
+    {
+      "id": "flawed_fictions_79",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same street-corner incident is placed in Chicago after the narrator has already placed it in New York."
+      ],
+      "dropped": 0,
+      "seconds": 74.69050289999997
+    }
+  ]
+}

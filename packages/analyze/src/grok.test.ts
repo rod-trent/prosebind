@@ -24,6 +24,29 @@ test('a date suffix is not read as a minor version', () => {
   assert.equal(pickNewestGrok(['grok-4-0709', 'grok-4.6']), 'grok-4.6');
 });
 
+test('the version is a decimal, so 4.20 is older than 4.6', () => {
+  // Caught against the live API. xAI's docs name 4.6 the flagship — "the most
+  // intelligent and fastest model we've built" — while the 4.20 variants are earlier.
+  // Reading the minor as an integer made 4.20 rank highest and silently selected a
+  // weaker model, with no error anywhere.
+  assert.equal(pickNewestGrok(['grok-4.20-0309-reasoning', 'grok-4.6']), 'grok-4.6');
+});
+
+test('the real model list from the xAI API resolves to the flagship', () => {
+  const live = [
+    'grok-4.20-0309-non-reasoning',
+    'grok-4.20-0309-reasoning',
+    'grok-4.20-multi-agent-0309',
+    'grok-4.3',
+    'grok-4.5',
+    'grok-4.6',
+    'grok-build-0.1',
+    'grok-imagine-image',
+    'grok-imagine-video',
+  ];
+  assert.equal(pickNewestGrok(live), 'grok-4.6');
+});
+
 test('an unpinned id beats a dated snapshot of the same version', () => {
   // The plain id is the one xAI keeps current.
   assert.equal(pickNewestGrok(['grok-4.6-0709', 'grok-4.6']), 'grok-4.6');

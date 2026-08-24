@@ -1,0 +1,186 @@
+{
+  "options": {
+    "scope": "chapter",
+    "limit": 20,
+    "seed": 11,
+    "out": "C:\\Code\\Writing Agent\\benchmarks\\results\\ff-tier2-chapter.json"
+  },
+  "model": "xai:grok-4.6",
+  "outcomes": [
+    {
+      "id": "flawed_fictions_10",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "This labels the earlier music a discord, which conflicts with how that music was first described."
+      ],
+      "dropped": 0,
+      "seconds": 63.955187300000006
+    },
+    {
+      "id": "flawed_fictions_107",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 50.0863833
+    },
+    {
+      "id": "flawed_fictions_118",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 17.658825100000016
+    },
+    {
+      "id": "flawed_fictions_223",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The wait is now several years, not one."
+      ],
+      "dropped": 0,
+      "seconds": 26.5627041
+    },
+    {
+      "id": "flawed_fictions_240",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 57.95540820000001
+    },
+    {
+      "id": "flawed_fictions_241",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Conflicts with the earlier statement that the horn was full of a delicious beverage."
+      ],
+      "dropped": 0,
+      "seconds": 36.6388768
+    },
+    {
+      "id": "flawed_fictions_252",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The followers are on foot here after the passage already placed them in a cart."
+      ],
+      "dropped": 0,
+      "seconds": 71.24567489999998
+    },
+    {
+      "id": "flawed_fictions_255",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same man is now called a farmer."
+      ],
+      "dropped": 0,
+      "seconds": 100.24328440000001
+    },
+    {
+      "id": "flawed_fictions_277",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 37.94602590000001
+    },
+    {
+      "id": "flawed_fictions_290",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 47.666408600000025
+    },
+    {
+      "id": "flawed_fictions_3",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 71.45742820000002
+    },
+    {
+      "id": "flawed_fictions_338",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 48.77091109999991
+    },
+    {
+      "id": "flawed_fictions_355",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 56.590417800000054
+    },
+    {
+      "id": "flawed_fictions_378",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 49.400195799999985
+    },
+    {
+      "id": "flawed_fictions_380",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 59.9659338
+    },
+    {
+      "id": "flawed_fictions_401",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 48.77031679999991
+    },
+    {
+      "id": "flawed_fictions_404",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 49.604893099999984
+    },
+    {
+      "id": "flawed_fictions_46",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The Rajah's plan is said to have failed after the passage has already said it worked.",
+        "They are again fast friends, untouched by any plot, immediately after they have become bitter enemies."
+      ],
+      "dropped": 0,
+      "seconds": 34.254750099999946
+    },
+    {
+      "id": "flawed_fictions_6",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 46.02593130000005
+    },
+    {
+      "id": "flawed_fictions_79",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same episode is placed in Chicago after being set in New York."
+      ],
+      "dropped": 0,
+      "seconds": 78.93627919999999
+    }
+  ]
+}

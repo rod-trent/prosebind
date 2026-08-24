@@ -12,6 +12,7 @@
   "dependencies": {
     "@prosebind/core": "0.0.0",
     "@prosebind/daemon": "0.0.0",
-    "@prosebind/extract": "0.0.0"
+    "@prosebind/extract": "0.0.0",
+    "@prosebind/analyze": "0.0.0"
   }
 }

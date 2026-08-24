@@ -59,7 +59,36 @@ words does not establish a zero false-positive rate either; the rule of three pu
 95% bound at 52 per 10k, which is close to useless. Growing the control corpus is the
 highest-value contribution to [`benchmarks/`](benchmarks).
 
-### FlawedFictions: we ran it, and scored chance
+### FlawedFictions
+
+**Tier 2 scores F1 0.824 with zero false positives. Tier 0 scores exactly chance.**
+Both numbers are real, and the gap between them is the clearest statement of what each
+tier is for.
+
+```
+Tier 2 (grok-4.6, chapter scope, 20 stories, seed 11)
+  accuracy 85.0%   precision 100.0%   recall 70.0%   F1 0.824
+```
+
+Scope mattered more than anything else. Same stories, same model, same seed:
+
+| scope | recall | F1 |
+| --- | --- | --- |
+| scene | 40% | 0.571 |
+| **chapter** | **70%** | **0.824** |
+
+A contradiction whose halves sit in different scenes is invisible to a lens that only
+ever sees one of them. Still never whole-manuscript — that constraint is what §4 argues
+for, and this is direct evidence of it.
+
+Caveats: n=20, so ±16 points; 53 seconds and one API call per chapter; and the anchor
+gate never fired, so it remains untested against a model that quotes badly.
+
+Full analysis, including why Tier 0 cannot do this, in
+[benchmarks/FLAWEDFICTIONS.md](benchmarks/FLAWEDFICTIONS.md).
+
+<details>
+<summary>Tier 0 on the same benchmark: exactly chance, and why that is architectural</summary>
 
 Now that Tier 1 can bootstrap a bible, [FlawedFictions](https://arxiv.org/abs/2504.11900)
 is runnable. 30 stories, balanced:
@@ -85,8 +114,9 @@ gate in DESIGN.md §11 has been rewritten accordingly rather than quietly droppe
 
 The run still paid for itself: it found two real bugs the internal harness could not,
 including `name-variant` treating capitalisation as a misspelling — a false positive on
-a *clean* story. Full analysis in
-[benchmarks/FLAWEDFICTIONS.md](benchmarks/FLAWEDFICTIONS.md).
+a *clean* story.
+
+</details>
 
 ## Quickstart
 

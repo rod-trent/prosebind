@@ -221,11 +221,13 @@ export function pickNewestGrok(ids: readonly string[]): string | undefined {
   if (groks.length === 0) return undefined;
 
   const score = (id: string): number => {
-    // Major, then minor. A date suffix like -0709 is not a minor version, so only
-    // treat a short trailing group as one.
-    const match = /grok[-_]?(\d+)(?:[._-](\d{1,2})(?![\d]))?/i.exec(id);
+    // Decimal, not major/minor. xAI's scheme reads 4.20 as four-point-two, which is
+    // OLDER than 4.6 — their docs name 4.6 the flagship while 4.20 variants are
+    // earlier. Scoring the minor as an integer inverted that and silently selected a
+    // weaker model, which is exactly the failure this function is tested for.
+    const match = /grok[-_]?(\d+)(?:\.(\d+))?/i.exec(id);
     if (!match) return 0;
-    return Number(match[1]) * 100 + Number(match[2] ?? 0);
+    return Number.parseFloat(`${match[1]}.${match[2] ?? 0}`);
   };
 
   // Prefer a plain id over a dated snapshot at equal version, so `grok-4.6` beats

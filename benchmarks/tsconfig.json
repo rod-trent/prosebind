@@ -16,6 +16,9 @@
     },
     {
       "path": "../packages/extract"
+    },
+    {
+      "path": "../packages/analyze"
     }
   ]
 }
