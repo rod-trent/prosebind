@@ -13,7 +13,9 @@ export type { Lens, LensContext, LensFinding, LensResult } from './lens.js';
 export { continuityLens } from './lenses/continuity.js';
 export { motivationLens } from './lenses/motivation.js';
 export { AnthropicModel } from './providers/anthropic.js';
+export { GrokModel } from './providers/grok.js';
 export type { AnthropicOptions } from './providers/anthropic.js';
+export type { GrokOptions } from './providers/grok.js';
 
 import { continuityLens } from './lenses/continuity.js';
 import { motivationLens } from './lenses/motivation.js';
