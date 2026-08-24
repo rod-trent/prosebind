@@ -128,6 +128,11 @@ export function normalizeExtraction(raw: unknown): SceneExtraction {
     const name = cleanString(entry['name'], 60);
     // A "name" with a verb in it is a sentence the model produced instead of a name.
     if (!name || name.split(' ').length > 4) continue;
+    // Names are capitalised. Found on FlawedFictions: given a story whose characters
+    // are never named, the model returned "father" and "daughter" — role nouns, not
+    // names. A bible containing those is worse than an empty one, because Tier 0 then
+    // matches them against ordinary prose.
+    if (!/^\p{Lu}/u.test(name)) continue;
     characters.push({
       name,
       aliases: asArray(entry['aliases'])

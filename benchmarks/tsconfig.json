@@ -1,6 +1,21 @@
 {
   "extends": "../tsconfig.base.json",
-  "compilerOptions": { "rootDir": "src", "outDir": "dist" },
-  "include": ["src/**/*"],
-  "references": [{ "path": "../packages/core" }, { "path": "../packages/daemon" }]
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "references": [
+    {
+      "path": "../packages/core"
+    },
+    {
+      "path": "../packages/daemon"
+    },
+    {
+      "path": "../packages/extract"
+    }
+  ]
 }

@@ -1,0 +1,551 @@
+{
+  "options": {
+    "limit": 30,
+    "seed": 3,
+    "split": "flawed_fictions",
+    "out": "C:\\Code\\Writing Agent\\benchmarks\\results\\flawedfictions.json"
+  },
+  "model": "gemma3:4b",
+  "outcomes": [
+    {
+      "id": "flawed_fictions_109",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "characters": 7,
+      "seconds": 19.512800199999997,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": true
+      }
+    },
+    {
+      "id": "flawed_fictions_12",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "characters": 0,
+      "seconds": 15.64404,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": false,
+        "alias-collision": false
+      }
+    },
+    {
+      "id": "flawed_fictions_129",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "characters": 9,
+      "seconds": 22.931650700000006,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": true
+      }
+    },
+    {
+      "id": "flawed_fictions_19",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "characters": 2,
+      "seconds": 26.180275699999992,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": true
+      }
+    },
+    {
+      "id": "flawed_fictions_195",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "characters": 1,
+      "seconds": 19.396865699999996,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": false
+      }
+    },
+    {
+      "id": "flawed_fictions_205",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "characters": 6,
+      "seconds": 23.547090499999992,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": true
+      }
+    },
+    {
+      "id": "flawed_fictions_227",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "characters": 1,
+      "seconds": 18.7746121,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": false
+      }
+    },
+    {
+      "id": "flawed_fictions_247",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "characters": 1,
+      "seconds": 27.993275099999998,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": false
+      }
+    },
+    {
+      "id": "flawed_fictions_25",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "characters": 1,
+      "seconds": 18.39687699999998,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": false
+      }
+    },
+    {
+      "id": "flawed_fictions_285",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "characters": 0,
+      "seconds": 15.214815999999992,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": false,
+        "alias-collision": false
+      }
+    },
+    {
+      "id": "flawed_fictions_287",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "characters": 2,
+      "seconds": 19.690640599999984,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": true
+      }
+    },
+    {
+      "id": "flawed_fictions_306",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "characters": 2,
+      "seconds": 18.93148430000001,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": true
+      }
+    },
+    {
+      "id": "flawed_fictions_307",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "characters": 0,
+      "seconds": 18.70189870000002,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": false,
+        "alias-collision": false
+      }
+    },
+    {
+      "id": "flawed_fictions_308",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "characters": 0,
+      "seconds": 30.754704800000006,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": false,
+        "alias-collision": false
+      }
+    },
+    {
+      "id": "flawed_fictions_311",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "characters": 4,
+      "seconds": 25.322245800000033,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": true
+      }
+    },
+    {
+      "id": "flawed_fictions_317",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "characters": 2,
+      "seconds": 14.558361700000008,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": true
+      }
+    },
+    {
+      "id": "flawed_fictions_349",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "characters": 0,
+      "seconds": 12.650263999999966,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": false,
+        "alias-collision": false
+      }
+    },
+    {
+      "id": "flawed_fictions_375",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "characters": 0,
+      "seconds": 17.274531900000003,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": false,
+        "alias-collision": false
+      }
+    },
+    {
+      "id": "flawed_fictions_390",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "characters": 2,
+      "seconds": 28.783615500000014,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": true,
+        "name-variant": true,
+        "alias-collision": true
+      }
+    },
+    {
+      "id": "flawed_fictions_398",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "characters": 6,
+      "seconds": 25.64016969999997,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": true
+      }
+    },
+    {
+      "id": "flawed_fictions_44",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "characters": 5,
+      "seconds": 26.445770100000022,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": true
+      }
+    },
+    {
+      "id": "flawed_fictions_59",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "characters": 2,
+      "seconds": 30.351974099999993,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": true
+      }
+    },
+    {
+      "id": "flawed_fictions_60",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "characters": 0,
+      "seconds": 12.382443100000033,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": false,
+        "alias-collision": false
+      }
+    },
+    {
+      "id": "flawed_fictions_71",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "characters": 1,
+      "seconds": 9.951837400000018,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": false
+      }
+    },
+    {
+      "id": "flawed_fictions_72",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "characters": 1,
+      "seconds": 13.019055599999962,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": false
+      }
+    },
+    {
+      "id": "flawed_fictions_75",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "characters": 3,
+      "seconds": 17.997729300000007,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": true
+      }
+    },
+    {
+      "id": "flawed_fictions_77",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "characters": 2,
+      "seconds": 17.21956209999998,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": true
+      }
+    },
+    {
+      "id": "flawed_fictions_90",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "characters": 1,
+      "seconds": 19.635705599999987,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": true,
+        "alias-collision": false
+      }
+    },
+    {
+      "id": "flawed_fictions_91",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "characters": 0,
+      "seconds": 11.20396490000002,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": false,
+        "alias-collision": false
+      }
+    },
+    {
+      "id": "flawed_fictions_97",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "characters": 0,
+      "seconds": 12.231667099999962,
+      "eligible": {
+        "deceased-active": false,
+        "unintroduced-mention": false,
+        "age-arithmetic": false,
+        "pov-drift": false,
+        "tense-drift": false,
+        "attribute-contradiction": false,
+        "name-variant": false,
+        "alias-collision": false
+      }
+    }
+  ]
+}

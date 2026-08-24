@@ -115,6 +115,21 @@ test('structurally wrong fields are rejected', () => {
   assert.equal(result.events.length, 1);
 });
 
+test('role nouns are not accepted as character names', () => {
+  // Found by running against FlawedFictions: given a story whose characters are never
+  // named, the model returned "father" and "daughter". A bible containing those is
+  // worse than an empty one.
+  const result = normalizeExtraction({
+    characters: [
+      { name: 'father', present: true, speaks: true },
+      { name: 'daughter', present: true, speaks: false },
+      { name: 'Elena', present: true, speaks: true },
+    ],
+    attributes: [], places: [], events: [],
+  });
+  assert.deepEqual(result.characters.map((c) => c.name), ['Elena']);
+});
+
 // --- entity linking --------------------------------------------------------
 
 test('a full name and a short form become one character', () => {

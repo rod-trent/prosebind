@@ -44,10 +44,16 @@ directory.
 None of these numbers are comparable to FlawedFictions or ConStory-Bench, and must
 never be quoted as though they were.
 
-## Why FlawedFictions is not run here
+## FlawedFictions
 
-DESIGN.md §12 says to win the benchmarks that exist rather than build one. That remains
-right, and it is not yet possible.
+It is run now — see [FLAWEDFICTIONS.md](FLAWEDFICTIONS.md). Prosebind scores exactly
+chance (F1 0.000), for architectural reasons documented there. What follows was written
+before that run and explains why it was expected.
+
+### The original reasoning
+
+DESIGN.md §12 says to win the benchmarks that exist rather than build one. Before Tier 1
+existed, running FlawedFictions was not possible at all:
 
 FlawedFictions and ConStory-Bench supply human-written stories with synthetic errors and
 **no continuity bible**. Tier 0 is deterministic: it checks prose against entities the

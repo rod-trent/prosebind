@@ -11,9 +11,8 @@ you own.
 > you configure it to.** Read [DESIGN.md](DESIGN.md) for the argument this repository
 > exists to execute.
 >
-> The next milestone is the v1 gate in §11: published benchmark scores against
-> FlawedFictions and ConStory-Bench. Until those numbers exist, the central claim in §4
-> is borrowed from the literature rather than demonstrated here.
+> **FlawedFictions has now been run: Prosebind scores exactly chance on it.** That is a
+> real result about what this architecture is for, not a bug — see Benchmarks below.
 
 ## Tier 1 — extraction from prose
 
@@ -60,11 +59,34 @@ words does not establish a zero false-positive rate either; the rule of three pu
 95% bound at 52 per 10k, which is close to useless. Growing the control corpus is the
 highest-value contribution to [`benchmarks/`](benchmarks).
 
-**FlawedFictions is deliberately not run.** It supplies stories with no continuity
-bible, and Tier 0 checks prose against entities the writer declared — with none, nothing
-fires. Scoring near zero would measure the absence of a bible, not the quality of the
-engine. Those benchmarks become meaningful once Tier 1 extraction can build a bible from
-prose, and this harness is the scaffolding they will run on.
+### FlawedFictions: we ran it, and scored chance
+
+Now that Tier 1 can bootstrap a bible, [FlawedFictions](https://arxiv.org/abs/2504.11900)
+is runnable. 30 stories, balanced:
+
+```
+                 predicted flawed   predicted clean
+  actually flawed          0                15
+  actually clean           0                15
+
+  accuracy 50.0%   precision 0.0%   recall 0.0%   F1 0.000
+```
+
+**Exactly chance. No check fired on any story.** Five of eight checks were structurally
+unable to run — they need facts a writer *declares* (a death event, a birth date, an
+intended POV), and a bare story has none. Bootstrapping does not rescue it:
+
+> **A bible derived from a story cannot contradict that story.** Contradiction detection
+> needs an independent oracle, and Tier 1 reads the same text the checks are checking.
+
+That is not a tuning problem. Prosebind checks prose against declared canon;
+FlawedFictions asks for inference from cold text. They are different tasks, and the v1
+gate in DESIGN.md §11 has been rewritten accordingly rather than quietly dropped.
+
+The run still paid for itself: it found two real bugs the internal harness could not,
+including `name-variant` treating capitalisation as a misspelling — a false positive on
+a *clean* story. Full analysis in
+[benchmarks/FLAWEDFICTIONS.md](benchmarks/FLAWEDFICTIONS.md).
 
 ## Quickstart
 

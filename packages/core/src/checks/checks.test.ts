@@ -120,6 +120,13 @@ test('name-variant does not fire on short similar names', () => {
   assert.equal(only(found, 'name-variant').length, 0);
 });
 
+test('name-variant treats a case difference as the same name', () => {
+  // Found by running against FlawedFictions: a bible entry of "father" made every
+  // sentence-initial "Father" look like a one-letter misspelling.
+  const found = analyse({ entities: [{ name: 'father' }] }, 'Father crossed the yard. Father said nothing.');
+  assert.equal(only(found, 'name-variant').length, 0);
+});
+
 test('name-variant does not fire on ordinary capitalised words', () => {
   const found = analyse(
     { entities: [{ name: 'Marcus' }] },

@@ -27,6 +27,10 @@ export const nameVariant: Check = {
         if (known.has(candidate.word)) continue;
 
         for (const { surface, entityId } of graph.surfaces) {
+          // Case is not a misspelling. Found on FlawedFictions: a bible entry of
+          // "father" made every sentence-initial "Father" look like a one-letter typo.
+          // Any name whose only difference is capitalisation is the same name.
+          if (candidate.word.toLowerCase() === surface.toLowerCase()) continue;
           // Short names produce false positives at distance 1 (Ann/Anna/Anne are
           // three different people), so require real length before we speak up.
           if (surface.length < 4 || candidate.word.length < 4) continue;

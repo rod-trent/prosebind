@@ -42,3 +42,6 @@ clients/vscode/bundle/
 
 # Obsidian plugin bundle (attached to releases, not committed)
 clients/obsidian/main.js
+
+# Downloaded benchmark corpora — never committed
+benchmarks/corpus/

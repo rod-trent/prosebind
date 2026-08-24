@@ -364,7 +364,7 @@ Each phase has an exit gate. If a gate fails, that is information worth more tha
 | --- | --- | --- |
 | **v0** | File-watching daemon. Anchoring. Incremental scene graph. Tier 0 checks only. Plain-text bible. One client. **No model calls at all.** | Do writers react to Tier 0 alone? |
 | **v0.5** | Cold-start import: point it at a finished draft, get a full continuity report. The demo, the growth loop, the shareable moment. | Does the report get shared unprompted? |
-| **v1** | Tier 1 and 2 extraction. Promise/payoff ledger. LSP and MCP servers. Obsidian and VS Code clients. Non-fiction schema in parallel. | Published benchmark scores beat the batch tools |
+| **v1** | Tier 1 and 2 extraction. Promise/payoff ledger. LSP and MCP servers. Obsidian and VS Code clients. Non-fiction schema in parallel. | ~~Published benchmark scores beat the batch tools~~ — see correction |
 | **v1.5** | Epistemic state tracking. Non-fiction claim graph at parity with fiction. | Catches errors no competitor catches |
 | **v2** | Word add-in. Google Docs via Drive revision polling. | Adapters degrade gracefully to pause-time reporting |
 
@@ -377,6 +377,36 @@ novels. That already exists: [FlawedFictionsMaker](https://arxiv.org/abs/2504.11
 this, alongside ConStory-Bench, NCP-Bench and NarraBench.
 
 **Do not build a benchmark — win the ones that exist, and publish the numbers.**
+
+> **Correction, 2026-08-24. We ran FlawedFictions. Prosebind scores exactly chance.**
+>
+> 30 stories, balanced: 0 true positives, 0 false positives, 50.0% accuracy, F1 0.000.
+> Five of eight Tier 0 checks were structurally unable to fire, because they need facts
+> a writer *declares* — a death event, a birth date, an intended POV — and no such facts
+> exist in a bare story. Bootstrapping a bible with Tier 1 does not rescue this:
+>
+> **A bible derived from a story cannot contradict that story.** Contradiction detection
+> needs an independent oracle. Tier 1 reads the same text the checks are checking, so it
+> is not one.
+>
+> This is not a tuning problem, and no amount of polish on Tier 0 or Tier 1 changes it.
+> Prosebind checks prose against declared canon; FlawedFictions asks for inference from
+> cold text. **They are different tasks.**
+>
+> So the v1 gate in § 11 asked us to win the game § 4 argues is the wrong game — beating
+> FlawedFictions means reasoning over the whole story with a frontier model, which is
+> what the batch competitors already do and what the literature says works poorly. The
+> gate needs rewriting, not passing.
+>
+> **Replacement gate:** publish FlawedFictions numbers *with the explanation of why they
+> are what they are*, and compete where the architecture actually claims an advantage —
+> false-positive rate on clean prose, and detection against a writer-authored bible. If
+> Tier 2 is built, score it here too, and expect it to look like everyone else's.
+>
+> The run was still worth it. It found two real bugs the internal harness could not:
+> `name-variant` treating capitalisation as a misspelling (a false positive on a *clean*
+> story), and bootstrap accepting "father" and "daughter" as character names. Full
+> writeup in [benchmarks/FLAWEDFICTIONS.md](benchmarks/FLAWEDFICTIONS.md).
 
 > **A scoreboard is a weapon.** Every competitor markets unverifiable accuracy claims. No product
 > publishes benchmark results. In a market running on vibes, being the only tool with numbers is a
