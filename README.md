@@ -4,8 +4,69 @@
 tells you the moment the story stops adding up — in your editor, on your machine, in a format
 you own.
 
-> **Status: pre-implementation.** The design is settled; the code is not written yet.
-> Read [DESIGN.md](DESIGN.md) first — it is the argument this repository exists to execute.
+> **Status: v0 — working, model-free.** The engine runs: anchoring, incremental
+> segmentation, a continuity graph, and eight Tier 0 checks. No language model is
+> involved and no network call is made. Read [DESIGN.md](DESIGN.md) for the argument
+> this repository exists to execute.
+
+## Quickstart
+
+```bash
+npm install && npm run build
+node packages/daemon/dist/cli.js check examples/the-quarry
+```
+
+On your own manuscript:
+
+```bash
+prosebind init      # create a continuity bible
+prosebind check     # analyse once; exits 1 on a contradiction
+prosebind watch     # analyse as you write, never while you type
+prosebind checks    # list what runs
+```
+
+`check` exits non-zero when it finds a contradiction, so it can gate a commit.
+
+### What it catches today
+
+Running against the worked example in `examples/the-quarry`, an 286-word manuscript
+with seven deliberate errors planted in it:
+
+```
+ch03.md
+  × 9:34   Marcus Vasquez speaks here, but died at "Marcus is buried".
+           ↳ Marcus is buried (2019-03-11) — ch02.md:3
+  × 7:7    Elena Vasquez is 38 here, but would be 32 in 2019.
+  × 11:22  Elena Vasquez's eyes are green here. Your bible says grey.
+  ? 3:1    This paragraph reads as present tense. The manuscript is past tense.
+  ? 14:1   First-person narration here, but the manuscript is third-limited.
+ch02.md
+  × 6:51   "Elana" is one letter from "Elena". Did you mean Elena Vasquez?
+ch01.md
+  ? 12:25  Ruth Ellery is named here, before "Marcus is buried" introduces them.
+```
+
+Note the cross-file reasoning: the death is pinned in chapter 2 and the violation is
+found in chapter 3.
+
+### Incrementality, measured
+
+```bash
+npm run demo
+```
+
+```
+cold start     17 of 17 segments · 15.0ms
+after one edit  3 of 17 segments · 0.2ms
+work avoided   82%
+findings       7 cold → 7 warm
+
+Incremental result matches a cold start exactly.
+```
+
+Three segments, not seventeen: the edited paragraph plus the scene and chapter that
+contain it. That ratio is what makes real-time affordable, and the script fails loudly
+if the incremental path ever disagrees with a cold start.
 
 ---
 

@@ -15,7 +15,12 @@
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
-    "test": "node --test packages/*/dist/**/*.test.js",
-    "bench": "node benchmarks/run.js"
+    "test": "npm run build && node --test \"packages/*/dist/**/*.test.js\"",
+    "demo": "npm run build && node scripts/incremental-demo.mjs",
+    "example": "npm run build && node packages/daemon/dist/cli.js check examples/the-quarry --keys"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
   }
 }

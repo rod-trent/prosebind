@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [20, 22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: node --test "packages/*/dist/**/*.test.js"
+
+      # The engine must find the planted errors in the worked example, and must
+      # exit 1 when it does. A green build that stopped detecting anything is worse
+      # than a red one.
+      - name: Worked example still detects its planted errors
+        shell: bash
+        run: |
+          set +e
+          output=$(node packages/daemon/dist/cli.js check examples/the-quarry)
+          code=$?
+          echo "$output"
+          if [ "$code" -ne 1 ]; then
+            echo "::error::expected exit 1 from a manuscript with planted contradictions, got $code"
+            exit 1
+          fi
+          for check in deceased-active name-variant attribute-contradiction age-arithmetic; do
+            echo "$output" | grep -q "$check" || { echo "::error::$check stopped firing"; exit 1; }
+          done
+
+      # Incrementality is a correctness claim, not just a speed one: the demo exits
+      # non-zero if the incremental path ever disagrees with a cold start.
+      - name: Incremental analysis matches a cold start
+        run: node scripts/incremental-demo.mjs

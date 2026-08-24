@@ -1,0 +1,9 @@
+- id: the-funeral
+  label: Marcus is buried
+  date: 2019-03-11
+  at: "The coffin went down badly."
+
+- id: the-flood
+  label: The quarry floods
+  date: 2019-03-11
+  chapter: 1

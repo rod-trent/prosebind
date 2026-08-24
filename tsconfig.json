@@ -1,0 +1,10 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/core" },
+    { "path": "packages/spec" },
+    { "path": "packages/daemon" },
+    { "path": "packages/lsp" },
+    { "path": "packages/mcp" }
+  ]
+}

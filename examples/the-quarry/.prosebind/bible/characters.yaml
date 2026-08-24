@@ -1,0 +1,17 @@
+- name: Elena Vasquez
+  aliases: [Elena]
+  born: 1987-04-02
+  attributes:
+    eyes: grey
+    hair: black
+
+- name: Marcus Vasquez
+  aliases: [Marcus]
+  born: 1984-11-19
+  attributes:
+    eyes: brown
+  deceasedAfter: the-funeral
+
+- name: Ruth Ellery
+  aliases: [Ruth, Aunt Ruth]
+  introducedAt: the-funeral
