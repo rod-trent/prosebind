@@ -1,0 +1,556 @@
+{
+  "options": {
+    "scope": "chapter",
+    "lens": "v2",
+    "concurrency": 6,
+    "all": false,
+    "limit": 60,
+    "seed": 77,
+    "out": "C:\\Code\\Writing Agent\\benchmarks\\results\\ff-v2-60.json"
+  },
+  "model": "xai:grok-4.6",
+  "outcomes": [
+    {
+      "id": "flawed_fictions_137",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 32.327624099999994
+    },
+    {
+      "id": "flawed_fictions_123",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The wife is called a source of peace after the passage has already called her a source of trouble, and after Hercules has just said the beasts were gentler than she is.",
+        "Hercules praises his wife as supportive and uplifting after the passage has established the opposite."
+      ],
+      "dropped": 0,
+      "seconds": 53.2356165
+    },
+    {
+      "id": "flawed_fictions_156",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 27.2980089
+    },
+    {
+      "id": "flawed_fictions_0",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 64.8420599
+    },
+    {
+      "id": "flawed_fictions_117",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same letter is given two different postmarks."
+      ],
+      "dropped": 0,
+      "seconds": 75.0223699
+    },
+    {
+      "id": "flawed_fictions_13",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Conflicts with the horse she was whisked onto earlier: “a large coal-black horse with fiery eyes.”"
+      ],
+      "dropped": 0,
+      "seconds": 91.8377204
+    },
+    {
+      "id": "flawed_fictions_16",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 47.863105399999995
+    },
+    {
+      "id": "flawed_fictions_152",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Conflicts with the earlier claim that possession of the forts would be all-important because they commanded the main route into Canada."
+      ],
+      "dropped": 0,
+      "seconds": 107.4920349
+    },
+    {
+      "id": "flawed_fictions_198",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 16.404562300000006
+    },
+    {
+      "id": "flawed_fictions_181",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 31.8873652
+    },
+    {
+      "id": "flawed_fictions_180",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 72.4250397
+    },
+    {
+      "id": "flawed_fictions_210",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 31.505236300000004
+    },
+    {
+      "id": "flawed_fictions_172",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same dogs are treated as hunting dogs and then as untrained."
+      ],
+      "dropped": 0,
+      "seconds": 90.1645669
+    },
+    {
+      "id": "flawed_fictions_204",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 56.27507349999998
+    },
+    {
+      "id": "flawed_fictions_213",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 48.08967920000001
+    },
+    {
+      "id": "flawed_fictions_171",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 125.98665539999999
+    },
+    {
+      "id": "flawed_fictions_235",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 31.381965700000002
+    },
+    {
+      "id": "flawed_fictions_216",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 39.3837482
+    },
+    {
+      "id": "flawed_fictions_250",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place"
+      ],
+      "dropped": 0,
+      "seconds": 23.056917099999993
+    },
+    {
+      "id": "flawed_fictions_225",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place / stated intent."
+      ],
+      "dropped": 0,
+      "seconds": 62.640495899999976
+    },
+    {
+      "id": "flawed_fictions_238",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The sleep was said to last a hundred years."
+      ],
+      "dropped": 0,
+      "seconds": 60.0025881
+    },
+    {
+      "id": "flawed_fictions_241",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The horn's drink is bitter here after being established as delicious."
+      ],
+      "dropped": 0,
+      "seconds": 48.0900208
+    },
+    {
+      "id": "flawed_fictions_240",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 77.56441389999999
+    },
+    {
+      "id": "flawed_fictions_236",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 110.4036822
+    },
+    {
+      "id": "flawed_fictions_252",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The following party is now two men traveling on foot."
+      ],
+      "dropped": 0,
+      "seconds": 70.3560448
+    },
+    {
+      "id": "flawed_fictions_268",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 52.77303919999997
+    },
+    {
+      "id": "flawed_fictions_273",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same road is now winding."
+      ],
+      "dropped": 0,
+      "seconds": 57.60053109999999
+    },
+    {
+      "id": "flawed_fictions_279",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Objects"
+      ],
+      "dropped": 0,
+      "seconds": 40.775227000000015
+    },
+    {
+      "id": "flawed_fictions_266",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place",
+        "Presence and place"
+      ],
+      "dropped": 0,
+      "seconds": 98.90850490000003
+    },
+    {
+      "id": "flawed_fictions_283",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 42.10037579999998
+    },
+    {
+      "id": "flawed_fictions_314",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 23.55680780000001
+    },
+    {
+      "id": "flawed_fictions_319",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Vegetation after an absolute absence of it"
+      ],
+      "dropped": 0,
+      "seconds": 29.528261400000016
+    },
+    {
+      "id": "flawed_fictions_290",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 96.59734340000001
+    },
+    {
+      "id": "flawed_fictions_313",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 93.31627840000002
+    },
+    {
+      "id": "flawed_fictions_312",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The forest is now small; earlier it was large."
+      ],
+      "dropped": 0,
+      "seconds": 101.5688114
+    },
+    {
+      "id": "flawed_fictions_321",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 61.182379399999974
+    },
+    {
+      "id": "flawed_fictions_318",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 85.66532409999996
+    },
+    {
+      "id": "flawed_fictions_340",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "Who escaped the flood"
+      ],
+      "dropped": 0,
+      "seconds": 39.14751990000001
+    },
+    {
+      "id": "flawed_fictions_337",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 61.75402369999996
+    },
+    {
+      "id": "flawed_fictions_342",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place."
+      ],
+      "dropped": 0,
+      "seconds": 66.70489550000005
+    },
+    {
+      "id": "flawed_fictions_344",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "Appearance and physical detail"
+      ],
+      "dropped": 0,
+      "seconds": 63.42504440000001
+    },
+    {
+      "id": "flawed_fictions_336",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 86.47462030000001
+    },
+    {
+      "id": "flawed_fictions_335",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 120.43240289999999
+    },
+    {
+      "id": "flawed_fictions_346",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The old woman is given other daughters after being introduced as having only one.",
+        "The closed-room journey to Mecca is given two different frequencies."
+      ],
+      "dropped": 0,
+      "seconds": 112.83084659999993
+    },
+    {
+      "id": "flawed_fictions_349",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 100.01543750000006
+    },
+    {
+      "id": "flawed_fictions_366",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 92.11095500000008
+    },
+    {
+      "id": "flawed_fictions_375",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Appearance and physical detail."
+      ],
+      "dropped": 0,
+      "seconds": 113.84321519999997
+    },
+    {
+      "id": "flawed_fictions_385",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Stated intent against behaviour"
+      ],
+      "dropped": 0,
+      "seconds": 27.560166599999995
+    },
+    {
+      "id": "flawed_fictions_362",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "Appearance and physical detail.",
+        "Names and titles."
+      ],
+      "dropped": 0,
+      "seconds": 133.35199490000005
+    },
+    {
+      "id": "flawed_fictions_377",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same snake now passes between the bars that earlier held its body fast."
+      ],
+      "dropped": 0,
+      "seconds": 126.41303070000001
+    },
+    {
+      "id": "flawed_fictions_383",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 72.34461580000003
+    },
+    {
+      "id": "flawed_fictions_396",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The shoemaker’s conscience and heart are reversed."
+      ],
+      "dropped": 0,
+      "seconds": 46.44241869999992
+    },
+    {
+      "id": "flawed_fictions_398",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same attic shelves were already described as worm-eaten."
+      ],
+      "dropped": 0,
+      "seconds": 49.184351600000056
+    },
+    {
+      "id": "flawed_fictions_38",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Animals in the pasture"
+      ],
+      "dropped": 0,
+      "seconds": 112.64742949999997
+    },
+    {
+      "id": "flawed_fictions_397",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 75.9947335000001
+    },
+    {
+      "id": "flawed_fictions_410",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 43.00242949999997
+    },
+    {
+      "id": "flawed_fictions_404",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The warning records a slow walk after the passage has already shown her running."
+      ],
+      "dropped": 0,
+      "seconds": 83.46206789999991
+    },
+    {
+      "id": "flawed_fictions_413",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 61.354601699999996
+    },
+    {
+      "id": "flawed_fictions_64",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "The Phoenix is here born in the first rose, but earlier that rose-born bird died and the Phoenix was a new bird from the egg."
+      ],
+      "dropped": 0,
+      "seconds": 113.10871440000005
+    },
+    {
+      "id": "flawed_fictions_405",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same face, including that the sea had lent her its skin, is now given to the woman standing in the room."
+      ],
+      "dropped": 0,
+      "seconds": 154.52049710000003
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import { writeFile, mkdir, readFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { segmentDocument } from '@prosebind/core';
-import { Analyzer, GrokModel, continuityLens } from '@prosebind/analyze';
+import { Analyzer, GrokModel, continuityLens, continuityLensV2 } from '@prosebind/analyze';
 import { balancedSample, loadFlawedFictions, type FlawedFictionsRow } from './flawedfictions.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -26,6 +26,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 
 interface Options {
   scope: 'scene' | 'chapter';
+  lens: 'v1' | 'v2';
   concurrency: number;
   all: boolean;
   limit: number;
@@ -35,7 +36,7 @@ interface Options {
 }
 
 function parse(argv: readonly string[]): Options {
-  const options: Options = { scope: 'chapter', concurrency: 4, all: false, limit: 10, seed: 3, model: undefined, out: undefined };
+  const options: Options = { scope: 'chapter', lens: 'v2', concurrency: 4, all: false, limit: 10, seed: 3, model: undefined, out: undefined };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i]!;
     const next = (): string => argv[++i] ?? '';
@@ -46,6 +47,7 @@ function parse(argv: readonly string[]): Options {
     else if (arg === '--out') options.out = resolve(next());
     else if (arg === '--concurrency') options.concurrency = Math.max(1, Number.parseInt(next(), 10) || options.concurrency);
     else if (arg === '--all') options.all = true;
+    else if (arg === '--lens') options.lens = next() === 'v1' ? 'v1' : 'v2';
   }
   return options;
 }
@@ -63,7 +65,9 @@ async function evaluate(
   row: FlawedFictionsRow,
   model: GrokModel,
   scope: Options['scope'],
+  which: Options['lens'],
 ): Promise<Outcome> {
+  const lens = which === 'v1' ? continuityLens : continuityLensV2;
   const started = performance.now();
   const doc = segmentDocument(`${row.example_id}.md`, row.story);
 
@@ -76,7 +80,7 @@ async function evaluate(
   let failure: Error | undefined;
   const analyzer = new Analyzer({
     model,
-    lenses: [continuityLens],
+    lenses: [lens],
     // Gutenberg text, already public. A writer's manuscript is a different decision.
     policy: { cloudAllowed: true },
     onError: (_s, _l, error) => {
@@ -100,7 +104,7 @@ async function evaluate(
   const findings: string[] = [];
   let dropped = 0;
   for (const passage of targets) {
-    const record = await analyzer.analyzeSegment(doc, passage, continuityLens);
+    const record = await analyzer.analyzeSegment(doc, passage, lens);
     if (failure) throw failure;
     dropped += record.dropped;
     for (const diagnostic of record.diagnostics) findings.push(diagnostic.message);
@@ -141,7 +145,7 @@ function report(outcomes: readonly Outcome[], options: Options, model: string): 
     'Prosebind Tier 2 on FlawedFictions (arXiv 2504.11900)',
     '',
     `sample      ${outcomes.length} stories, ${options.all ? 'the full set' : `balanced, seed ${options.seed}`}`,
-    `pipeline    passage-contradiction lens (${model}), ${options.scope} scope -> any finding = "flawed"`,
+    `pipeline    passage-contradiction ${options.lens} (${model}), ${options.scope} scope -> any finding = "flawed"`,
     `time        ${(seconds / 60).toFixed(1)} min (${(seconds / n).toFixed(1)}s per story)`,
     '',
     '                 predicted flawed   predicted clean',
@@ -194,14 +198,6 @@ async function main(): Promise<number> {
       // No checkpoint yet.
     }
   }
-  const analyzer = new Analyzer({
-    model,
-    lenses: [continuityLens],
-    // Gutenberg text, already public. A writer's manuscript is a different decision.
-    policy: { cloudAllowed: true },
-    onError: (_s, _l, error) => process.stderr.write(`  ! ${error.message.slice(0, 100)}\n`),
-  });
-
   const outcomes: Outcome[] = [...done.values()];
   const pending = sample.filter((row) => !done.has(row.example_id));
   process.stderr.write(`  ${pending.length} to run, ${options.concurrency} at a time\n`);
@@ -220,7 +216,7 @@ async function main(): Promise<number> {
       const row = pending[index];
       if (!row) return;
       try {
-        const outcome = await evaluate(row, model, options.scope);
+        const outcome = await evaluate(row, model, options.scope, options.lens);
         outcomes.push(outcome);
         finished++;
         process.stderr.write(
