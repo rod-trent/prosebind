@@ -1,0 +1,8 @@
+# Normalise to LF in the repository. CI runs on Linux, macOS and Windows, and a
+# manuscript whose line endings change under the writer would break every anchor
+# offset in the bible.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.pdf binary
