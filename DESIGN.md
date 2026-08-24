@@ -14,7 +14,9 @@
 **A continuity engine for long-form writing.** It maintains a live model of your manuscript and
 tells you when the story contradicts itself — inside the editor you already use.
 
-Draft 1 · August 2026 · Status: v0 shipped (engine + Tier 0 + daemon + language server), model-free
+Draft 1 · August 2026 · Status: all three tiers built. Tier 0 is model-free and measured;
+Tier 1 runs locally; Tier 2 needs a frontier model to be worth running, and its cloud
+provider is unverified.
 
 ---
 
@@ -251,6 +253,20 @@ Claim extraction, entity linking, coreference resolution. Populates the graph fr
 Motivation gaps, unearned turns, thematic drift, pacing, structural analysis. Scene- or
 chapter-scoped, never whole-manuscript.
 *Opt-in · cloud boundary shown explicitly · runs at scene or session boundaries.*
+
+> **Built 2026-08-24, and the "frontier" qualifier is load-bearing.** Two lenses ship:
+> `passage-contradiction` (the cold-read task FlawedFictions sets) and `unearned-turn`.
+> Every finding must quote the passage and is re-anchored; one whose quote cannot be
+> located is dropped.
+>
+> Run against a 4B local model, the pipeline works and the output is close to useless —
+> *"Elena was 38 years old…"* flagged as contradicting *"her eyes were wet"*. All five
+> findings anchored cleanly, so the gate caught none of them: **it verifies that a
+> finding points at real text, not that the reasoning is sound.** Tier 2 without a
+> frontier model is not a cheaper Tier 2, it is noise.
+>
+> The Anthropic provider is written to the documented contract and **has never been
+> run** — no credentials were available. Treat it as unverified.
 
 > Ship Tier 0 alone, first, before any model work. **If Tier 0 does not make writers sit up, the
 > premise is wrong** — and you will have learned that for the price of a deterministic rule engine.

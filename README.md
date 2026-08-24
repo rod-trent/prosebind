@@ -197,6 +197,7 @@ packages/
   core/      AGPL   graph, anchoring, segmentation, Tier 0 checks — no network, no models
   daemon/    AGPL   file watcher, tier orchestration, CLI
   extract/   AGPL   Tier 1 — claim extraction with a small local model
+  analyze/   AGPL   Tier 2 — judgment lenses over one passage at a time
   lsp/       AGPL   language server — diagnostics, hover, code actions, symbols
   mcp/       AGPL   MCP server — the graph, queryable by agents
   spec/      Apache the graph format and protocol specification

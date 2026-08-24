@@ -1,0 +1,20 @@
+{
+  "name": "@prosebind/analyze",
+  "version": "0.0.0",
+  "description": "Tier 2: judgment analysis over one passage at a time.",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --build"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.117.1",
+    "@prosebind/core": "0.0.0",
+    "@prosebind/extract": "0.0.0"
+  }
+}

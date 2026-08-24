@@ -8,6 +8,9 @@
       "path": "packages/extract"
     },
     {
+      "path": "packages/analyze"
+    },
+    {
       "path": "packages/spec"
     },
     {
