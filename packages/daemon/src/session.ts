@@ -1,5 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { Project } from '@prosebind/core';
+import type { ContinuityGraph } from '@prosebind/core';
 import type { AnalysisResult, Document } from '@prosebind/core';
 import { findManuscripts } from './watcher.js';
 
@@ -30,6 +31,11 @@ export class Session {
       if (doc) map.set(path, doc);
     }
     return map;
+  }
+
+  /** The continuity graph itself, for consumers that query rather than report. */
+  get graph(): ContinuityGraph {
+    return this.project.graph;
   }
 
   get bibleIssues(): ReadonlyArray<{ file: string; message: string }> {

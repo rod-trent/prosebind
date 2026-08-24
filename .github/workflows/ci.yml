@@ -59,6 +59,15 @@ jobs:
           test -f clients/obsidian/manifest.json || { echo "::error::manifest.json missing"; exit 1; }
           test -f clients/obsidian/styles.css || { echo "::error::styles.css missing"; exit 1; }
 
+      # Both servers must work as spawned binaries, not just in-process. This catches
+      # bin wiring and stdout contamination, which unit tests cannot see.
+      - name: Servers answer over stdio
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 22
+        shell: bash
+        run: |
+          node packages/lsp/dist/cli.js --help >/dev/null 2>&1 || { echo "::error::lsp cli failed"; exit 1; }
+          node packages/mcp/dist/cli.js --help >/dev/null 2>&1 || { echo "::error::mcp cli failed"; exit 1; }
+
       # Incrementality is a correctness claim, not just a speed one: the demo exits
       # non-zero if the incremental path ever disagrees with a cold start.
       - name: Incremental analysis matches a cold start

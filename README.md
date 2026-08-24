@@ -118,7 +118,7 @@ packages/
   core/      AGPL   graph, anchoring, segmentation, Tier 0 checks — no network, no models
   daemon/    AGPL   file watcher, tier orchestration, provider-agnostic model layer
   lsp/       AGPL   language server — diagnostics, hover, code actions, symbols
-  mcp/       AGPL   MCP server over the same graph (not written yet)
+  mcp/       AGPL   MCP server — the graph, queryable by agents
   spec/      Apache the graph format and protocol specification
 clients/
   vscode/    Apache extension — Problems panel, status bar, hover, quick fixes
@@ -174,6 +174,22 @@ carrying a language-client library.
 
 Many working novelists already write in Obsidian, which makes it the client most likely
 to reach the actual audience.
+
+## Agents
+
+[](packages/mcp) exposes the same graph over the Model Context Protocol,
+so an agent can ask about a manuscript it has not read:
+
+
+
+Eight read-only tools — findings, entities, mentions, timeline, outline, and what the
+story has established by a given point. **Every tool is read-only**: an agent may read a
+writer's canon, but may not edit the manuscript or decide on their behalf that an
+inconsistency was deliberate.
+
+Facts carry their tier ( vs ) in every response, and the instructions
+sent on connect tell the model to say which it is relying on — presenting an inference
+as established is the failure this design exists to prevent.
 
 ## Licensing
 

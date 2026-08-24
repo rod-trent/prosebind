@@ -13,6 +13,11 @@
     "build": "tsc --build"
   },
   "dependencies": {
-    "@prosebind/core": "0.0.0"
+    "@prosebind/core": "0.0.0",
+    "@prosebind/spec": "0.0.0",
+    "@prosebind/daemon": "0.0.0"
+  },
+  "bin": {
+    "prosebind-mcp": "./dist/cli.js"
   }
 }

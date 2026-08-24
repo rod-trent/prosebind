@@ -1,9 +1,11 @@
 /**
- * @prosebind/mcp — MCP server over the continuity graph. Not implemented yet; v1
- * scope (DESIGN.md § 11).
+ * @prosebind/mcp — the continuity graph, exposed over the Model Context Protocol.
  *
- * Intended to expose the same graph conversationally, so an agent can ask what a
- * character knows as of a given chapter. Roughly 5% additional work over the LSP
- * server for a second front door and a second audience (DESIGN.md § 5).
+ * AGPL, not Apache: this package embeds @prosebind/core, so the combined work carries
+ * the engine's licence. See NOTICE.
  */
-export {};
+export { ProsebindMcpServer } from './server.js';
+export { TOOLS, toolByName } from './tools.js';
+export type { Tool, ToolContext } from './tools.js';
+export { PROTOCOL_VERSION, SUPPORTED_VERSIONS, INSTRUCTIONS } from './protocol.js';
+export type { ToolDefinition, ToolResult, ResourceDefinition } from './protocol.js';
