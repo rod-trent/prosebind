@@ -1,0 +1,14 @@
+{
+  "name": "@prosebind/benchmarks",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Measures what Prosebind claims: detection of injected errors, and the false-positive rate on clean prose.",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "main": "./dist/index.js",
+  "scripts": { "build": "tsc --build" },
+  "dependencies": {
+    "@prosebind/core": "0.0.0",
+    "@prosebind/daemon": "0.0.0"
+  }
+}

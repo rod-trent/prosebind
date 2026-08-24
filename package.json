@@ -7,7 +7,8 @@
   "type": "module",
   "workspaces": [
     "packages/*",
-    "clients/*"
+    "clients/*",
+    "benchmarks"
   ],
   "engines": {
     "node": ">=20"
@@ -15,10 +16,11 @@
   "scripts": {
     "build": "tsc --build && npm run bundle --workspace=prosebind-vscode && npm run bundle --workspace=prosebind-obsidian",
     "clean": "tsc --build --clean",
-    "test": "npm run build && node --test \"{packages,clients}/*/dist/**/*.test.js\"",
+    "test": "npm run build && node --test \"{packages,clients}/*/dist/**/*.test.js\" \"benchmarks/dist/**/*.test.js\"",
     "demo": "npm run build && node scripts/incremental-demo.mjs",
     "example": "npm run build && node packages/daemon/dist/cli.js check examples/the-quarry --keys",
-    "vsix": "npm run build && npm run package --workspace=prosebind-vscode"
+    "vsix": "npm run build && npm run package --workspace=prosebind-vscode",
+    "bench": "npm run build && node benchmarks/dist/run.js"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",

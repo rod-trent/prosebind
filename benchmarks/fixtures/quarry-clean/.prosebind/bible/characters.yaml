@@ -1,0 +1,21 @@
+# Control corpus for the false-positive experiment. Every finding produced against
+# this project is a mistake by definition, so the prose must contain no continuity
+# error and the bible must contradict nothing in it.
+
+- name: Elena Vasquez
+  aliases: [Elena]
+  born: 1987-04-02
+  attributes:
+    eyes: grey
+    hair: black
+
+- name: Marcus Vasquez
+  aliases: [Marcus]
+  born: 1984-11-19
+  attributes:
+    eyes: brown
+    hair: brown
+  deceasedAfter: the-burial
+
+- name: Ruth Ellery
+  aliases: [Ruth]

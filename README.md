@@ -14,6 +14,34 @@ you own.
 > FlawedFictions and ConStory-Bench. Until those numbers exist, the central claim in §4
 > is borrowed from the literature rather than demonstrated here.
 
+## Benchmarks
+
+```bash
+npm run bench
+```
+
+```
+DETECTION       594 injected · 594 caught · 0 missed · 0 invented
+                precision 100.0%   recall 100.0%   F1 1.000
+
+FALSE POSITIVES 577 words · 0 findings · 0.000 per 10k
+                95% bound < 52.0 per 10k
+```
+
+**A perfect score here is weak evidence, and the harness says so in its own output.**
+The errors were injected by the same project that wrote the checks, in exactly the
+classes those checks target, into a few hundred words. It is a regression harness — it
+catches a check breaking — not a measure of how good the engine is. Zero findings in 577
+words does not establish a zero false-positive rate either; the rule of three puts the
+95% bound at 52 per 10k, which is close to useless. Growing the control corpus is the
+highest-value contribution to [`benchmarks/`](benchmarks).
+
+**FlawedFictions is deliberately not run.** It supplies stories with no continuity
+bible, and Tier 0 checks prose against entities the writer declared — with none, nothing
+fires. Scoring near zero would measure the absence of a bible, not the quality of the
+engine. Those benchmarks become meaningful once Tier 1 extraction can build a bible from
+prose, and this harness is the scaffolding they will run on.
+
 ## Quickstart
 
 ```bash

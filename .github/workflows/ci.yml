@@ -21,7 +21,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - run: node --test "packages/*/dist/**/*.test.js"
+      - run: node --test "{packages,clients}/*/dist/**/*.test.js" "benchmarks/dist/**/*.test.js"
 
       # The engine must find the planted errors in the worked example, and must
       # exit 1 when it does. A green build that stopped detecting anything is worse
@@ -67,6 +67,11 @@ jobs:
         run: |
           node packages/lsp/dist/cli.js --help >/dev/null 2>&1 || { echo "::error::lsp cli failed"; exit 1; }
           node packages/mcp/dist/cli.js --help >/dev/null 2>&1 || { echo "::error::mcp cli failed"; exit 1; }
+
+      # Precision is the product risk. The benchmark exits non-zero the moment a check
+      # invents a finding that no injected error explains.
+      - name: Tier 0 benchmark
+        run: node benchmarks/dist/run.js --trials 40 --errors 6
 
       # Incrementality is a correctness claim, not just a speed one: the demo exits
       # non-zero if the incremental path ever disagrees with a cold start.

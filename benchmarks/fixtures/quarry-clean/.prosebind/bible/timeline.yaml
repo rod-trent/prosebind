@@ -1,0 +1,12 @@
+- id: the-inspection
+  label: The quarry inspection
+  date: 2019-03-08
+  chapter: 1
+
+# Pinned to the final paragraph on purpose. Marcus is referenced earlier in chapter
+# three, which is before this point and therefore correct — the control must stay
+# clean. Anything the mutator inserts after this line is a genuine error.
+- id: the-burial
+  label: Marcus is buried
+  date: 2019-03-19
+  at: "She stayed until the light was gone."

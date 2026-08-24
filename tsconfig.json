@@ -21,6 +21,9 @@
     },
     {
       "path": "clients/obsidian"
+    },
+    {
+      "path": "benchmarks"
     }
   ]
 }
