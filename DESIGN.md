@@ -14,9 +14,9 @@
 **A continuity engine for long-form writing.** It maintains a live model of your manuscript and
 tells you when the story contradicts itself — inside the editor you already use.
 
-Draft 1 · August 2026 · Status: all three tiers built. Tier 0 is model-free and measured;
-Tier 1 runs locally; Tier 2 needs a frontier model to be worth running, and its cloud
-provider is unverified.
+Draft 1 · August 2026 · Status: all three tiers built and measured. Tier 0 is model-free;
+Tier 1 runs on a local model; Tier 2 needs a frontier one and scores F1 0.824 on
+FlawedFictions with grok-4.6. The Anthropic provider remains unverified.
 
 ---
 
