@@ -1,8 +1,15 @@
-# Throughline — Positioning & Design
+# Prosebind — Positioning & Design
 
-> **Working name.** *Throughline* is the dramaturgical term for the spine a story must hold from
-> first page to last — the thing continuity errors break. Verify package-name availability on npm,
-> PyPI and crates.io before committing.
+> **Name.** To *bind* a book is to make its separate signatures hold together as one object —
+> invisible when done well, catastrophic when done badly. That is the job here.
+>
+> `prosebind.com` and the `prosebind` GitHub org were confirmed available via registry RDAP on
+> 2026-08-24. **npm, PyPI and crates.io remain unverified** — package registries blocked automated
+> checks. Confirm those, and run a proper trademark clearance, before spending on branding.
+>
+> Rejected: *Throughline* (NPR podcast, live USPTO registration, every major TLD taken),
+> *Quire* (Getty ships an open-source publishing tool by that name), *Bondstone* and *Tiestone*
+> (clean but `.com` unavailable), *Prosespine* (adjacent to the existing PaperSpine).
 
 **A continuity engine for long-form writing.** It maintains a live model of your manuscript and
 tells you when the story contradicts itself — inside the editor you already use.
@@ -38,11 +45,11 @@ Three consequences:
 
 ## § 2 — Positioning: continuity as infrastructure, not as a report
 
-Competitors sell an *audit* — a one-time artifact you buy, read, and discard. Throughline is a
+Competitors sell an *audit* — a one-time artifact you buy, read, and discard. Prosebind is a
 *substrate*: a persistent, incrementally maintained, writer-owned continuity graph that lives
 beside the manuscript and stays current as you type.
 
-> **The sentence:** Throughline keeps a live model of your story and tells you the moment it stops
+> **The sentence:** Prosebind keeps a live model of your story and tells you the moment it stops
 > adding up — in your editor, on your machine, in a format you own.
 
 The developer-facing version of the same idea: **a language server for narrative.** That framing
@@ -208,7 +215,7 @@ bad extraction is a single keystroke that teaches the system for good.
 
 ### The bible is plain text
 
-A `.throughline/` directory beside the manuscript: YAML and Markdown, human-editable, diffable,
+A `.prosebind/` directory beside the manuscript: YAML and Markdown, human-editable, diffable,
 committable to git. SQLite is a rebuildable index; the text files are the truth.
 
 > **Non-negotiable:** writers must be able to read, edit, correct and take their continuity data with
@@ -330,7 +337,7 @@ Clippy's grave and the project must not fall into it.
 > tool: it loses serious novelists, inherits the entire authenticity fight, and gets barred from
 > venues and contests increasingly hostile to generative tools.
 >
-> Throughline asks questions. It never fills the page. The constraint is not a limitation — it opens
+> Prosebind asks questions. It never fills the page. The constraint is not a limitation — it opens
 > a market segment that currently refuses to touch AI at all.
 
 Note the tension with § 2: the stance is right, but Marlowe already says it out loud. Hold the
