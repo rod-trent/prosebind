@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { writeFile, mkdir } from 'node:fs/promises';
+import { writeFile, mkdir, readFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { segmentDocument } from '@prosebind/core';
@@ -26,6 +26,8 @@ const here = dirname(fileURLToPath(import.meta.url));
 
 interface Options {
   scope: 'scene' | 'chapter';
+  concurrency: number;
+  all: boolean;
   limit: number;
   seed: number;
   model: string | undefined;
@@ -33,7 +35,7 @@ interface Options {
 }
 
 function parse(argv: readonly string[]): Options {
-  const options: Options = { scope: 'chapter', limit: 10, seed: 3, model: undefined, out: undefined };
+  const options: Options = { scope: 'chapter', concurrency: 4, all: false, limit: 10, seed: 3, model: undefined, out: undefined };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i]!;
     const next = (): string => argv[++i] ?? '';
@@ -42,6 +44,8 @@ function parse(argv: readonly string[]): Options {
     else if (arg === '--model') options.model = next();
     else if (arg === '--scope') options.scope = next() === 'scene' ? 'scene' : 'chapter';
     else if (arg === '--out') options.out = resolve(next());
+    else if (arg === '--concurrency') options.concurrency = Math.max(1, Number.parseInt(next(), 10) || options.concurrency);
+    else if (arg === '--all') options.all = true;
   }
   return options;
 }
@@ -55,9 +59,30 @@ interface Outcome {
   seconds: number;
 }
 
-async function evaluate(row: FlawedFictionsRow, analyzer: Analyzer, scope: Options['scope']): Promise<Outcome> {
+async function evaluate(
+  row: FlawedFictionsRow,
+  model: GrokModel,
+  scope: Options['scope'],
+): Promise<Outcome> {
   const started = performance.now();
   const doc = segmentDocument(`${row.example_id}.md`, row.story);
+
+  // A per-story analyzer, so a failure can be attributed to this story.
+  //
+  // The Analyzer deliberately degrades a failed call to "no findings" — correct for a
+  // writer, whose other tiers keep working. In a benchmark it is poison: a rate limit
+  // would silently become a confident "clean" verdict and deflate recall. So any error
+  // here aborts the story instead, leaving it unrecorded for the resume pass.
+  let failure: Error | undefined;
+  const analyzer = new Analyzer({
+    model,
+    lenses: [continuityLens],
+    // Gutenberg text, already public. A writer's manuscript is a different decision.
+    policy: { cloudAllowed: true },
+    onError: (_s, _l, error) => {
+      failure ??= error;
+    },
+  });
 
   // One passage per call, and each passage exactly once. Scenes and chapters overlap —
   // taking both analysed the same prose twice, doubling cost and duplicating findings.
@@ -76,6 +101,7 @@ async function evaluate(row: FlawedFictionsRow, analyzer: Analyzer, scope: Optio
   let dropped = 0;
   for (const passage of targets) {
     const record = await analyzer.analyzeSegment(doc, passage, continuityLens);
+    if (failure) throw failure;
     dropped += record.dropped;
     for (const diagnostic of record.diagnostics) findings.push(diagnostic.message);
   }
@@ -114,7 +140,7 @@ function report(outcomes: readonly Outcome[], options: Options, model: string): 
   return [
     'Prosebind Tier 2 on FlawedFictions (arXiv 2504.11900)',
     '',
-    `sample      ${outcomes.length} stories, balanced, seed ${options.seed}`,
+    `sample      ${outcomes.length} stories, ${options.all ? 'the full set' : `balanced, seed ${options.seed}`}`,
     `pipeline    passage-contradiction lens (${model}), ${options.scope} scope -> any finding = "flawed"`,
     `time        ${(seconds / 60).toFixed(1)} min (${(seconds / n).toFixed(1)}s per story)`,
     '',
@@ -153,7 +179,21 @@ async function main(): Promise<number> {
     return 1;
   }
 
-  const sample = balancedSample(rows, options.limit, options.seed);
+  // The full 414 takes hours, so completed stories are checkpointed and skipped on a
+  // re-run with the same --out. --all uses every story rather than a balanced sample.
+  const sample = options.all ? [...rows] : balancedSample(rows, options.limit, options.seed);
+
+  const done = new Map<string, Outcome>();
+  if (options.out) {
+    try {
+      const prior = JSON.parse(await readFile(options.out, 'utf8')) as { outcomes?: Outcome[] };
+      for (const outcome of prior.outcomes ?? []) done.set(outcome.id, outcome);
+      if (done.size > 0) process.stderr.write(`  resuming: ${done.size} already done
+`);
+    } catch {
+      // No checkpoint yet.
+    }
+  }
   const analyzer = new Analyzer({
     model,
     lenses: [continuityLens],
@@ -162,22 +202,46 @@ async function main(): Promise<number> {
     onError: (_s, _l, error) => process.stderr.write(`  ! ${error.message.slice(0, 100)}\n`),
   });
 
-  const outcomes: Outcome[] = [];
-  for (const [index, row] of sample.entries()) {
-    const outcome = await evaluate(row, analyzer, options.scope);
-    outcomes.push(outcome);
-    process.stderr.write(
-      `  [${index + 1}/${sample.length}] ${row.example_id} label=${row.cont_error} ` +
-        `predicted=${outcome.predicted} (${outcome.seconds.toFixed(0)}s)\n`,
-    );
-  }
+  const outcomes: Outcome[] = [...done.values()];
+  const pending = sample.filter((row) => !done.has(row.example_id));
+  process.stderr.write(`  ${pending.length} to run, ${options.concurrency} at a time\n`);
+
+  const checkpoint = async (): Promise<void> => {
+    if (!options.out) return;
+    await mkdir(dirname(options.out), { recursive: true });
+    await writeFile(options.out, JSON.stringify({ options, model: model.id, outcomes }, null, 2), 'utf8');
+  };
+
+  let next = 0;
+  let finished = 0;
+  const worker = async (): Promise<void> => {
+    for (;;) {
+      const index = next++;
+      const row = pending[index];
+      if (!row) return;
+      try {
+        const outcome = await evaluate(row, model, options.scope);
+        outcomes.push(outcome);
+        finished++;
+        process.stderr.write(
+          `  [${finished}/${pending.length}] ${row.example_id} label=${row.cont_error} ` +
+            `predicted=${outcome.predicted} (${outcome.seconds.toFixed(0)}s)\n`,
+        );
+        // Checkpoint often. Losing hours of work to a dropped connection would be its
+        // own kind of bug, and this run is long enough for that to be likely.
+        if (finished % 5 === 0) await checkpoint();
+      } catch (error) {
+        // One story failing must not end the run.
+        process.stderr.write(`  ! ${row.example_id}: ${(error as Error).message.slice(0, 90)}\n`);
+      }
+    }
+  };
+
+  await Promise.all(Array.from({ length: options.concurrency }, () => worker()));
+  await checkpoint();
 
   process.stdout.write(`${report(outcomes, options, model.id)}\n`);
 
-  if (options.out) {
-    await mkdir(dirname(options.out), { recursive: true });
-    await writeFile(options.out, JSON.stringify({ options, model: model.id, outcomes }, null, 2), 'utf8');
-  }
   return 0;
 }
 
