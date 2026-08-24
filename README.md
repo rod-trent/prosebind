@@ -4,12 +4,12 @@
 tells you the moment the story stops adding up — in your editor, on your machine, in a format
 you own.
 
-> **Status: working, and model-free.** The engine runs — anchoring, incremental
-> segmentation, a continuity graph, eight Tier 0 checks, and Tier 1 extraction on a
-> local model — behind a CLI, a language
-> server, an MCP server, and clients for VS Code and Obsidian. **Tier 0 involves no
-> model at all, and nothing ever leaves your machine unless you configure it to.** Read
-> [DESIGN.md](DESIGN.md) for the argument this repository exists to execute.
+> **Status: working.** The engine runs — anchoring, incremental segmentation, a
+> continuity graph, eight deterministic Tier 0 checks, and Tier 1 extraction on a small
+> local model — behind a CLI, a language server, an MCP server, and clients for VS Code
+> and Obsidian. **Tier 0 uses no model at all, and nothing leaves your machine unless
+> you configure it to.** Read [DESIGN.md](DESIGN.md) for the argument this repository
+> exists to execute.
 >
 > The next milestone is the v1 gate in §11: published benchmark scores against
 > FlawedFictions and ConStory-Bench. Until those numbers exist, the central claim in §4
