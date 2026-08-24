@@ -1,3 +1,5 @@
+export * from './jsonrpc.js';
+
 /**
  * @prosebind/spec — the on-disk continuity format and the wire protocol.
  *

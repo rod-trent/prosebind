@@ -13,7 +13,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "tsc --build && npm run bundle --workspace=prosebind-vscode",
+    "build": "tsc --build && npm run bundle --workspace=prosebind-vscode && npm run bundle --workspace=prosebind-obsidian",
     "clean": "tsc --build --clean",
     "test": "npm run build && node --test \"{packages,clients}/*/dist/**/*.test.js\"",
     "demo": "npm run build && node scripts/incremental-demo.mjs",

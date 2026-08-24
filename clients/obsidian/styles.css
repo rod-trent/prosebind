@@ -1,0 +1,103 @@
+/* Prosebind — the quiet channel. Uses Obsidian's own theme variables throughout so it
+   inherits whatever the writer already chose, rather than imposing a palette. */
+
+.prosebind-view {
+  padding: 0.5rem 0.6rem 2rem;
+  font-size: var(--font-ui-small);
+}
+
+.prosebind-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.prosebind-summary { color: var(--text-muted); }
+
+.prosebind-recheck {
+  font-size: var(--font-ui-smaller);
+  padding: 0.15rem 0.5rem;
+}
+
+.prosebind-banner,
+.prosebind-empty {
+  padding: 1rem 0.2rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.prosebind-banner-failed { color: var(--text-error); }
+
+.prosebind-file { margin-top: 0.9rem; }
+
+.prosebind-file-name {
+  font-size: var(--font-ui-smaller);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  margin-bottom: 0.3rem;
+}
+
+.prosebind-finding {
+  padding: 0.45rem 0.5rem;
+  border-left: 2px solid var(--background-modifier-border);
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 0.3rem;
+  cursor: pointer;
+}
+
+.prosebind-finding:hover { background: var(--background-modifier-hover); }
+
+/* Severity is carried by the rail, not by a shouting background. A draft in progress
+   is supposed to have loose ends. */
+.prosebind-contradiction { border-left-color: var(--text-error); }
+.prosebind-question { border-left-color: var(--text-warning); }
+.prosebind-note { border-left-color: var(--text-faint); }
+
+.prosebind-finding-head {
+  display: flex;
+  gap: 0.45rem;
+  align-items: baseline;
+}
+
+.prosebind-mark {
+  font-family: var(--font-monospace);
+  color: var(--text-muted);
+  flex: none;
+}
+
+.prosebind-message { color: var(--text-normal); line-height: 1.45; }
+
+.prosebind-meta,
+.prosebind-detail,
+.prosebind-related {
+  font-size: var(--font-ui-smaller);
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  line-height: 1.45;
+}
+
+.prosebind-related { color: var(--text-accent); }
+.prosebind-related:hover { text-decoration: underline; }
+
+.prosebind-actions { margin-top: 0.4rem; }
+
+.prosebind-actions button {
+  font-size: var(--font-ui-smaller);
+  padding: 0.1rem 0.45rem;
+  background: transparent;
+  border: 1px solid var(--background-modifier-border);
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.prosebind-actions button:hover {
+  color: var(--text-normal);
+  border-color: var(--background-modifier-border-hover);
+}
+
+.prosebind-status { cursor: pointer; }

@@ -4,7 +4,7 @@ import { dirname, join, resolve } from 'node:path';
 import { PassThrough } from 'node:stream';
 import { test } from 'node:test';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { Connection, MessageReader, encodeMessage } from './jsonrpc.js';
+import { Connection, MessageReader, encodeMessage } from '@prosebind/spec';
 import { DiagnosticSeverity, type LspDiagnostic } from './protocol.js';
 import { ProsebindServer } from './server.js';
 

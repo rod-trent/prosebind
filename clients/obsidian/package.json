@@ -1,0 +1,18 @@
+{
+  "name": "prosebind-obsidian",
+  "version": "0.0.0",
+  "description": "Continuity checking for long-form writing, inside Obsidian.",
+  "license": "Apache-2.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc --build && npm run bundle",
+    "bundle": "esbuild src/main.ts --bundle --platform=node --target=node20 --format=cjs --external:obsidian --external:electron --outfile=main.js --minify"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0",
+    "obsidian": "^1.7.2"
+  },
+  "dependencies": {
+    "@prosebind/spec": "0.0.0"
+  }
+}

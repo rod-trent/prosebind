@@ -2,7 +2,7 @@ import { basename, resolve } from 'node:path';
 import { Suppressions, loadSuppressions, saveSuppressions } from '@prosebind/core';
 import type { Diagnostic, Entity, Mention } from '@prosebind/core';
 import { pathToUri, toLspDiagnostic, uriToPath, passesFloor, type SeverityFloor } from './convert.js';
-import { Connection } from './jsonrpc.js';
+import { Connection } from '@prosebind/spec';
 import {
   COMMANDS,
   CodeActionKind,

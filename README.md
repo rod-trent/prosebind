@@ -122,7 +122,7 @@ packages/
   spec/      Apache the graph format and protocol specification
 clients/
   vscode/    Apache extension — Problems panel, status bar, hover, quick fixes
-  obsidian/         plugin wrapping the same server (not written yet)
+  obsidian/  Apache plugin — continuity sidebar, status bar, jump-to-finding
 benchmarks/         harnesses for FlawedFictions and ConStory-Bench
 ```
 
@@ -160,6 +160,20 @@ From a checkout, press <kbd>F5</kbd> and open `examples/the-quarry`.
 
 The extension is Apache-2.0 because it launches `prosebind-lsp` as a separate process
 rather than linking the engine — the arm's-length boundary the AGPL respects.
+
+### Obsidian
+
+[`clients/obsidian`](clients/obsidian) is a desktop plugin. Obsidian has no Problems
+panel, so §10's "sidebar with a badge count" is built literally: findings grouped by
+file, click to jump to the line, *Mark as intentional* on any of them, and a quiet count
+in the status bar.
+
+The whole plugin bundles to **16 KB**, because the only Prosebind code it embeds is the
+Apache-2.0 transport from `@prosebind/spec` — it speaks LSP directly rather than
+carrying a language-client library.
+
+Many working novelists already write in Obsidian, which makes it the client most likely
+to reach the actual audience.
 
 ## Licensing
 

@@ -6,7 +6,7 @@
  * messages, so every diagnostic about the server itself goes to stderr or through
  * window/logMessage.
  */
-import { Connection } from './jsonrpc.js';
+import { Connection } from '@prosebind/spec';
 import { ProsebindServer } from './server.js';
 
 if (process.argv.includes('--help') || process.argv.includes('-h')) {

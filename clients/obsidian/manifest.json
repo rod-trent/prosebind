@@ -1,0 +1,10 @@
+{
+  "id": "prosebind",
+  "name": "Prosebind",
+  "version": "0.0.0",
+  "minAppVersion": "1.5.0",
+  "description": "Finds contradictions in your manuscript as you write — a character who speaks after they died, an eye colour that changed, an age the arithmetic does not support.",
+  "author": "Prosebind",
+  "authorUrl": "https://github.com/rod-trent/prosebind",
+  "isDesktopOnly": true
+}

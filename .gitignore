@@ -39,3 +39,6 @@ Thumbs.db
 # VS Code extension build artefacts
 clients/vscode/bundle/
 *.vsix
+
+# Obsidian plugin bundle (attached to releases, not committed)
+clients/obsidian/main.js

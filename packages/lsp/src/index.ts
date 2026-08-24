@@ -6,7 +6,7 @@
  * @prosebind/spec and the editor clients, which speak the protocol without linking
  * the engine.
  */
-export { Connection, MessageReader, encodeMessage, ErrorCodes, RpcError } from './jsonrpc.js';
+export { Connection, MessageReader, encodeMessage, ErrorCodes, RpcError } from '@prosebind/spec';
 export { ProsebindServer } from './server.js';
 export { Workspace } from './workspace.js';
 export { toLspDiagnostic, severityFor, passesFloor, pathToUri, uriToPath } from './convert.js';

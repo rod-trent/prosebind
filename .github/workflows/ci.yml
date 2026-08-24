@@ -49,6 +49,16 @@ jobs:
         working-directory: clients/vscode
         run: npx --yes @vscode/vsce@latest package --no-dependencies --out /tmp/prosebind.vsix
 
+      # The Obsidian plugin loads main.js from the plugin folder root. A build that
+      # leaves it in dist/ produces a plugin Obsidian silently never shows.
+      - name: Obsidian plugin bundles where Obsidian looks for it
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 22
+        shell: bash
+        run: |
+          test -f clients/obsidian/main.js || { echo "::error::main.js missing"; exit 1; }
+          test -f clients/obsidian/manifest.json || { echo "::error::manifest.json missing"; exit 1; }
+          test -f clients/obsidian/styles.css || { echo "::error::styles.css missing"; exit 1; }
+
       # Incrementality is a correctness claim, not just a speed one: the demo exits
       # non-zero if the incremental path ever disagrees with a cold start.
       - name: Incremental analysis matches a cold start

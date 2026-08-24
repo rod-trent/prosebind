@@ -122,11 +122,22 @@ export function encodeMessage(message: unknown): Buffer {
   return Buffer.concat([Buffer.from(`Content-Length: ${body.length}${HEADER_TERMINATOR}`, 'ascii'), body]);
 }
 
-/** A live JSON-RPC connection with handler registration. */
+/**
+ * A live JSON-RPC connection with handler registration.
+ *
+ * Bidirectional on purpose: LSP is not client-asks-server-answers. Servers issue
+ * requests too, and an editor client has to send them — so the same class serves both
+ * ends of the pipe, and a client written against it needs no second implementation.
+ */
 export class Connection {
   private readonly requests = new Map<string, RequestHandler>();
   private readonly notifications = new Map<string, NotificationHandler>();
   private readonly cancelled = new Set<string>();
+  private readonly pending = new Map<
+    string,
+    { resolve: (value: unknown) => void; reject: (error: Error) => void }
+  >();
+  private nextId = 1;
   private readonly reader: MessageReader;
 
   constructor(
@@ -152,6 +163,27 @@ export class Connection {
     this.send({ jsonrpc: '2.0', method, params } satisfies NotificationMessage);
   }
 
+  /** Issue a request to the peer and await its response. */
+  sendRequest(method: string, params?: unknown): Promise<unknown> {
+    const id = this.nextId++;
+    return new Promise((resolve, reject) => {
+      this.pending.set(String(id), { resolve, reject });
+      this.send({ jsonrpc: '2.0', id, method, params } satisfies RequestMessage);
+    });
+  }
+
+  /**
+   * Fail every in-flight request.
+   *
+   * Called when the peer dies. Without it a client that loses its server hangs on
+   * promises that will never settle, which presents as an editor that has simply
+   * stopped responding for no visible reason.
+   */
+  rejectPending(reason: string): void {
+    for (const { reject } of this.pending.values()) reject(new Error(reason));
+    this.pending.clear();
+  }
+
   private send(message: unknown): void {
     this.output.write(encodeMessage(message));
   }
@@ -168,9 +200,19 @@ export class Connection {
     if (typeof message !== 'object' || message === null) return;
     const record = message as Record<string, unknown>;
     const method = typeof record['method'] === 'string' ? record['method'] : undefined;
-    if (!method) return; // a response to something we sent; we issue no requests yet
-
     const id = record['id'] as RequestId | undefined;
+
+    // No method plus an id means this is a response to a request we issued.
+    if (!method) {
+      if (id === undefined) return;
+      const waiting = this.pending.get(String(id));
+      if (!waiting) return;
+      this.pending.delete(String(id));
+      const error = record['error'] as ResponseError | undefined;
+      if (error) waiting.reject(new RpcError(error.code, error.message, error.data));
+      else waiting.resolve(record['result']);
+      return;
+    }
 
     if (method === '$/cancelRequest') {
       const params = record['params'] as { id?: RequestId } | undefined;

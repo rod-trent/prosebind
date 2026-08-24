@@ -18,6 +18,9 @@
     },
     {
       "path": "clients/vscode"
+    },
+    {
+      "path": "clients/obsidian"
     }
   ]
 }
