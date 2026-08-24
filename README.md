@@ -4,10 +4,15 @@
 tells you the moment the story stops adding up — in your editor, on your machine, in a format
 you own.
 
-> **Status: v0 — working, model-free.** The engine runs: anchoring, incremental
-> segmentation, a continuity graph, and eight Tier 0 checks. No language model is
-> involved and no network call is made. Read [DESIGN.md](DESIGN.md) for the argument
-> this repository exists to execute.
+> **Status: working, and model-free.** The engine runs — anchoring, incremental
+> segmentation, a continuity graph, eight Tier 0 checks — behind a CLI, a language
+> server, an MCP server, and clients for VS Code and Obsidian. **No language model is
+> involved anywhere, and no network call is made.** Read [DESIGN.md](DESIGN.md) for the
+> argument this repository exists to execute.
+>
+> The next milestone is the v1 gate in §11: published benchmark scores against
+> FlawedFictions and ConStory-Bench. Until those numbers exist, the central claim in §4
+> is borrowed from the literature rather than demonstrated here.
 
 ## Quickstart
 
@@ -177,19 +182,25 @@ to reach the actual audience.
 
 ## Agents
 
-[](packages/mcp) exposes the same graph over the Model Context Protocol,
+[`packages/mcp`](packages/mcp) exposes the same graph over the Model Context Protocol,
 so an agent can ask about a manuscript it has not read:
 
-
+```bash
+claude mcp add prosebind -- prosebind-mcp /path/to/your/manuscript
+```
 
 Eight read-only tools — findings, entities, mentions, timeline, outline, and what the
 story has established by a given point. **Every tool is read-only**: an agent may read a
 writer's canon, but may not edit the manuscript or decide on their behalf that an
 inconsistency was deliberate.
 
-Facts carry their tier ( vs ) in every response, and the instructions
+Facts carry their tier (`canon` vs `inferred`) in every response, and the instructions
 sent on connect tell the model to say which it is relying on — presenting an inference
 as established is the failure this design exists to prevent.
+
+DESIGN.md §5's motivating example — *"what does Marcus know as of chapter 12?"* — needs
+epistemic state tracking, which is v1.5 and not built. `established_before` answers the
+part that is real today and says so in its own output, rather than inventing an answer.
 
 ## Licensing
 
