@@ -1,0 +1,28 @@
+Prosebind
+Copyright (c) 2026 Rod Trent
+
+This project is deliberately split across two licences, along the line of what links
+the engine. See DESIGN.md § 13.
+
+  AGPL-3.0-or-later  (LICENSE)
+    packages/core     the continuity engine
+    packages/daemon   file watcher and tier orchestration
+    packages/lsp      language server
+    packages/mcp      MCP server
+
+    These embed the engine, so the combined work carries its licence. The intent is to
+    prevent a closed SaaS strip-mine of the core.
+
+  Apache-2.0         (LICENSE-APACHE)
+    packages/spec     the on-disk bible format, the wire protocol, and the JSON-RPC
+                      transport
+    clients/vscode    VS Code extension
+    clients/obsidian  Obsidian plugin
+
+    These speak the protocol without linking the engine — the clients launch
+    prosebind-lsp as a separate process. The format and protocol are meant to be
+    adopted, re-implemented and embedded freely, including commercially. An adopted
+    format outlives any one implementation of it.
+
+Third-party dependencies retain their own licences. At the time of writing the only
+runtime dependency of the engine is `yaml` (ISC).
