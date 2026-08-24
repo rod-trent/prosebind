@@ -1,0 +1,11 @@
+{
+  "name": "@prosebind/core",
+  "version": "0.0.0",
+  "description": "Continuity graph, span anchoring, incremental recompute, and Tier 0 deterministic checks.",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": { "build": "tsc --build" }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@prosebind/lsp",
+  "version": "0.0.0",
+  "description": "Language server exposing continuity diagnostics over LSP.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": { "build": "tsc --build" }
+}

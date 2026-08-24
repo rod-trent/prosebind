@@ -1,0 +1,21 @@
+{
+  "name": "prosebind",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A continuity engine for long-form writing.",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "clients/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "test": "node --test packages/*/dist/**/*.test.js",
+    "bench": "node benchmarks/run.js"
+  }
+}

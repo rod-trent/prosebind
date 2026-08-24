@@ -1,0 +1,11 @@
+{
+  "name": "@prosebind/mcp",
+  "version": "0.0.0",
+  "description": "MCP server exposing the continuity graph to agents.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": { "build": "tsc --build" }
+}

@@ -1,0 +1,37 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build output
+dist/
+build/
+*.tsbuildinfo
+
+# Prosebind local state
+# The bible (.prosebind/bible/) IS committed on purpose — writers own their canon.
+# The derived index is not: it is rebuildable from the bible plus the manuscript.
+.prosebind/index/
+.prosebind/cache/
+*.sqlite
+*.sqlite-journal
+*.db
+
+# local model weights
+models/
+*.gguf
+
+# benchmark corpora (licensing varies — never vendor these)
+benchmarks/**/corpus/
+benchmarks/**/*.jsonl
+
+# env & secrets
+.env
+.env.*
+!.env.example
+
+# editors / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
