@@ -90,9 +90,13 @@ A contradiction whose halves sit in different scenes is invisible to a lens that
 ever sees one of them. Still never whole-manuscript — that constraint is what §4 argues
 for, and this is direct evidence of it.
 
-Caveats: 58 seconds and one API call per chapter, so this is session-boundary work, not
-something that runs as you type; recall of 65.5% means it misses a third of injected
-errors; and several of the twelve false positives look like genuine inconsistencies in
+Recall is the weakness: it misses about a third of injected errors. An attempt to fix it
+with a richer prompt looked like +16.7 points on a controlled 60-story test and turned
+out to be **net +1 story out of 201** at full scale, for 6.3 points of precision — see
+FLAWEDFICTIONS.md. A paired design removes selection bias but not sampling noise.
+
+Other caveats: 58 seconds and one API call per chapter, so this is session-boundary work,
+not something that runs as you type; and several of the twelve false positives look like genuine inconsistencies in
 the unmodified Gutenberg originals, which the benchmark labels clean because no error
 was *injected*.
 

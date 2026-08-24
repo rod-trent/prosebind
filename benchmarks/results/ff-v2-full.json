@@ -1,0 +1,3632 @@
+{
+  "options": {
+    "scope": "chapter",
+    "lens": "v2",
+    "concurrency": 6,
+    "all": true,
+    "limit": 10,
+    "seed": 3,
+    "out": "C:\\Code\\Writing Agent\\benchmarks\\results\\ff-v2-full.json"
+  },
+  "model": "xai:grok-4.6",
+  "outcomes": [
+    {
+      "id": "flawed_fictions_4",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 31.551321199999997
+    },
+    {
+      "id": "flawed_fictions_1",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 34.747698400000004
+    },
+    {
+      "id": "flawed_fictions_0",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 59.626812799999996
+    },
+    {
+      "id": "flawed_fictions_3",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 80.35418340000001
+    },
+    {
+      "id": "flawed_fictions_6",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 59.902239
+    },
+    {
+      "id": "flawed_fictions_7",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Objects"
+      ],
+      "dropped": 0,
+      "seconds": 69.28277770000001
+    },
+    {
+      "id": "flawed_fictions_8",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The boy’s chosen horse is Also Ran."
+      ],
+      "dropped": 0,
+      "seconds": 58.469063399999996
+    },
+    {
+      "id": "flawed_fictions_5",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 127.1141457
+    },
+    {
+      "id": "flawed_fictions_2",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 129.3590911
+    },
+    {
+      "id": "flawed_fictions_12",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 34.552078800000004
+    },
+    {
+      "id": "flawed_fictions_11",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The Princess talks more, not less, and the lad is still awarded the prize."
+      ],
+      "dropped": 0,
+      "seconds": 57.68815209999999
+    },
+    {
+      "id": "flawed_fictions_14",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 41.884459000000014
+    },
+    {
+      "id": "flawed_fictions_9",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 93.33636960000001
+    },
+    {
+      "id": "flawed_fictions_10",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 83.5958892
+    },
+    {
+      "id": "flawed_fictions_18",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 23.675549699999973
+    },
+    {
+      "id": "flawed_fictions_16",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 59.85841159999999
+    },
+    {
+      "id": "flawed_fictions_20",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 29.5700515
+    },
+    {
+      "id": "flawed_fictions_17",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Established traits and manner",
+        "Established traits and manner",
+        "Established traits and manner",
+        "Established traits and manner",
+        "Established traits and manner"
+      ],
+      "dropped": 0,
+      "seconds": 60.07124590000001
+    },
+    {
+      "id": "flawed_fictions_19",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 59.966171700000004
+    },
+    {
+      "id": "flawed_fictions_13",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Appearance and physical detail",
+        "Appearance and physical detail"
+      ],
+      "dropped": 0,
+      "seconds": 111.6204642
+    },
+    {
+      "id": "flawed_fictions_15",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 113.77075640000001
+    },
+    {
+      "id": "flawed_fictions_21",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Vegetation is both absent and present."
+      ],
+      "dropped": 0,
+      "seconds": 50.730321599999996
+    },
+    {
+      "id": "flawed_fictions_25",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 49.56114129999996
+    },
+    {
+      "id": "flawed_fictions_22",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 62.76405719999998
+    },
+    {
+      "id": "flawed_fictions_23",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place"
+      ],
+      "dropped": 0,
+      "seconds": 77.85072140000001
+    },
+    {
+      "id": "flawed_fictions_28",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 41.87965529999998
+    },
+    {
+      "id": "flawed_fictions_24",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 102.27493440000002
+    },
+    {
+      "id": "flawed_fictions_27",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 77.11776800000004
+    },
+    {
+      "id": "flawed_fictions_29",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 66.10962189999996
+    },
+    {
+      "id": "flawed_fictions_26",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The Magician's home and its setting do not match what the passage already established."
+      ],
+      "dropped": 0,
+      "seconds": 95.30242440000002
+    },
+    {
+      "id": "flawed_fictions_30",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Names and titles; Presence and place",
+        "Names and titles"
+      ],
+      "dropped": 0,
+      "seconds": 79.54349829999998
+    },
+    {
+      "id": "flawed_fictions_31",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "A Dove takes part in the morning waking, though it was not one of the three who bought the cow."
+      ],
+      "dropped": 0,
+      "seconds": 70.95013659999996
+    },
+    {
+      "id": "flawed_fictions_32",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same arrival of the messengers is placed in two incompatible situations."
+      ],
+      "dropped": 0,
+      "seconds": 75.02884979999996
+    },
+    {
+      "id": "flawed_fictions_35",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 63.429243799999995
+    },
+    {
+      "id": "flawed_fictions_37",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 34.648555300000005
+    },
+    {
+      "id": "flawed_fictions_34",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 80.95996010000003
+    },
+    {
+      "id": "flawed_fictions_40",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Appearance and recognition"
+      ],
+      "dropped": 0,
+      "seconds": 24.641244400000026
+    },
+    {
+      "id": "flawed_fictions_33",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Names and titles: the earth bearer is suddenly a rock.",
+        "Names and titles: the island sits on a rock's back."
+      ],
+      "dropped": 0,
+      "seconds": 112.75337800000003
+    },
+    {
+      "id": "flawed_fictions_41",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 1,
+      "seconds": 37.4274179
+    },
+    {
+      "id": "flawed_fictions_36",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 93.53695730000001
+    },
+    {
+      "id": "flawed_fictions_38",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Objects / presence in the pasture"
+      ],
+      "dropped": 0,
+      "seconds": 93.71175160000001
+    },
+    {
+      "id": "flawed_fictions_43",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 69.76604589999997
+    },
+    {
+      "id": "flawed_fictions_46",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The Rajah's plan is treated as a failure and the two are again close friends."
+      ],
+      "dropped": 0,
+      "seconds": 32.812933299999976
+    },
+    {
+      "id": "flawed_fictions_45",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Established traits and manner"
+      ],
+      "dropped": 0,
+      "seconds": 64.64329280000005
+    },
+    {
+      "id": "flawed_fictions_44",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 73.74374149999994
+    },
+    {
+      "id": "flawed_fictions_42",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Objects"
+      ],
+      "dropped": 0,
+      "seconds": 95.24689529999998
+    },
+    {
+      "id": "flawed_fictions_51",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 28.96554600000009
+    },
+    {
+      "id": "flawed_fictions_49",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 38.55650170000002
+    },
+    {
+      "id": "flawed_fictions_39",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 173.67424339999997
+    },
+    {
+      "id": "flawed_fictions_47",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Conflicts with the deacon having “ears and eyes for one dialect alone--the negro,” with Scotch “jaw-breakers” offered “in vain,” and with the stroke being “negromania.”",
+        "Conflicts with the same established limit: negro dialect only, and liability to “negromania,” not Scotch.",
+        "Conflicts with “he had no desire for” Scotch stories and with fifteen years of “negro dialect in every form.”"
+      ],
+      "dropped": 0,
+      "seconds": 75.00618419999991
+    },
+    {
+      "id": "flawed_fictions_50",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 59.89936800000002
+    },
+    {
+      "id": "flawed_fictions_54",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Conflicts with the earlier account that he could hardly hold the spoon, spilled the broth, and that his trembling hands could not hold the bowl, which fell and broke."
+      ],
+      "dropped": 0,
+      "seconds": 26.24470049999992
+    },
+    {
+      "id": "flawed_fictions_48",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Sequence",
+        "Sequence"
+      ],
+      "dropped": 0,
+      "seconds": 101.29452859999996
+    },
+    {
+      "id": "flawed_fictions_52",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 67.558108
+    },
+    {
+      "id": "flawed_fictions_55",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Merlin says the husband took the usurious loan without being urged; the earlier scene showed him refusing it and his wife pressing him to take it."
+      ],
+      "dropped": 0,
+      "seconds": 82.80634370000008
+    },
+    {
+      "id": "flawed_fictions_56",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Conflicts with the earlier statement that the harvest had been blessed."
+      ],
+      "dropped": 0,
+      "seconds": 85.1943456
+    },
+    {
+      "id": "flawed_fictions_53",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 110.12204780000006
+    },
+    {
+      "id": "flawed_fictions_58",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 73.29318740000005
+    },
+    {
+      "id": "flawed_fictions_57",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Conflicts with there being no one else within miles of the house.",
+        "Conflicts with the house standing alone with no one else within miles."
+      ],
+      "dropped": 0,
+      "seconds": 88.87977399999997
+    },
+    {
+      "id": "flawed_fictions_62",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Appearance and physical detail",
+        "Appearance and physical detail"
+      ],
+      "dropped": 0,
+      "seconds": 47.67542960000003
+    },
+    {
+      "id": "flawed_fictions_61",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 59.764548399999974
+    },
+    {
+      "id": "flawed_fictions_63",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 46.80029460000002
+    },
+    {
+      "id": "flawed_fictions_59",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 114.90187510000007
+    },
+    {
+      "id": "flawed_fictions_64",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 68.38892379999999
+    },
+    {
+      "id": "flawed_fictions_60",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 92.93609199999995
+    },
+    {
+      "id": "flawed_fictions_68",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Names and titles"
+      ],
+      "dropped": 0,
+      "seconds": 40.96966399999999
+    },
+    {
+      "id": "flawed_fictions_69",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Appearance and physical detail"
+      ],
+      "dropped": 0,
+      "seconds": 42.29388380000007
+    },
+    {
+      "id": "flawed_fictions_65",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 83.18298850000009
+    },
+    {
+      "id": "flawed_fictions_71",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 22.285371299999998
+    },
+    {
+      "id": "flawed_fictions_72",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 24.093553500000038
+    },
+    {
+      "id": "flawed_fictions_73",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "She uses the ordinary word for the pantaloons after being told she must not."
+      ],
+      "dropped": 0,
+      "seconds": 23.757406400000093
+    },
+    {
+      "id": "flawed_fictions_66",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Appearance and physical detail"
+      ],
+      "dropped": 0,
+      "seconds": 100.86775210000005
+    },
+    {
+      "id": "flawed_fictions_67",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 98.54734660000005
+    },
+    {
+      "id": "flawed_fictions_70",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place."
+      ],
+      "dropped": 0,
+      "seconds": 90.34312989999994
+    },
+    {
+      "id": "flawed_fictions_75",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 48.87784970000002
+    },
+    {
+      "id": "flawed_fictions_77",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 47.803668899999934
+    },
+    {
+      "id": "flawed_fictions_78",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Conflicts with the earlier statement that his children died of starvation."
+      ],
+      "dropped": 0,
+      "seconds": 60.3484656
+    },
+    {
+      "id": "flawed_fictions_76",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "The pine tree is treated as still a tree after it had already become a serpent."
+      ],
+      "dropped": 0,
+      "seconds": 70.1009519000001
+    },
+    {
+      "id": "flawed_fictions_74",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 92.11300490000006
+    },
+    {
+      "id": "flawed_fictions_79",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place",
+        "Presence and place",
+        "Presence and place"
+      ],
+      "dropped": 0,
+      "seconds": 58.20976390000002
+    },
+    {
+      "id": "flawed_fictions_83",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The laird's house is named two different ways.",
+        "The same laird is given two names."
+      ],
+      "dropped": 0,
+      "seconds": 85.3059513999999
+    },
+    {
+      "id": "flawed_fictions_85",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 80.17092599999998
+    },
+    {
+      "id": "flawed_fictions_81",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 110.8971877
+    },
+    {
+      "id": "flawed_fictions_86",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 16.034593600000022
+    },
+    {
+      "id": "flawed_fictions_88",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 32.21191390000004
+    },
+    {
+      "id": "flawed_fictions_84",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 129.61191280000006
+    },
+    {
+      "id": "flawed_fictions_82",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "The Rajah tells the Court the servant's offer was unknown to him."
+      ],
+      "dropped": 0,
+      "seconds": 148.21313690000005
+    },
+    {
+      "id": "flawed_fictions_87",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 59.28969000000006
+    },
+    {
+      "id": "flawed_fictions_89",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "The first parts to enter were called soles, then later feet.",
+        "The hips are first huge, then big."
+      ],
+      "dropped": 0,
+      "seconds": 53.93626340000005
+    },
+    {
+      "id": "flawed_fictions_91",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 31.466780399999813
+    },
+    {
+      "id": "flawed_fictions_93",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 35.42594729999988
+    },
+    {
+      "id": "flawed_fictions_90",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 75.08911689999991
+    },
+    {
+      "id": "flawed_fictions_94",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 45.962133399999935
+    },
+    {
+      "id": "flawed_fictions_97",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 35.2650747
+    },
+    {
+      "id": "flawed_fictions_95",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The creatures the Blockhead protected are later a different kind of insect."
+      ],
+      "dropped": 0,
+      "seconds": 70.52781330000003
+    },
+    {
+      "id": "flawed_fictions_92",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "The beloved is here named O Botaru San."
+      ],
+      "dropped": 0,
+      "seconds": 109.95698530000006
+    },
+    {
+      "id": "flawed_fictions_96",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 103.94402170000016
+    },
+    {
+      "id": "flawed_fictions_98",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 77.53516620000009
+    },
+    {
+      "id": "flawed_fictions_101",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 51.47551370000001
+    },
+    {
+      "id": "flawed_fictions_104",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 25.84089599999995
+    },
+    {
+      "id": "flawed_fictions_106",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 17.115650100000202
+    },
+    {
+      "id": "flawed_fictions_100",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "The Mecca journey is given two different frequencies."
+      ],
+      "dropped": 0,
+      "seconds": 99.22335339999991
+    },
+    {
+      "id": "flawed_fictions_102",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place."
+      ],
+      "dropped": 0,
+      "seconds": 70.60317519999994
+    },
+    {
+      "id": "flawed_fictions_105",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 55.22101359999995
+    },
+    {
+      "id": "flawed_fictions_103",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Foster parents called usually indifferent after the passage established the opposite feeling toward the child."
+      ],
+      "dropped": 0,
+      "seconds": 74.99324340000004
+    },
+    {
+      "id": "flawed_fictions_108",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Appearance and physical detail"
+      ],
+      "dropped": 0,
+      "seconds": 25.803271699999925
+    },
+    {
+      "id": "flawed_fictions_107",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 46.75419750000001
+    },
+    {
+      "id": "flawed_fictions_111",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Names and objects"
+      ],
+      "dropped": 0,
+      "seconds": 31.555607599999988
+    },
+    {
+      "id": "flawed_fictions_112",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place / Objects"
+      ],
+      "dropped": 0,
+      "seconds": 28.372423699999928
+    },
+    {
+      "id": "flawed_fictions_110",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The man the driver has just named as the preacher on his quarterly visit to these old ladies cannot then turn back because the house is the wrong address.",
+        "He cannot still be approaching and then turn back after the passage has already had him walk up to the house."
+      ],
+      "dropped": 0,
+      "seconds": 73.7751780999999
+    },
+    {
+      "id": "flawed_fictions_109",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Conflicts with the earlier count that only twenty-eight men were available."
+      ],
+      "dropped": 0,
+      "seconds": 89.40809440000007
+    },
+    {
+      "id": "flawed_fictions_115",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 43.679328600000126
+    },
+    {
+      "id": "flawed_fictions_116",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 52.902389200000094
+    },
+    {
+      "id": "flawed_fictions_118",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 25.932977999999885
+    },
+    {
+      "id": "flawed_fictions_114",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 71.09158499999997
+    },
+    {
+      "id": "flawed_fictions_113",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 85.85137719999999
+    },
+    {
+      "id": "flawed_fictions_122",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 18.24942790000001
+    },
+    {
+      "id": "flawed_fictions_119",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 48.97449139999994
+    },
+    {
+      "id": "flawed_fictions_124",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 46.26122490000003
+    },
+    {
+      "id": "flawed_fictions_125",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Grass is under their feet."
+      ],
+      "dropped": 0,
+      "seconds": 45.39951370000001
+    },
+    {
+      "id": "flawed_fictions_123",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "This reason cannot support the claim it follows, and it also reverses the wife as first described.",
+        "The wife is now supportive and uplifting."
+      ],
+      "dropped": 0,
+      "seconds": 61.672709799999836
+    },
+    {
+      "id": "flawed_fictions_117",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 115.83305530000013
+    },
+    {
+      "id": "flawed_fictions_128",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 32.26036430000001
+    },
+    {
+      "id": "flawed_fictions_120",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 130.75004180000002
+    },
+    {
+      "id": "flawed_fictions_121",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Established traits and manner"
+      ],
+      "dropped": 0,
+      "seconds": 135.19083759999998
+    },
+    {
+      "id": "flawed_fictions_127",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 74.59559499999997
+    },
+    {
+      "id": "flawed_fictions_130",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 44.520349600000074
+    },
+    {
+      "id": "flawed_fictions_129",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "The Cottontails have a dinner the same day the narrator said no one ate."
+      ],
+      "dropped": 0,
+      "seconds": 78.74312049999996
+    },
+    {
+      "id": "flawed_fictions_131",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 55.88333129999996
+    },
+    {
+      "id": "flawed_fictions_126",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "These were soles when they arrived, not feet.",
+        "The hips were huge huge, not big big."
+      ],
+      "dropped": 0,
+      "seconds": 121.98110609999998
+    },
+    {
+      "id": "flawed_fictions_132",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The appointed hour is stated two different ways."
+      ],
+      "dropped": 0,
+      "seconds": 72.26170319999987
+    },
+    {
+      "id": "flawed_fictions_135",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 48.40672350000008
+    },
+    {
+      "id": "flawed_fictions_136",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 56.097427800000176
+    },
+    {
+      "id": "flawed_fictions_133",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "The place of her death is now a stream."
+      ],
+      "dropped": 0,
+      "seconds": 102.2928864999998
+    },
+    {
+      "id": "flawed_fictions_138",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 40.490255200000014
+    },
+    {
+      "id": "flawed_fictions_134",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 102.89369239999982
+    },
+    {
+      "id": "flawed_fictions_143",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 26.86083999999985
+    },
+    {
+      "id": "flawed_fictions_141",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 46.769608600000154
+    },
+    {
+      "id": "flawed_fictions_137",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "The Prairie says it has no seeds after the birds have already sown seeds of every kind of flower."
+      ],
+      "dropped": 0,
+      "seconds": 107.11281269999989
+    },
+    {
+      "id": "flawed_fictions_139",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 102.28176379999984
+    },
+    {
+      "id": "flawed_fictions_142",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 73.12317599999997
+    },
+    {
+      "id": "flawed_fictions_144",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Conflicts with the earlier description of the same girl as tall and thin."
+      ],
+      "dropped": 0,
+      "seconds": 47.53057299999986
+    },
+    {
+      "id": "flawed_fictions_145",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same house is now spacious."
+      ],
+      "dropped": 0,
+      "seconds": 34.9214571
+    },
+    {
+      "id": "flawed_fictions_146",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place"
+      ],
+      "dropped": 0,
+      "seconds": 35.996220699999945
+    },
+    {
+      "id": "flawed_fictions_147",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 31.92788269999996
+    },
+    {
+      "id": "flawed_fictions_140",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Sequence."
+      ],
+      "dropped": 0,
+      "seconds": 117.2093051
+    },
+    {
+      "id": "flawed_fictions_149",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 31.084970399999992
+    },
+    {
+      "id": "flawed_fictions_150",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 38.399058999999895
+    },
+    {
+      "id": "flawed_fictions_148",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 50.8557378
+    },
+    {
+      "id": "flawed_fictions_151",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 74.06189269999997
+    },
+    {
+      "id": "flawed_fictions_156",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 40.12272340000002
+    },
+    {
+      "id": "flawed_fictions_152",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 75.71801539999991
+    },
+    {
+      "id": "flawed_fictions_154",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 63.20830979999993
+    },
+    {
+      "id": "flawed_fictions_157",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 19.469218300000065
+    },
+    {
+      "id": "flawed_fictions_159",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Stated role against later thanks"
+      ],
+      "dropped": 0,
+      "seconds": 32.672657300000076
+    },
+    {
+      "id": "flawed_fictions_158",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "She calls the bed \"bed\" after being told that is not its name."
+      ],
+      "dropped": 0,
+      "seconds": 39.321981300000104
+    },
+    {
+      "id": "flawed_fictions_160",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 33.946039400000124
+    },
+    {
+      "id": "flawed_fictions_161",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 48.667429499999855
+    },
+    {
+      "id": "flawed_fictions_163",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 30.035360899999972
+    },
+    {
+      "id": "flawed_fictions_155",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 126.73415100000007
+    },
+    {
+      "id": "flawed_fictions_162",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 42.740149200000104
+    },
+    {
+      "id": "flawed_fictions_153",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "Sakino hunts for a temple site after the site has already been named."
+      ],
+      "dropped": 0,
+      "seconds": 156.2760223999999
+    },
+    {
+      "id": "flawed_fictions_166",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 30.28651689999993
+    },
+    {
+      "id": "flawed_fictions_168",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Mordred's attempt on the lords is first a success, then a failure."
+      ],
+      "dropped": 0,
+      "seconds": 52.630675800000084
+    },
+    {
+      "id": "flawed_fictions_167",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 56.66531019999995
+    },
+    {
+      "id": "flawed_fictions_165",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 82.28857530000015
+    },
+    {
+      "id": "flawed_fictions_170",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Stated intent against behaviour",
+        "Stated intent against behaviour"
+      ],
+      "dropped": 0,
+      "seconds": 44.91366570000001
+    },
+    {
+      "id": "flawed_fictions_169",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 58.06570390000008
+    },
+    {
+      "id": "flawed_fictions_175",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 25.56731920000003
+    },
+    {
+      "id": "flawed_fictions_164",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The captain orders the anchor weighed after the passage has already had it weighed."
+      ],
+      "dropped": 0,
+      "seconds": 144.76420959999993
+    },
+    {
+      "id": "flawed_fictions_174",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Objects",
+        "Objects"
+      ],
+      "dropped": 0,
+      "seconds": 43.83044420000003
+    },
+    {
+      "id": "flawed_fictions_178",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The Prince is said to have encountered only this Princess after the passage already said he met plenty."
+      ],
+      "dropped": 0,
+      "seconds": 24.129520200000144
+    },
+    {
+      "id": "flawed_fictions_172",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The dogs in the hunt are called untrained and unused to hares."
+      ],
+      "dropped": 0,
+      "seconds": 91.16233310000017
+    },
+    {
+      "id": "flawed_fictions_173",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "Objects"
+      ],
+      "dropped": 0,
+      "seconds": 96.98657479999983
+    },
+    {
+      "id": "flawed_fictions_171",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 114.6465319999999
+    },
+    {
+      "id": "flawed_fictions_176",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Conflicts with the earlier lake scene, where the two brothers wanted to catch and roast the ducks and Simpleton would not permit it."
+      ],
+      "dropped": 0,
+      "seconds": 112.59157429999998
+    },
+    {
+      "id": "flawed_fictions_180",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 64.57638769999984
+    },
+    {
+      "id": "flawed_fictions_179",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 103.08905740000004
+    },
+    {
+      "id": "flawed_fictions_177",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The little men's workmanship is now clumsy.",
+        "The wife treats the little men's work as poor quality."
+      ],
+      "dropped": 0,
+      "seconds": 159.32457330000028
+    },
+    {
+      "id": "flawed_fictions_181",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 105.47024549999996
+    },
+    {
+      "id": "flawed_fictions_182",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "How his own people treat him"
+      ],
+      "dropped": 0,
+      "seconds": 99.54483939999994
+    },
+    {
+      "id": "flawed_fictions_184",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The petition is addressed to Florence after being introduced as put to Bologna."
+      ],
+      "dropped": 0,
+      "seconds": 56.570272600000024
+    },
+    {
+      "id": "flawed_fictions_183",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 77.38212189999992
+    },
+    {
+      "id": "flawed_fictions_186",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 46.65657279999973
+    },
+    {
+      "id": "flawed_fictions_191",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Family: kin exist, then none"
+      ],
+      "dropped": 0,
+      "seconds": 29.56846859999979
+    },
+    {
+      "id": "flawed_fictions_190",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 81.71328619999997
+    },
+    {
+      "id": "flawed_fictions_187",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "People are said to be compelled to do without gloomy weather.",
+        "Mankind's last days are said to arrive through an eternal spring."
+      ],
+      "dropped": 0,
+      "seconds": 94.6559364
+    },
+    {
+      "id": "flawed_fictions_193",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Appearance and physical detail / Objects",
+        "Appearance and physical detail / Objects",
+        "Appearance and physical detail / Objects"
+      ],
+      "dropped": 0,
+      "seconds": 47.28106079999963
+    },
+    {
+      "id": "flawed_fictions_188",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 114.27710829999997
+    },
+    {
+      "id": "flawed_fictions_189",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 120.72809630000033
+    },
+    {
+      "id": "flawed_fictions_192",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Objects",
+        "Objects"
+      ],
+      "dropped": 0,
+      "seconds": 105.23528240000037
+    },
+    {
+      "id": "flawed_fictions_198",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 12.050101600000168
+    },
+    {
+      "id": "flawed_fictions_196",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place"
+      ],
+      "dropped": 0,
+      "seconds": 42.3051847000001
+    },
+    {
+      "id": "flawed_fictions_195",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "More than one attendant after the passage said there was only one."
+      ],
+      "dropped": 0,
+      "seconds": 49.22463089999976
+    },
+    {
+      "id": "flawed_fictions_194",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 58.75640870000003
+    },
+    {
+      "id": "flawed_fictions_202",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 30.76959340000013
+    },
+    {
+      "id": "flawed_fictions_201",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 47.84736569999997
+    },
+    {
+      "id": "flawed_fictions_197",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 90.87763320000003
+    },
+    {
+      "id": "flawed_fictions_199",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "Conflicts with the plan, just stated, to sell the calves."
+      ],
+      "dropped": 0,
+      "seconds": 88.86622709999979
+    },
+    {
+      "id": "flawed_fictions_200",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 118.15929949999973
+    },
+    {
+      "id": "flawed_fictions_206",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 58.25795669999998
+    },
+    {
+      "id": "flawed_fictions_207",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The surface the fox is lying on changes with no event to move him.",
+        "The fox is treated as still on watch after the passage has already put him to sleep."
+      ],
+      "dropped": 0,
+      "seconds": 46.89990220000036
+    },
+    {
+      "id": "flawed_fictions_203",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "The name is spelled differently from the one used earlier.",
+        "The household is wiped out while he is still master, yet his children are said to have lived on in the house after he died."
+      ],
+      "dropped": 0,
+      "seconds": 132.85848730000015
+    },
+    {
+      "id": "flawed_fictions_204",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 106.88337410000013
+    },
+    {
+      "id": "flawed_fictions_205",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 94.79429220000003
+    },
+    {
+      "id": "flawed_fictions_210",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 49.39884530000016
+    },
+    {
+      "id": "flawed_fictions_211",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 39.26232750000013
+    },
+    {
+      "id": "flawed_fictions_212",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 42.781707299999894
+    },
+    {
+      "id": "flawed_fictions_213",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 40.92160589999985
+    },
+    {
+      "id": "flawed_fictions_214",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 16.016112199999856
+    },
+    {
+      "id": "flawed_fictions_216",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 23.093633200000042
+    },
+    {
+      "id": "flawed_fictions_209",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 85.51208969999989
+    },
+    {
+      "id": "flawed_fictions_215",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "West Hartford is first said not to employ specialists, then to have them available locally."
+      ],
+      "dropped": 0,
+      "seconds": 52.29470500000007
+    },
+    {
+      "id": "flawed_fictions_217",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 2,
+      "seconds": 45.11644849999994
+    },
+    {
+      "id": "flawed_fictions_219",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 32.60438660000032
+    },
+    {
+      "id": "flawed_fictions_218",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 64.88429190000006
+    },
+    {
+      "id": "flawed_fictions_222",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 33.423623499999756
+    },
+    {
+      "id": "flawed_fictions_208",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "Stated intent against behaviour"
+      ],
+      "dropped": 0,
+      "seconds": 156.5050677
+    },
+    {
+      "id": "flawed_fictions_221",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place",
+        "Presence and place"
+      ],
+      "dropped": 0,
+      "seconds": 71.70153289999999
+    },
+    {
+      "id": "flawed_fictions_223",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Sequence.",
+        "Presence and place; names."
+      ],
+      "dropped": 0,
+      "seconds": 75.09133920000028
+    },
+    {
+      "id": "flawed_fictions_225",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The speaker says this train is taking him to New York."
+      ],
+      "dropped": 0,
+      "seconds": 61.57871939999983
+    },
+    {
+      "id": "flawed_fictions_220",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 120.04135100000026
+    },
+    {
+      "id": "flawed_fictions_224",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 84.41924670000002
+    },
+    {
+      "id": "flawed_fictions_228",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 30.459474900000263
+    },
+    {
+      "id": "flawed_fictions_231",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 42.671059200000016
+    },
+    {
+      "id": "flawed_fictions_227",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Old Abe is said to have gone down among the Confederate lines and then recognized that as a mistake."
+      ],
+      "dropped": 0,
+      "seconds": 87.71186219999986
+    },
+    {
+      "id": "flawed_fictions_232",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 46.46858039999986
+    },
+    {
+      "id": "flawed_fictions_229",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 68.17996710000001
+    },
+    {
+      "id": "flawed_fictions_226",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 129.36873719999986
+    },
+    {
+      "id": "flawed_fictions_230",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 97.18500020000013
+    },
+    {
+      "id": "flawed_fictions_235",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 37.59646039999975
+    },
+    {
+      "id": "flawed_fictions_234",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 44.46798970000027
+    },
+    {
+      "id": "flawed_fictions_233",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 71.75363579999981
+    },
+    {
+      "id": "flawed_fictions_238",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "How long the sleep lasts"
+      ],
+      "dropped": 0,
+      "seconds": 45.07450410000002
+    },
+    {
+      "id": "flawed_fictions_237",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 74.39240689999983
+    },
+    {
+      "id": "flawed_fictions_236",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 90.8059608
+    },
+    {
+      "id": "flawed_fictions_240",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 53.851273500000126
+    },
+    {
+      "id": "flawed_fictions_243",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The house is treated as one possession among several."
+      ],
+      "dropped": 1,
+      "seconds": 44.56206410000008
+    },
+    {
+      "id": "flawed_fictions_242",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The inhabitants' place and manner contradict the opening description of them."
+      ],
+      "dropped": 0,
+      "seconds": 49.81298169999989
+    },
+    {
+      "id": "flawed_fictions_244",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place / Objects."
+      ],
+      "dropped": 0,
+      "seconds": 38.27534299999988
+    },
+    {
+      "id": "flawed_fictions_241",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The horn's drink is now bitter."
+      ],
+      "dropped": 0,
+      "seconds": 67.40232159999991
+    },
+    {
+      "id": "flawed_fictions_245",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "The ship under the central searchlight is now a battleship."
+      ],
+      "dropped": 0,
+      "seconds": 71.9598674999997
+    },
+    {
+      "id": "flawed_fictions_239",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The crops are now said to be untouched.",
+        "The geese are treated as agreeing they did not eat the corn."
+      ],
+      "dropped": 0,
+      "seconds": 133.7022705000001
+    },
+    {
+      "id": "flawed_fictions_248",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 58.79468020000029
+    },
+    {
+      "id": "flawed_fictions_251",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 32.26308220000006
+    },
+    {
+      "id": "flawed_fictions_250",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place"
+      ],
+      "dropped": 0,
+      "seconds": 41.512705099999906
+    },
+    {
+      "id": "flawed_fictions_249",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 83.22657899999992
+    },
+    {
+      "id": "flawed_fictions_246",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Stated knowledge contradicted",
+        "Prior involvement restated differently"
+      ],
+      "dropped": 0,
+      "seconds": 88.68983820000011
+    },
+    {
+      "id": "flawed_fictions_247",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 113.19630949999997
+    },
+    {
+      "id": "flawed_fictions_253",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The enemy side is named the “Blue Rose,” which conflicts with the only colours the passage has given the two sides."
+      ],
+      "dropped": 0,
+      "seconds": 46.877256200000176
+    },
+    {
+      "id": "flawed_fictions_256",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 37.9558095999998
+    },
+    {
+      "id": "flawed_fictions_252",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place"
+      ],
+      "dropped": 0,
+      "seconds": 69.30438009999972
+    },
+    {
+      "id": "flawed_fictions_258",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 34.44037639999995
+    },
+    {
+      "id": "flawed_fictions_259",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 38.55367329999991
+    },
+    {
+      "id": "flawed_fictions_255",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The girl's father is now called a farmer."
+      ],
+      "dropped": 0,
+      "seconds": 93.99346240000008
+    },
+    {
+      "id": "flawed_fictions_254",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 100.8287455000002
+    },
+    {
+      "id": "flawed_fictions_261",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 44.18562919999985
+    },
+    {
+      "id": "flawed_fictions_257",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Appearance and physical detail."
+      ],
+      "dropped": 0,
+      "seconds": 88.97327059999994
+    },
+    {
+      "id": "flawed_fictions_262",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 62.49776099999994
+    },
+    {
+      "id": "flawed_fictions_265",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 45.69334510000004
+    },
+    {
+      "id": "flawed_fictions_260",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The narrator's visits are first occasional, then weekly."
+      ],
+      "dropped": 0,
+      "seconds": 119.03644579999987
+    },
+    {
+      "id": "flawed_fictions_264",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same willow was already aged and old."
+      ],
+      "dropped": 0,
+      "seconds": 105.5262226999998
+    },
+    {
+      "id": "flawed_fictions_263",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 124.54373879999993
+    },
+    {
+      "id": "flawed_fictions_267",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "Objects / physical detail"
+      ],
+      "dropped": 0,
+      "seconds": 81.32029499999993
+    },
+    {
+      "id": "flawed_fictions_270",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 25.058263499999885
+    },
+    {
+      "id": "flawed_fictions_268",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 69.41672789999983
+    },
+    {
+      "id": "flawed_fictions_266",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place.",
+        "Presence and place."
+      ],
+      "dropped": 0,
+      "seconds": 115.14683039999986
+    },
+    {
+      "id": "flawed_fictions_269",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 88.09897060000011
+    },
+    {
+      "id": "flawed_fictions_271",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place."
+      ],
+      "dropped": 0,
+      "seconds": 42.11994369999971
+    },
+    {
+      "id": "flawed_fictions_274",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Appearance and physical detail."
+      ],
+      "dropped": 0,
+      "seconds": 36.090746300000234
+    },
+    {
+      "id": "flawed_fictions_275",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The object is now called a photo."
+      ],
+      "dropped": 0,
+      "seconds": 35.14772540000035
+    },
+    {
+      "id": "flawed_fictions_276",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 27.99822679999983
+    },
+    {
+      "id": "flawed_fictions_272",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Eckert is given old friends and a history of sharing personal stories after the passage has already said he lived unsociably and never spoke of his affairs."
+      ],
+      "dropped": 0,
+      "seconds": 74.43470539999986
+    },
+    {
+      "id": "flawed_fictions_277",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 35.59964300000016
+    },
+    {
+      "id": "flawed_fictions_273",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The road is winding here."
+      ],
+      "dropped": 0,
+      "seconds": 71.72053700000001
+    },
+    {
+      "id": "flawed_fictions_278",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Names and titles",
+        "Names and titles"
+      ],
+      "dropped": 0,
+      "seconds": 59.400087600000205
+    },
+    {
+      "id": "flawed_fictions_279",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The rag of gold is taken from a locked iron box under the bedroom floor after the wife hid that same rag up the parlour chimney."
+      ],
+      "dropped": 0,
+      "seconds": 57.609515600000044
+    },
+    {
+      "id": "flawed_fictions_281",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same insult is said both not to change the jackal's mood and to make him wild with anger."
+      ],
+      "dropped": 0,
+      "seconds": 50.548983899999875
+    },
+    {
+      "id": "flawed_fictions_280",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Her hands are steady here after being said to tremble without stopping."
+      ],
+      "dropped": 0,
+      "seconds": 72.24796810000018
+    },
+    {
+      "id": "flawed_fictions_283",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 55.133094200000166
+    },
+    {
+      "id": "flawed_fictions_282",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 61.31398419999983
+    },
+    {
+      "id": "flawed_fictions_285",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 45.11435989999957
+    },
+    {
+      "id": "flawed_fictions_284",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "More than one soldier is said to have carried him during the war."
+      ],
+      "dropped": 0,
+      "seconds": 49.815954000000374
+    },
+    {
+      "id": "flawed_fictions_289",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 36.00427930000005
+    },
+    {
+      "id": "flawed_fictions_288",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Appearance: the narrator's clothes are now called simple."
+      ],
+      "dropped": 0,
+      "seconds": 44.098814800000284
+    },
+    {
+      "id": "flawed_fictions_287",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The execution is first given a fixed day, then said to have no date set.",
+        "The execution is treated as still undecided after a day had already been fixed."
+      ],
+      "dropped": 0,
+      "seconds": 49.89169929999998
+    },
+    {
+      "id": "flawed_fictions_293",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 25.27695949999988
+    },
+    {
+      "id": "flawed_fictions_294",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The cat is called by a name that was never given."
+      ],
+      "dropped": 0,
+      "seconds": 37.21134189999988
+    },
+    {
+      "id": "flawed_fictions_290",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 82.21824879999971
+    },
+    {
+      "id": "flawed_fictions_292",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 63.611359399999955
+    },
+    {
+      "id": "flawed_fictions_291",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The girls are in the house watching him after the narrator has already said they left and he did not see them again.",
+        "The girls appear again and follow him out of the house."
+      ],
+      "dropped": 0,
+      "seconds": 86.48430639999965
+    },
+    {
+      "id": "flawed_fictions_295",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 40.95428929999983
+    },
+    {
+      "id": "flawed_fictions_296",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 64.92857189999987
+    },
+    {
+      "id": "flawed_fictions_286",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "Stated intent against behaviour."
+      ],
+      "dropped": 0,
+      "seconds": 159.09245659999968
+    },
+    {
+      "id": "flawed_fictions_297",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 56.05119389999984
+    },
+    {
+      "id": "flawed_fictions_300",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 56.784919499999845
+    },
+    {
+      "id": "flawed_fictions_299",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 64.03647469999967
+    },
+    {
+      "id": "flawed_fictions_301",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Appearance and physical detail"
+      ],
+      "dropped": 0,
+      "seconds": 35.56318200000003
+    },
+    {
+      "id": "flawed_fictions_302",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 40.91520389999962
+    },
+    {
+      "id": "flawed_fictions_303",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 47.95594529999979
+    },
+    {
+      "id": "flawed_fictions_298",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 106.02242789999954
+    },
+    {
+      "id": "flawed_fictions_306",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place"
+      ],
+      "dropped": 0,
+      "seconds": 44.07944070000015
+    },
+    {
+      "id": "flawed_fictions_309",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 23.187762199999764
+    },
+    {
+      "id": "flawed_fictions_305",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same opening was a hollow tree whose bark the fairy had just pulled shut."
+      ],
+      "dropped": 0,
+      "seconds": 70.30489889999991
+    },
+    {
+      "id": "flawed_fictions_307",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 57.91645830000006
+    },
+    {
+      "id": "flawed_fictions_308",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Appearance and physical detail.",
+        "Appearance and physical detail."
+      ],
+      "dropped": 0,
+      "seconds": 53.009871199999935
+    },
+    {
+      "id": "flawed_fictions_304",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 95.79113860000018
+    },
+    {
+      "id": "flawed_fictions_314",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 24.998282899999992
+    },
+    {
+      "id": "flawed_fictions_310",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 71.33559899999993
+    },
+    {
+      "id": "flawed_fictions_311",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Conflicts with the earlier claim that he closed the door at two o'clock daily."
+      ],
+      "dropped": 0,
+      "seconds": 86.08026860000007
+    },
+    {
+      "id": "flawed_fictions_315",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Conflicts with the earlier statement that the forts' situation on Lake Champlain gave them the command of the main route into Canada."
+      ],
+      "dropped": 0,
+      "seconds": 59.71918880000012
+    },
+    {
+      "id": "flawed_fictions_317",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Objects / appearance"
+      ],
+      "dropped": 0,
+      "seconds": 29.288020800000055
+    },
+    {
+      "id": "flawed_fictions_319",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Leaves on the ground conflict with the earlier claim that there was no vegetation."
+      ],
+      "dropped": 0,
+      "seconds": 39.50328230000008
+    },
+    {
+      "id": "flawed_fictions_312",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Appearance and physical detail.",
+        "Sequence."
+      ],
+      "dropped": 0,
+      "seconds": 129.24681279999996
+    },
+    {
+      "id": "flawed_fictions_313",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 122.82274750000006
+    },
+    {
+      "id": "flawed_fictions_316",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 103.58942960000039
+    },
+    {
+      "id": "flawed_fictions_318",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 93.36026680000033
+    },
+    {
+      "id": "flawed_fictions_321",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 56.51149369999999
+    },
+    {
+      "id": "flawed_fictions_324",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 59.416091900000346
+    },
+    {
+      "id": "flawed_fictions_325",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 40.3911540000001
+    },
+    {
+      "id": "flawed_fictions_322",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place."
+      ],
+      "dropped": 0,
+      "seconds": 101.04646460000006
+    },
+    {
+      "id": "flawed_fictions_327",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 33.995700000000184
+    },
+    {
+      "id": "flawed_fictions_326",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 70.30021029999992
+    },
+    {
+      "id": "flawed_fictions_329",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 24.410296000000088
+    },
+    {
+      "id": "flawed_fictions_328",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 51.35297889999999
+    },
+    {
+      "id": "flawed_fictions_332",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The painting's established place in the museum is reversed.",
+        "How widely the painting was enjoyed is reversed."
+      ],
+      "dropped": 0,
+      "seconds": 51.373503700000235
+    },
+    {
+      "id": "flawed_fictions_331",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Objects / sequence"
+      ],
+      "dropped": 2,
+      "seconds": 62.48948639999982
+    },
+    {
+      "id": "flawed_fictions_330",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The number of men available to marry does not match the number given earlier.",
+        "One woman left over cannot follow from thirty men each taking ten wives."
+      ],
+      "dropped": 0,
+      "seconds": 86.96632890000008
+    },
+    {
+      "id": "flawed_fictions_333",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "Names and titles"
+      ],
+      "dropped": 0,
+      "seconds": 64.78795409999974
+    },
+    {
+      "id": "flawed_fictions_334",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 67.85598120000027
+    },
+    {
+      "id": "flawed_fictions_337",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 52.17858179999981
+    },
+    {
+      "id": "flawed_fictions_336",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 68.24181419999991
+    },
+    {
+      "id": "flawed_fictions_338",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 58.34019160000002
+    },
+    {
+      "id": "flawed_fictions_340",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "Who survived the flood is stated two different ways."
+      ],
+      "dropped": 0,
+      "seconds": 56.82716099999985
+    },
+    {
+      "id": "flawed_fictions_335",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 100.3972416000003
+    },
+    {
+      "id": "flawed_fictions_345",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 29.07308990000002
+    },
+    {
+      "id": "flawed_fictions_339",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 129.00053590000002
+    },
+    {
+      "id": "flawed_fictions_341",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 101.14056399999978
+    },
+    {
+      "id": "flawed_fictions_344",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "The snake's body could not pass between the bars."
+      ],
+      "dropped": 0,
+      "seconds": 98.41356100000021
+    },
+    {
+      "id": "flawed_fictions_343",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "The time left until the execution does not match the time just given."
+      ],
+      "dropped": 0,
+      "seconds": 110.8007958999998
+    },
+    {
+      "id": "flawed_fictions_346",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The old woman is given other daughters after the passage has already called the bride her only daughter.",
+        "Akhum Sab's visits to Mecca are said to happen every Friday after being described as a daily act."
+      ],
+      "dropped": 0,
+      "seconds": 65.90181059999996
+    },
+    {
+      "id": "flawed_fictions_342",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Presence and place.",
+        "Presence and place."
+      ],
+      "dropped": 0,
+      "seconds": 128.12598270000007
+    },
+    {
+      "id": "flawed_fictions_348",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same gathering is now finishing apple sorting."
+      ],
+      "dropped": 0,
+      "seconds": 44.32087180000031
+    },
+    {
+      "id": "flawed_fictions_347",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The mother vine is now said never to have spoken to the Morning-glory.",
+        "The narrator calls the mother vine silent.",
+        "The Morning-glory calls its mother vine silent."
+      ],
+      "dropped": 0,
+      "seconds": 68.18191039999994
+    },
+    {
+      "id": "flawed_fictions_352",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 34.019227700000165
+    },
+    {
+      "id": "flawed_fictions_349",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 78.86346849999995
+    },
+    {
+      "id": "flawed_fictions_354",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 55.798364999999755
+    },
+    {
+      "id": "flawed_fictions_350",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 90.71965430000006
+    },
+    {
+      "id": "flawed_fictions_351",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 87.75683330000005
+    },
+    {
+      "id": "flawed_fictions_356",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 43.74481930000009
+    },
+    {
+      "id": "flawed_fictions_353",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Marion is treated as a city large enough to have districts."
+      ],
+      "dropped": 0,
+      "seconds": 107.88761970000016
+    },
+    {
+      "id": "flawed_fictions_358",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 58.44118350000028
+    },
+    {
+      "id": "flawed_fictions_355",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same surface was earlier “a slimy, shiny green covering” and “the green cover, the slimy cap.”"
+      ],
+      "dropped": 0,
+      "seconds": 110.26741240000027
+    },
+    {
+      "id": "flawed_fictions_360",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 55.86477369999979
+    },
+    {
+      "id": "flawed_fictions_363",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Conflicts with the earlier dream in which the Indian already saw the White Bird, knew its meaning, and was saddened."
+      ],
+      "dropped": 0,
+      "seconds": 52.431411700000055
+    },
+    {
+      "id": "flawed_fictions_359",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 117.40444499999984
+    },
+    {
+      "id": "flawed_fictions_365",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Neighbors appear after the house was said to have no one else within miles."
+      ],
+      "dropped": 0,
+      "seconds": 53.8779207999995
+    },
+    {
+      "id": "flawed_fictions_361",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same pinnacles were called unattained and unattainable."
+      ],
+      "dropped": 0,
+      "seconds": 158.72856910000044
+    },
+    {
+      "id": "flawed_fictions_366",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 76.29674759999942
+    },
+    {
+      "id": "flawed_fictions_369",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 37.01843969999999
+    },
+    {
+      "id": "flawed_fictions_362",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "Appearance and physical detail",
+        "Names and titles",
+        "Names and titles"
+      ],
+      "dropped": 0,
+      "seconds": 159.78365670000017
+    },
+    {
+      "id": "flawed_fictions_370",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 34.71603100000043
+    },
+    {
+      "id": "flawed_fictions_367",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 61.3266902999999
+    },
+    {
+      "id": "flawed_fictions_368",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 63.7701969999997
+    },
+    {
+      "id": "flawed_fictions_371",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 38.77715589999966
+    },
+    {
+      "id": "flawed_fictions_374",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 46.50677720000036
+    },
+    {
+      "id": "flawed_fictions_372",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 61.681721200000496
+    },
+    {
+      "id": "flawed_fictions_375",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 52.32549689999968
+    },
+    {
+      "id": "flawed_fictions_373",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 68.64885309999995
+    },
+    {
+      "id": "flawed_fictions_376",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 59.80985130000021
+    },
+    {
+      "id": "flawed_fictions_379",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 34.210464499999766
+    },
+    {
+      "id": "flawed_fictions_381",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Established traits and manner"
+      ],
+      "dropped": 0,
+      "seconds": 35.72537260000035
+    },
+    {
+      "id": "flawed_fictions_378",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 49.12638090000022
+    },
+    {
+      "id": "flawed_fictions_385",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Stated intent against behaviour"
+      ],
+      "dropped": 0,
+      "seconds": 28.687636199999602
+    },
+    {
+      "id": "flawed_fictions_383",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 43.922456699999984
+    },
+    {
+      "id": "flawed_fictions_380",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 73.98044800000079
+    },
+    {
+      "id": "flawed_fictions_377",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The snake's body could not fit between the Water Gate bars."
+      ],
+      "dropped": 0,
+      "seconds": 121.94821860000026
+    },
+    {
+      "id": "flawed_fictions_382",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 94.24641030000058
+    },
+    {
+      "id": "flawed_fictions_387",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 47.48142119999975
+    },
+    {
+      "id": "flawed_fictions_384",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 82.68187660000008
+    },
+    {
+      "id": "flawed_fictions_389",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The man uses a second wish and a final wish.",
+        "After being assassinated, the man goes on realizing, wishing, and learning."
+      ],
+      "dropped": 0,
+      "seconds": 50.20062479999941
+    },
+    {
+      "id": "flawed_fictions_388",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 53.618550200000406
+    },
+    {
+      "id": "flawed_fictions_386",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 80.78626289999951
+    },
+    {
+      "id": "flawed_fictions_390",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Onatah is said to have always been the sole guardian of the crops."
+      ],
+      "dropped": 0,
+      "seconds": 70.3289896999998
+    },
+    {
+      "id": "flawed_fictions_392",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 98.19595050000027
+    },
+    {
+      "id": "flawed_fictions_391",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 122.93330260000005
+    },
+    {
+      "id": "flawed_fictions_396",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The shoemaker’s heart and conscience are given opposite states from those already stated."
+      ],
+      "dropped": 0,
+      "seconds": 67.09841849999968
+    },
+    {
+      "id": "flawed_fictions_395",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 98.06571399999969
+    },
+    {
+      "id": "flawed_fictions_393",
+      "label": 0,
+      "predicted": 1,
+      "findings": [
+        "A speaker called \"the officer\" claims the beating as his own, but the injured party was introduced only as a scholar and his servants."
+      ],
+      "dropped": 0,
+      "seconds": 160.0298317
+    },
+    {
+      "id": "flawed_fictions_398",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Objects / appearance and physical detail"
+      ],
+      "dropped": 0,
+      "seconds": 47.09897660000063
+    },
+    {
+      "id": "flawed_fictions_399",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 45.66083630000055
+    },
+    {
+      "id": "flawed_fictions_394",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 169.06043460000026
+    },
+    {
+      "id": "flawed_fictions_400",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The wolf's route",
+        "Who arrives first"
+      ],
+      "dropped": 0,
+      "seconds": 72.57620759999938
+    },
+    {
+      "id": "flawed_fictions_401",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 38.61109329999983
+    },
+    {
+      "id": "flawed_fictions_403",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 39.62562750000041
+    },
+    {
+      "id": "flawed_fictions_397",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 112.18578699999955
+    },
+    {
+      "id": "flawed_fictions_406",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 24.613574500000105
+    },
+    {
+      "id": "flawed_fictions_407",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The same man is given a child and then said to have none."
+      ],
+      "dropped": 0,
+      "seconds": 59.451847099999895
+    },
+    {
+      "id": "flawed_fictions_409",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "The lord's response to the complaint is called serious after it was called a jest."
+      ],
+      "dropped": 0,
+      "seconds": 50.23345759999938
+    },
+    {
+      "id": "flawed_fictions_404",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 104.64836689999979
+    },
+    {
+      "id": "flawed_fictions_402",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 143.2749802000001
+    },
+    {
+      "id": "flawed_fictions_410",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 51.77830869999993
+    },
+    {
+      "id": "flawed_fictions_412",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 40.09520179999992
+    },
+    {
+      "id": "flawed_fictions_408",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 112.13930400000046
+    },
+    {
+      "id": "flawed_fictions_405",
+      "label": 1,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 136.26093409999925
+    },
+    {
+      "id": "flawed_fictions_411",
+      "label": 1,
+      "predicted": 1,
+      "findings": [
+        "Stated intent against behaviour"
+      ],
+      "dropped": 0,
+      "seconds": 57.174955800000575
+    },
+    {
+      "id": "flawed_fictions_413",
+      "label": 0,
+      "predicted": 0,
+      "findings": [],
+      "dropped": 0,
+      "seconds": 68.35746829999984
+    }
+  ]
+}

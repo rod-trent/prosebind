@@ -18,7 +18,7 @@ export { GrokModel } from './providers/grok.js';
 export type { AnthropicOptions } from './providers/anthropic.js';
 export type { GrokOptions } from './providers/grok.js';
 
-import { continuityLensV2 } from './lenses/continuity2.js';
+import { continuityLens } from './lenses/continuity.js';
 import { motivationLens } from './lenses/motivation.js';
 import type { Lens } from './lens.js';
 
@@ -26,10 +26,13 @@ import type { Lens } from './lens.js';
 /**
  * Every Tier 2 lens. All produce questions, never verdicts.
  *
- * The contradiction lens defaults to v2, which trades 4.7 points of precision for 16.7
- * points of recall on a controlled 60-story comparison. That trade is right *here* and
- * would be wrong in Tier 0: a Tier 2 finding is a `question` that accumulates quietly in
- * a sidebar, never an inline mark, so the precision bar is set by how loudly the finding
- * speaks. `continuityLens` (v1) remains exported for anyone who wants the quieter one.
+ * The contradiction lens is v1. `continuityLensV2` — which names a taxonomy of
+ * contradiction types rather than leaving the model to decide what counts — looked like
+ * a 16.7-point recall win on a controlled 60-story comparison and turned out to be
+ * nothing. Paired across all 407 stories both versions covered, it caught 10 flawed
+ * stories v1 missed and missed 9 that v1 caught: net +1 out of 201, while costing 6.3
+ * points of precision.
+ *
+ * v2 stays exported so the negative result is reproducible rather than folklore.
  */
-export const TIER2_LENSES: readonly Lens[] = [continuityLensV2, motivationLens];
+export const TIER2_LENSES: readonly Lens[] = [continuityLens, motivationLens];

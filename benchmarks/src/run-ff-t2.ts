@@ -36,7 +36,7 @@ interface Options {
 }
 
 function parse(argv: readonly string[]): Options {
-  const options: Options = { scope: 'chapter', lens: 'v2', concurrency: 4, all: false, limit: 10, seed: 3, model: undefined, out: undefined };
+  const options: Options = { scope: 'chapter', lens: 'v1', concurrency: 4, all: false, limit: 10, seed: 3, model: undefined, out: undefined };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i]!;
     const next = (): string => argv[++i] ?? '';
@@ -47,7 +47,7 @@ function parse(argv: readonly string[]): Options {
     else if (arg === '--out') options.out = resolve(next());
     else if (arg === '--concurrency') options.concurrency = Math.max(1, Number.parseInt(next(), 10) || options.concurrency);
     else if (arg === '--all') options.all = true;
-    else if (arg === '--lens') options.lens = next() === 'v1' ? 'v1' : 'v2';
+    else if (arg === '--lens') options.lens = next() === 'v2' ? 'v2' : 'v1';
   }
   return options;
 }

@@ -85,11 +85,54 @@ Others are genre misreadings. One flagged a tree described as a pine after the p
 had it turn into a two-headed serpent, which is a folk-tale transformation rather than a
 contradiction.
 
-### Recall is the real weakness
+### Recall is the real weakness, and one attempt to fix it failed
 
-It misses roughly a third of injected errors. That is the honest ceiling of a single
-lens reading one chapter with no oracle, and it is where the work is if this number
-needs to be better.
+It misses roughly a third of injected errors.
+
+Reading the 71 misses suggested a cause: they were longer stories, and the errors needed
+inference rather than flat factual restatement — a coal-black horse later described
+otherwise, a merchant's established urgency contradicted by later ease. The model looked
+like it was searching for the wrong *shape*. So a second lens (`continuityLensV2`) named
+the kinds of contradiction worth checking, using ConStory-Bench's taxonomy rather than
+the misses themselves.
+
+A controlled 60-story comparison — same stories, same model, only the prompt differing —
+reported **recall +16.7 points**, precision −4.7, F1 +0.078. It looked like a clear win.
+
+It was not. Paired across all 407 stories both versions covered:
+
+| | accuracy | precision | recall | F1 |
+| --- | --- | --- | --- | --- |
+| **v1** | **80.3%** | **91.7%** | 66.2% | **0.769** |
+| v2 | 77.9% | 85.4% | 66.7% | 0.749 |
+
+On the 201 flawed stories, v2 caught 10 that v1 missed and missed 9 that v1 caught.
+**Net +1 out of 201** — noise — for 6.3 points of precision. McNemar on overall
+correctness gives p = 0.123: v2 is not significantly different, and is directionally
+worse.
+
+v1 is the default. v2 stays exported so the negative result is reproducible.
+
+**The lesson is about the n=60 test, not the prompt.** The design was right — paired
+stories remove selection confounding — but paired design does not remove *sampling*
+noise, and 30 positives cannot resolve a 5-story difference. The +16.7 came from 25/30
+against 20/30. No significance test was run, and the result was reported as a win.
+
+That is the second time in this project a small sample pointed the wrong way. The first
+cost nothing because the full run followed. This one produced a claim that had to be
+retracted.
+
+### What would actually move recall
+
+Untested, in rough order of expected value:
+
+- **Two-pass self-consistency.** Run the lens twice and union the findings. Roughly
+  doubles cost; recall gains from union are usually real but precision falls.
+- **A different or larger model.** Only one was tested. FlawedFictions' own finding is
+  that SOTA models struggle here regardless of reasoning effort, so the ceiling may be
+  low for all of them.
+- **Accepting the ceiling.** A third of injected errors may simply be beyond a single
+  cold read, which is what the paper reports and what this run is consistent with.
 
 ### Scope turned out to matter more than anything else
 
