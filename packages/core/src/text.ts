@@ -84,6 +84,22 @@ export class LineIndex {
     return { start: this.positionAt(span.start), end: this.positionAt(span.end) };
   }
 
+  /**
+   * The inverse of `positionAt`. Editors speak in line/character, the engine speaks in
+   * offsets, and every hover or go-to-definition request has to cross that boundary.
+   *
+   * Out-of-range positions clamp rather than throw: a client whose document version is
+   * one keystroke ahead of ours must get a sensible answer, not an error.
+   */
+  offsetAt(position: Position): number {
+    const line = Math.max(0, Math.min(position.line, this.lineStarts.length - 1));
+    const lineStart = this.lineStarts[line] ?? 0;
+    const nextLineStart = this.lineStarts[line + 1] ?? this.text.length + 1;
+    // Stop before the newline that terminates the line.
+    const lineEnd = Math.max(lineStart, Math.min(nextLineStart - 1, this.text.length));
+    return Math.max(lineStart, Math.min(lineStart + position.character, lineEnd));
+  }
+
   get lineCount(): number {
     return this.lineStarts.length;
   }

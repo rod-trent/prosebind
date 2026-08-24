@@ -14,7 +14,7 @@
 **A continuity engine for long-form writing.** It maintains a live model of your manuscript and
 tells you when the story contradicts itself — inside the editor you already use.
 
-Draft 1 · August 2026 · Status: pre-implementation
+Draft 1 · August 2026 · Status: v0 shipped (engine + Tier 0 + daemon + language server), model-free
 
 ---
 
@@ -380,7 +380,12 @@ loop and the launch material.
 
 ## § 13 — Licensing and sustainability
 
-- **AGPL** the daemon and engine. Prevents a closed SaaS strip-mine of the core.
+- **AGPL** the engine, the daemon, and the protocol servers (`lsp`, `mcp`). Prevents a
+  closed SaaS strip-mine of the core.
+  > **Correction, 2026-08-24.** An earlier draft put `lsp` and `mcp` under Apache-2.0.
+  > That was wrong: both import the engine, so the combined work is AGPL regardless of
+  > what the manifest claims. The line is not "servers vs. spec" but *what links the
+  > engine*. Clients that only speak the wire protocol stay permissive.
 - **Apache 2.0** the protocol specification, the graph format and the client SDKs. Adapters should
   proliferate without friction, and an adopted format is the real durable asset.
 

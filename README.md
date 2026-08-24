@@ -117,22 +117,44 @@ architecture the literature actually validates ([SCORE](https://arxiv.org/html/2
 packages/
   core/      AGPL   graph, anchoring, segmentation, Tier 0 checks — no network, no models
   daemon/    AGPL   file watcher, tier orchestration, provider-agnostic model layer
+  lsp/       AGPL   language server — diagnostics, hover, code actions, symbols
+  mcp/       AGPL   MCP server over the same graph (not written yet)
   spec/      Apache the graph format and protocol specification
-  lsp/       Apache language server — diagnostics, hover, code actions
-  mcp/       Apache MCP server over the same graph
 clients/
-  vscode/           thin LSP client
-  obsidian/         plugin wrapping the same server
+  vscode/           thin LSP client (not written yet)
+  obsidian/         plugin wrapping the same server (not written yet)
 benchmarks/         harnesses for FlawedFictions and ConStory-Bench
 ```
 
+## Editor support
+
+`prosebind-lsp` is a language server for narrative continuity, with zero runtime
+dependencies. Neovim, Helix and Zed setup is in [packages/lsp/README.md](packages/lsp/README.md).
+
+| LSP | Narrative meaning |
+| --- | --- |
+| `publishDiagnostics` | Continuity violations, with severity and confidence |
+| `hover` | Entity card — canon vs inferred facts, mentions, birth/death events |
+| `definition` | Jump to where this character first appears |
+| `references` | Every mention across the project, not just this file |
+| `documentSymbol` | Chapters and scenes, with word counts |
+| `workspace/symbol` | The bible, browsable |
+| `codeAction` | Mark as intentional · Silence this check |
+
+Nothing is published while you type, and **nothing is ever an `Error`** — prose is not a
+failing build. Contradictions are `Warning`, questions `Information`, notes `Hint`.
+
 ## Licensing
 
-Deliberately split:
+Deliberately split, along the line of what links the engine:
 
-- **Engine and daemon — AGPL-3.0-or-later.** Prevents a closed SaaS strip-mine of the core.
-- **Spec, protocol, and clients — Apache-2.0.** The format is meant to be adopted, re-implemented
-  and embedded freely, including commercially. An adopted format is the durable asset.
+- **Engine, daemon, and protocol servers — AGPL-3.0-or-later.** `core`, `daemon`, `lsp`
+  and `mcp` all embed the engine, so they all carry its licence. This prevents a closed
+  SaaS strip-mine of the core.
+- **Spec and clients — Apache-2.0.** `spec` defines the on-disk format and the wire
+  protocol; clients speak that protocol without linking the engine. Both are meant to be
+  adopted, re-implemented and embedded freely, including commercially. An adopted format
+  is the durable asset.
 
 ## Roadmap
 

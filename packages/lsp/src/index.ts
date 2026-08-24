@@ -1,10 +1,14 @@
 /**
- * @prosebind/lsp — language server. Not implemented yet; v1 scope (DESIGN.md § 11).
+ * @prosebind/lsp — continuity language server.
  *
- * The mapping is settled — diagnostics, hover for entity cards, code actions for
- * "mark intentional" and "promote to canon", go-to-definition for where a fact was
- * established (DESIGN.md § 5). The engine it will wrap is already working: see
- * `@prosebind/core`'s `Project`, which returns exactly the diagnostics this server
- * needs to publish.
+ * AGPL, not Apache: this package embeds @prosebind/core, so the combined work carries
+ * the engine's licence. The permissive half of the split (DESIGN.md § 13) is
+ * @prosebind/spec and the editor clients, which speak the protocol without linking
+ * the engine.
  */
-export {};
+export { Connection, MessageReader, encodeMessage, ErrorCodes, RpcError } from './jsonrpc.js';
+export { ProsebindServer } from './server.js';
+export { Workspace } from './workspace.js';
+export { toLspDiagnostic, severityFor, passesFloor, pathToUri, uriToPath } from './convert.js';
+export type { SeverityFloor } from './convert.js';
+export * from './protocol.js';
