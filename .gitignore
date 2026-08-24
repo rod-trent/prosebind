@@ -35,3 +35,7 @@ benchmarks/**/*.jsonl
 .idea/
 .DS_Store
 Thumbs.db
+
+# VS Code extension build artefacts
+clients/vscode/bundle/
+*.vsix

@@ -41,6 +41,14 @@ jobs:
             echo "$output" | grep -q "$check" || { echo "::error::$check stopped firing"; exit 1; }
           done
 
+      # The extension must package into a self-contained vsix. Without bundling, npm
+      # workspace hoisting leaves vscode-languageclient out and the extension fails to
+      # activate for everyone except the person who built it.
+      - name: Extension packages into a valid vsix
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 22
+        working-directory: clients/vscode
+        run: npx --yes @vscode/vsce@latest package --no-dependencies --out /tmp/prosebind.vsix
+
       # Incrementality is a correctness claim, not just a speed one: the demo exits
       # non-zero if the incremental path ever disagrees with a cold start.
       - name: Incremental analysis matches a cold start

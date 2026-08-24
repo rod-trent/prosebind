@@ -121,7 +121,7 @@ packages/
   mcp/       AGPL   MCP server over the same graph (not written yet)
   spec/      Apache the graph format and protocol specification
 clients/
-  vscode/           thin LSP client (not written yet)
+  vscode/    Apache extension — Problems panel, status bar, hover, quick fixes
   obsidian/         plugin wrapping the same server (not written yet)
 benchmarks/         harnesses for FlawedFictions and ConStory-Bench
 ```
@@ -143,6 +143,23 @@ dependencies. Neovim, Helix and Zed setup is in [packages/lsp/README.md](package
 
 Nothing is published while you type, and **nothing is ever an `Error`** — prose is not a
 failing build. Contradictions are `Warning`, questions `Information`, notes `Hint`.
+
+### VS Code
+
+[`clients/vscode`](clients/vscode) wraps the server as an extension: findings in the
+Problems panel, a quiet count in the status bar (`4× 3?`), hover cards, and a *Mark as
+intentional* quick fix that writes to `.prosebind/suppress.yaml`. No popups — the only
+notification it will ever raise is a hard failure to start the server, because a tool
+that is silently broken looks exactly like a manuscript with no problems.
+
+```bash
+npm run vsix     # build a .vsix you can install
+```
+
+From a checkout, press <kbd>F5</kbd> and open `examples/the-quarry`.
+
+The extension is Apache-2.0 because it launches `prosebind-lsp` as a separate process
+rather than linking the engine — the arm's-length boundary the AGPL respects.
 
 ## Licensing
 

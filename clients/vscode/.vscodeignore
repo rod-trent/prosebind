@@ -1,0 +1,9 @@
+# Only the bundle ships. Everything else is build input.
+src/**
+dist/**
+node_modules/**
+tsconfig.json
+tsconfig.tsbuildinfo
+.vscodeignore
+**/*.ts
+**/*.map

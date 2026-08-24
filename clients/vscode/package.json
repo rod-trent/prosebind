@@ -1,0 +1,108 @@
+{
+  "name": "prosebind-vscode",
+  "displayName": "Prosebind",
+  "description": "A continuity engine for long-form writing. Finds contradictions in your manuscript as you write.",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "publisher": "prosebind",
+  "private": true,
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "keywords": [
+    "writing",
+    "novel",
+    "manuscript",
+    "continuity",
+    "fiction"
+  ],
+  "main": "./bundle/extension.js",
+  "activationEvents": [
+    "workspaceContains:**/.prosebind/**"
+  ],
+  "scripts": {
+    "build": "tsc --build && npm run bundle",
+    "bundle": "esbuild src/extension.ts --bundle --platform=node --target=node20 --format=cjs --external:vscode --outfile=bundle/extension.js --minify",
+    "package": "npm run build && vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.90.0",
+    "esbuild": "^0.24.0"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "prosebind.recheck",
+        "title": "Recheck continuity",
+        "category": "Prosebind"
+      },
+      {
+        "command": "prosebind.restart",
+        "title": "Restart language server",
+        "category": "Prosebind"
+      },
+      {
+        "command": "prosebind.init",
+        "title": "Create continuity bible",
+        "category": "Prosebind"
+      },
+      {
+        "command": "prosebind.openBible",
+        "title": "Open continuity bible",
+        "category": "Prosebind"
+      },
+      {
+        "command": "prosebind.showLog",
+        "title": "Show log",
+        "category": "Prosebind"
+      }
+    ],
+    "configuration": {
+      "title": "Prosebind",
+      "properties": {
+        "prosebind.serverPath": {
+          "type": "string",
+          "default": "",
+          "markdownDescription": "Path to the `prosebind-lsp` executable. Leave empty to look in the workspace `node_modules`, then on `PATH`."
+        },
+        "prosebind.debounceMs": {
+          "type": "number",
+          "default": 900,
+          "minimum": 0,
+          "markdownDescription": "Quiet period after your last keystroke before anything is analysed. Prosebind never publishes findings while you are typing."
+        },
+        "prosebind.severityFloor": {
+          "type": "string",
+          "default": "note",
+          "enum": [
+            "contradiction",
+            "question",
+            "note"
+          ],
+          "enumDescriptions": [
+            "Only hard contradictions. Quietest — good while drafting.",
+            "Contradictions and questions.",
+            "Everything, including notes."
+          ],
+          "markdownDescription": "Lowest severity shown inline."
+        }
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rod-trent/prosebind.git",
+    "directory": "clients/vscode"
+  },
+  "homepage": "https://github.com/rod-trent/prosebind",
+  "bugs": {
+    "url": "https://github.com/rod-trent/prosebind/issues"
+  }
+}
