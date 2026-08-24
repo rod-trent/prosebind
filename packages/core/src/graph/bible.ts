@@ -127,6 +127,7 @@ export async function loadBible(root: string): Promise<LoadedBible> {
         id,
         name,
         type,
+        tier: 'canon',
         aliases,
         attributes,
         deceasedAfter: asString(record['deceasedAfter']),

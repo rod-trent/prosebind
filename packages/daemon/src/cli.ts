@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { resolve } from 'node:path';
 import { TIER0_CHECKS, hasBible } from '@prosebind/core';
+import { runBootstrap } from './bootstrap-cmd.js';
 import { initProject } from './init.js';
 import { formatReport, formatWatchLine } from './report.js';
 import { Session } from './session.js';
@@ -11,12 +12,15 @@ const USAGE = `prosebind — a continuity engine for long-form writing
   prosebind init [dir]        create a continuity bible
   prosebind check [dir]       analyse once and print findings
   prosebind watch [dir]       analyse continuously as you write
+  prosebind bootstrap [dir]   propose a bible from prose you already have
   prosebind checks            list the checks that run
 
 Options
   --keys                      show the suppression key for each finding
   --json                      emit findings as JSON
   --debounce <ms>             quiet period before analysing (watch, default 900)
+  --model <tag>               local model for bootstrap (default gemma3:4b)
+  --min-scenes <n>            drop characters seen in fewer scenes (bootstrap)
 
 check exits 1 when a contradiction is found, so it can gate a commit.
 Prosebind never rewrites your prose, and makes no network calls.
@@ -26,6 +30,8 @@ interface Flags {
   keys: boolean;
   json: boolean;
   debounce: number;
+  model?: string;
+  minScenes?: number;
 }
 
 function parse(argv: readonly string[]): { command: string; dir: string; flags: Flags } {
@@ -39,6 +45,12 @@ function parse(argv: readonly string[]): { command: string; dir: string; flags: 
     else if (arg === '--debounce') {
       const value = Number.parseInt(argv[++i] ?? '', 10);
       if (!Number.isNaN(value)) flags.debounce = value;
+    } else if (arg === '--model') {
+      const value = argv[++i];
+      if (value) flags.model = value;
+    } else if (arg === '--min-scenes') {
+      const value = Number.parseInt(argv[++i] ?? '', 10);
+      if (!Number.isNaN(value)) flags.minScenes = value;
     } else if (arg === '-h' || arg === '--help') positional.push('help');
     else if (!arg.startsWith('-')) positional.push(arg);
   }
@@ -72,6 +84,15 @@ async function main(): Promise<number> {
     }
     process.stdout.write('\nAll Tier 0: deterministic, no language model, no network.\n');
     return 0;
+  }
+
+  if (command === 'bootstrap') {
+    return runBootstrap({
+      root: dir,
+      ...(flags.model ? { model: flags.model } : {}),
+      ...(flags.minScenes !== undefined ? { minScenes: flags.minScenes } : {}),
+      write: (text) => process.stdout.write(text),
+    });
   }
 
   if (command === 'init') {

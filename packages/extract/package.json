@@ -1,0 +1,12 @@
+{
+  "name": "@prosebind/extract",
+  "version": "0.0.0",
+  "description": "Tier 1: claim extraction from prose, using a small local model.",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": { "build": "tsc --build" },
+  "dependencies": { "@prosebind/core": "0.0.0" }
+}

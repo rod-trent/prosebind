@@ -234,7 +234,18 @@ were never established as entering. Anyone appearing after they died.
 
 **Tier 1 — small local model, per dirty scene.**
 Claim extraction, entity linking, coreference resolution. Populates the graph from new prose.
-*Sub-second, on device · runs on sustained pause.*
+*On device · runs on sustained pause.*
+
+> **Correction, 2026-08-24.** This said *sub-second*. Measured against gemma3:4b on a
+> developer laptop, a single scene takes **12–45 seconds** — roughly 35s of that is
+> cold model load, and 12–14s per scene once warm. That is four orders of magnitude off
+> the original budget, and it changes what Tier 1 can be used for.
+>
+> It is still viable, for two reasons. Extraction is cached by scene content hash, so
+> the cost is paid once per edited scene rather than per keystroke; and § 10 already
+> forbids running anything while the writer is typing. But *real-time* Tier 1 is not
+> available at this model size. Bootstrap is a minutes-long batch job, not an
+> interactive one, and the interfaces must say so rather than appear hung.
 
 **Tier 2 — frontier model, debounced, background.**
 Motivation gaps, unearned turns, thematic drift, pacing, structural analysis. Scene- or

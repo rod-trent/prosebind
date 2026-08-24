@@ -36,6 +36,12 @@ export interface Entity {
   readonly id: string;
   readonly name: string;
   readonly type: EntityType;
+  /**
+   * Where this entity came from. Bible entries are canon; anything Tier 1 discovered
+   * in the prose is inferred and must be visibly distinguishable, because the writer
+   * has not agreed to it yet (§ 6).
+   */
+  readonly tier?: Tier | undefined;
   readonly aliases: readonly string[];
   /** Canon attributes straight from the bible. */
   readonly attributes: Readonly<Record<string, string>>;

@@ -5,14 +5,38 @@ tells you the moment the story stops adding up — in your editor, on your machi
 you own.
 
 > **Status: working, and model-free.** The engine runs — anchoring, incremental
-> segmentation, a continuity graph, eight Tier 0 checks — behind a CLI, a language
-> server, an MCP server, and clients for VS Code and Obsidian. **No language model is
-> involved anywhere, and no network call is made.** Read [DESIGN.md](DESIGN.md) for the
-> argument this repository exists to execute.
+> segmentation, a continuity graph, eight Tier 0 checks, and Tier 1 extraction on a
+> local model — behind a CLI, a language
+> server, an MCP server, and clients for VS Code and Obsidian. **Tier 0 involves no
+> model at all, and nothing ever leaves your machine unless you configure it to.** Read
+> [DESIGN.md](DESIGN.md) for the argument this repository exists to execute.
 >
 > The next milestone is the v1 gate in §11: published benchmark scores against
 > FlawedFictions and ConStory-Bench. Until those numbers exist, the central claim in §4
 > is borrowed from the literature rather than demonstrated here.
+
+## Tier 1 — extraction from prose
+
+```bash
+ollama pull gemma3:4b
+prosebind bootstrap /path/to/manuscript
+```
+
+Reads your existing prose with a **local** model and proposes a bible — the answer to
+"I already have 90,000 words, where do I start", and the capability that makes the
+published benchmarks reachable at all.
+
+It writes `characters.proposed.yaml`, never your own bible. Nothing extracted is canon:
+every fact is `inferred`, canon always wins on conflict, and discovered characters are
+marked so no interface can present them as yours. Cloud models are **refused by
+default** — Tier 1 runs on your machine, and the code enforces that rather than
+promising it.
+
+**Honest numbers:** 12–45 seconds per scene on a 4B model, not the sub-second DESIGN.md
+§7 originally claimed. Caching by scene hash means you pay it once per *edited* scene,
+but real-time Tier 1 is not available at this size, and bootstrap is a batch job.
+[`packages/extract`](packages/extract) documents what a small model gets wrong and which
+of those failures are fixed in code rather than by prompting.
 
 ## Benchmarks
 
@@ -149,7 +173,8 @@ architecture the literature actually validates ([SCORE](https://arxiv.org/html/2
 ```
 packages/
   core/      AGPL   graph, anchoring, segmentation, Tier 0 checks — no network, no models
-  daemon/    AGPL   file watcher, tier orchestration, provider-agnostic model layer
+  daemon/    AGPL   file watcher, tier orchestration, CLI
+  extract/   AGPL   Tier 1 — claim extraction with a small local model
   lsp/       AGPL   language server — diagnostics, hover, code actions, symbols
   mcp/       AGPL   MCP server — the graph, queryable by agents
   spec/      Apache the graph format and protocol specification
