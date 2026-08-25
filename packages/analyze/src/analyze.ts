@@ -48,6 +48,12 @@ export interface AnalyzerOptions {
   model: LanguageModel;
   lenses: readonly Lens[];
   policy?: NetworkPolicy | undefined;
+  /**
+   * Sampling temperature. 0 by default: the same passage should yield the same
+   * questions, and a writer re-running a check should not see the set churn.
+   * Raised only for self-consistency experiments, where diversity is the point.
+   */
+  temperature?: number | undefined;
   onError?: ((segmentId: string, lens: string, error: Error) => void) | undefined;
   /** Announce each passage before it is analysed, for progress and for consent UX. */
   onProgress?: ((segmentId: string, lens: string) => void) | undefined;
@@ -113,7 +119,7 @@ export class Analyzer {
           canon: graph ? summariseCanon(graph) : undefined,
         }),
         schema: LENS_SCHEMA,
-        temperature: 0,
+        temperature: this.options.temperature ?? 0,
         maxTokens: 2000,
       });
 

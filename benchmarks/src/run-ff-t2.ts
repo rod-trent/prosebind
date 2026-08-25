@@ -27,6 +27,8 @@ const here = dirname(fileURLToPath(import.meta.url));
 interface Options {
   scope: 'scene' | 'chapter';
   lens: 'v1' | 'v2';
+  passes: number;
+  temperature: number;
   concurrency: number;
   all: boolean;
   limit: number;
@@ -36,7 +38,7 @@ interface Options {
 }
 
 function parse(argv: readonly string[]): Options {
-  const options: Options = { scope: 'chapter', lens: 'v1', concurrency: 4, all: false, limit: 10, seed: 3, model: undefined, out: undefined };
+  const options: Options = { scope: 'chapter', lens: 'v1', passes: 1, temperature: 0, concurrency: 4, all: false, limit: 10, seed: 3, model: undefined, out: undefined };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i]!;
     const next = (): string => argv[++i] ?? '';
@@ -48,6 +50,8 @@ function parse(argv: readonly string[]): Options {
     else if (arg === '--concurrency') options.concurrency = Math.max(1, Number.parseInt(next(), 10) || options.concurrency);
     else if (arg === '--all') options.all = true;
     else if (arg === '--lens') options.lens = next() === 'v2' ? 'v2' : 'v1';
+    else if (arg === '--passes') options.passes = Math.max(1, Number.parseInt(next(), 10) || options.passes);
+    else if (arg === '--temperature') options.temperature = Number.parseFloat(next()) || options.temperature;
   }
   return options;
 }
@@ -66,6 +70,8 @@ async function evaluate(
   model: GrokModel,
   scope: Options['scope'],
   which: Options['lens'],
+  passes: number,
+  temperature: number,
 ): Promise<Outcome> {
   const lens = which === 'v1' ? continuityLens : continuityLensV2;
   const started = performance.now();
@@ -78,15 +84,19 @@ async function evaluate(
   // would silently become a confident "clean" verdict and deflate recall. So any error
   // here aborts the story instead, leaving it unrecorded for the resume pass.
   let failure: Error | undefined;
-  const analyzer = new Analyzer({
-    model,
-    lenses: [lens],
-    // Gutenberg text, already public. A writer's manuscript is a different decision.
-    policy: { cloudAllowed: true },
-    onError: (_s, _l, error) => {
-      failure ??= error;
-    },
-  });
+  // One Analyzer per pass: the cache is per-instance, so sharing one would make pass 2
+  // a cache hit and silently turn self-consistency into a single sample.
+  const makeAnalyzer = (): Analyzer =>
+    new Analyzer({
+      model,
+      lenses: [lens],
+      temperature,
+      // Gutenberg text, already public. A writer's manuscript is a different decision.
+      policy: { cloudAllowed: true },
+      onError: (_s, _l, error) => {
+        failure ??= error;
+      },
+    });
 
   // One passage per call, and each passage exactly once. Scenes and chapters overlap —
   // taking both analysed the same prose twice, doubling cost and duplicating findings.
@@ -101,13 +111,17 @@ async function evaluate(
   const fallback = scope === 'chapter' ? scenes : chapters;
   const targets = preferred.length > 0 ? preferred : fallback.length > 0 ? fallback : doc.segments.slice(0, 1);
 
+  // Union across passes: a story is flawed if ANY pass finds something.
   const findings: string[] = [];
   let dropped = 0;
-  for (const passage of targets) {
-    const record = await analyzer.analyzeSegment(doc, passage, lens);
-    if (failure) throw failure;
-    dropped += record.dropped;
-    for (const diagnostic of record.diagnostics) findings.push(diagnostic.message);
+  for (let pass = 0; pass < passes; pass++) {
+    const analyzer = makeAnalyzer();
+    for (const passage of targets) {
+      const record = await analyzer.analyzeSegment(doc, passage, lens);
+      if (failure) throw failure;
+      dropped += record.dropped;
+      for (const diagnostic of record.diagnostics) findings.push(diagnostic.message);
+    }
   }
 
   return {
@@ -145,7 +159,7 @@ function report(outcomes: readonly Outcome[], options: Options, model: string): 
     'Prosebind Tier 2 on FlawedFictions (arXiv 2504.11900)',
     '',
     `sample      ${outcomes.length} stories, ${options.all ? 'the full set' : `balanced, seed ${options.seed}`}`,
-    `pipeline    passage-contradiction ${options.lens} (${model}), ${options.scope} scope -> any finding = "flawed"`,
+    `pipeline    passage-contradiction ${options.lens} (${model}), ${options.scope} scope, ${options.passes} pass(es) @ T=${options.temperature} -> any finding = "flawed"`,
     `time        ${(seconds / 60).toFixed(1)} min (${(seconds / n).toFixed(1)}s per story)`,
     '',
     '                 predicted flawed   predicted clean',
@@ -216,7 +230,7 @@ async function main(): Promise<number> {
       const row = pending[index];
       if (!row) return;
       try {
-        const outcome = await evaluate(row, model, options.scope, options.lens);
+        const outcome = await evaluate(row, model, options.scope, options.lens, options.passes, options.temperature);
         outcomes.push(outcome);
         finished++;
         process.stderr.write(
