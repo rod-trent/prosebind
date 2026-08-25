@@ -4,7 +4,7 @@ import { ContinuityGraph, segmentDocument } from '@prosebind/core';
 import type { Document, Segment } from '@prosebind/core';
 import { StubModel, fixedExtraction } from '@prosebind/extract';
 import type { LanguageModel } from '@prosebind/extract';
-import { Analyzer, anchorFindings, summariseCanon } from './analyze.js';
+import { Analyzer, DEFAULT_PASSES, anchorFindings, summariseCanon } from './analyze.js';
 import { normalizeLensResult } from './lens.js';
 import { continuityLens, motivationLens } from './index.js';
 import { TIER2_LENSES } from './index.js';
@@ -177,13 +177,19 @@ test('an allowed cloud call is announced with the byte count', async () => {
   });
   await analyzer.analyzeSegment(doc, scene, continuityLens);
 
-  assert.equal(announced.length, 1);
-  assert.ok(announced[0]!.bytes > 0, 'the writer is told how much text is leaving');
+  // Once per pass, not once per passage. Two passes send the passage twice, and a
+  // consent surface that under-reports egress to keep itself tidy is lying about the
+  // one thing it exists to be honest about.
+  assert.equal(announced.length, DEFAULT_PASSES);
+  assert.ok(
+    announced.every((a) => a.bytes === announced[0]!.bytes && a.bytes > 0),
+    'the writer is told how much text is leaving, each time it leaves',
+  );
 });
 
 // --- behaviour -------------------------------------------------------------
 
-test('an unchanged passage is analysed once per lens', async () => {
+test('an unchanged passage is analysed once per lens per pass', async () => {
   const { doc, scene } = fixture();
   const model = modelReturning([]);
   const analyzer = new Analyzer({ model, lenses: [continuityLens] });
@@ -192,8 +198,102 @@ test('an unchanged passage is analysed once per lens', async () => {
   await analyzer.analyzeSegment(doc, scene, continuityLens);
   const third = await analyzer.analyzeSegment(doc, scene, continuityLens);
 
-  assert.equal(model.calls.length, 1, 'Tier 2 is the most expensive tier; it must cache');
+  assert.equal(model.calls.length, DEFAULT_PASSES, 'Tier 2 is the most expensive tier; it must cache');
   assert.equal(third.cached, true);
+});
+
+// --- passes ----------------------------------------------------------------
+
+test('the default is two sampled passes, and they are distinct calls', async () => {
+  // The adopted result: +17 flawed stories caught against 3 lost on all 414
+  // FlawedFictions stories, p = 0.0037. See benchmarks/PREREGISTRATION.md.
+  const { doc, scene } = fixture();
+  const model = modelReturning([]);
+  const analyzer = new Analyzer({ model, lenses: [continuityLens] });
+
+  await analyzer.analyzeSegment(doc, scene, continuityLens);
+
+  assert.equal(DEFAULT_PASSES, 2);
+  assert.equal(model.calls.length, 2, 'a shared cache key would silently collapse this to one sample');
+});
+
+test('a finding both passes raise is shown once', async () => {
+  // Without dedup the second pass would mostly manifest as the sidebar repeating
+  // itself, which is a worse experience than not having run it.
+  const { doc, scene } = fixture();
+  const model = modelReturning([
+    { quote: 'Marcus arrived later than he had promised', concern: 'Unexplained delay.' },
+  ]);
+  const analyzer = new Analyzer({ model, lenses: [continuityLens] });
+
+  const record = await analyzer.analyzeSegment(doc, scene, continuityLens);
+
+  assert.equal(model.calls.length, 2);
+  assert.equal(record.diagnostics.length, 1, 'both passes agreed; that is one question, not two');
+});
+
+test('a finding only one pass raises still counts', async () => {
+  // This is the entire mechanism: recall comes from the union, not the intersection.
+  const { doc, scene } = fixture();
+  let call = 0;
+  const model = new StubModel(() =>
+    JSON.stringify({
+      findings:
+        call++ === 0
+          ? []
+          : [{ quote: 'Marcus arrived later than he had promised', concern: 'Unexplained delay.' }],
+    }),
+  );
+  const analyzer = new Analyzer({ model, lenses: [continuityLens] });
+
+  const record = await analyzer.analyzeSegment(doc, scene, continuityLens);
+
+  assert.equal(record.diagnostics.length, 1);
+});
+
+test('one pass failing does not discard the other passes findings', async () => {
+  const { doc, scene } = fixture();
+  let call = 0;
+  const model = new StubModel(() => {
+    if (call++ === 0) throw new Error('rate limited');
+    return JSON.stringify({
+      findings: [{ quote: 'Marcus arrived later than he had promised', concern: 'Unexplained delay.' }],
+    });
+  });
+  const errors: string[] = [];
+  const analyzer = new Analyzer({
+    model,
+    lenses: [continuityLens],
+    onError: (_s, _l, e) => errors.push(e.message),
+  });
+
+  const record = await analyzer.analyzeSegment(doc, scene, continuityLens);
+
+  assert.equal(errors.length, 1);
+  assert.equal(record.diagnostics.length, 1, 'a degraded pass costs coverage, not the whole passage');
+});
+
+test('temperature 0 collapses to a single pass', async () => {
+  // Two deterministic passes are the same pass twice. Paying for the duplicate would be
+  // a pure cost with no coverage, so the request is honoured by not making the call.
+  const { doc, scene } = fixture();
+  const model = modelReturning([]);
+  const analyzer = new Analyzer({ model, lenses: [continuityLens], temperature: 0, passes: 4 });
+
+  await analyzer.analyzeSegment(doc, scene, continuityLens);
+
+  assert.equal(model.calls.length, 1);
+});
+
+test('passes: 1 at temperature 0 is the pre-experiment behaviour exactly', async () => {
+  const { doc, scene } = fixture();
+  const model = modelReturning([]);
+  const analyzer = new Analyzer({ model, lenses: [continuityLens], temperature: 0, passes: 1 });
+
+  await analyzer.analyzeSegment(doc, scene, continuityLens);
+
+  assert.equal(model.calls.length, 1);
+  assert.equal(model.calls[0]?.temperature, 0);
 });
 
 test('a failing model costs the writer nothing they had', async () => {
@@ -206,7 +306,9 @@ test('a failing model costs the writer nothing they had', async () => {
 
   const record = await analyzer.analyzeSegment(doc, scene, continuityLens);
   assert.equal(record.diagnostics.length, 0);
-  assert.equal(errors.length, 1);
+  // One report per failed call. Both passes hit the same broken model, and collapsing
+  // that to a single error would hide that the retry failed too.
+  assert.equal(errors.length, DEFAULT_PASSES);
 });
 
 test('every lens produces questions, never contradictions', () => {

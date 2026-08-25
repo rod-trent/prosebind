@@ -6,7 +6,7 @@
  * prose and gets an opinion back. It reuses extract's model layer rather than growing a
  * second one.
  */
-export { Analyzer, anchorFindings, summariseCanon, ANCHOR_FLOOR } from './analyze.js';
+export { Analyzer, anchorFindings, summariseCanon, ANCHOR_FLOOR, DEFAULT_PASSES, DEFAULT_TEMPERATURE } from './analyze.js';
 export type { AnalyzerOptions, AnalysisRecord } from './analyze.js';
 export { normalizeLensResult, LENS_SCHEMA, TIER2_SYSTEM } from './lens.js';
 export type { Lens, LensContext, LensFinding, LensResult } from './lens.js';

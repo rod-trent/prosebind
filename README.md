@@ -11,7 +11,7 @@ you own.
 > you configure it to.** Read [DESIGN.md](DESIGN.md) for the argument this repository
 > exists to execute.
 >
-> **FlawedFictions, full set:** Tier 2 scores F1 0.765 (413 stories, grok-4.6); Tier 0
+> **FlawedFictions, full set:** Tier 2 scores F1 0.778 (414 stories, grok-4.6); Tier 0
 > scores exactly chance. Both are real results about what each tier is for — see
 > Benchmarks below.
 
@@ -62,22 +62,33 @@ highest-value contribution to [`benchmarks/`](benchmarks).
 
 ### FlawedFictions
 
-**Run on the full benchmark** — 413 of 414 stories, grok-4.6, chapter scope, 6.7 hours:
+**Run on the full benchmark** — grok-4.6, chapter scope, two sampled passes at
+temperature 0.7, which is the shipped default:
 
 ```
                  predicted flawed   predicted clean
-  actually flawed        135                71
-  actually clean          12               195
+  actually flawed        144                62
+  actually clean          20               186
 
-  accuracy 79.9%   precision 91.8%   recall 65.5%   F1 0.765     (±3.9 points)
+  accuracy 80.1%   precision 87.8%   recall 69.9%   F1 0.778
 ```
 
 **Tier 0 on the same benchmark scores exactly chance, F1 0.000.** The gap between them
 is the clearest statement of what each tier is for.
 
-A 20-story sample had said 85.0% / precision 100% / F1 0.824. Every figure was
-optimistic, precision most of all — twelve false positives existed the whole time and
-twenty stories could not see them.
+The second pass is the one change here that reached statistical significance at the
+benchmark's full size — 17 flawed stories caught that a single pass missed against 3
+lost, p = 0.0037, paired and pre-registered. It costs exactly double; `passes: 1`
+declines it and gives back 4 points of precision.
+
+Stated honestly, because the registration required it in advance: measured against the
+*previously shipped* single pass at temperature 0 (F1 0.765), the net gain is +4.4 recall
+at p = 0.11 — not significant. The second pass is real; the end-to-end upgrade is not
+proven, and 204 positives is all this benchmark has to settle it with.
+
+Small samples were optimistic every single time. A 20-story run said F1 0.824; a
+146-story run credited temperature 0.7 with +5.6 recall points, which the full set
+retracted. Publish full-set numbers or none.
 
 Scope mattered more than anything else. Same stories, same model, same seed:
 

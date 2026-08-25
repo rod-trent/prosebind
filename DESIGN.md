@@ -15,7 +15,7 @@
 tells you when the story contradicts itself — inside the editor you already use.
 
 Draft 1 · August 2026 · Status: all three tiers built and measured. Tier 0 is model-free;
-Tier 1 runs on a local model; Tier 2 needs a frontier one and scores F1 0.765 on the
+Tier 1 runs on a local model; Tier 2 needs a frontier one and scores F1 0.778 on the
 full FlawedFictions benchmark with grok-4.6. The Anthropic provider remains unverified.
 
 ---
@@ -423,6 +423,22 @@ this, alongside ConStory-Bench, NCP-Bench and NarraBench.
 > A 20-story sample had reported 85% / 100% / 0.824. Every figure was optimistic, and
 > precision most: twelve false positives existed throughout and a small sample could not
 > see them. Publish full-set numbers or none.
+>
+> **Update, 2026-08-25 — the default is now two sampled passes.** Pre-registered before
+> the run, both arms over all 414 stories: a second sampled pass catches 17 flawed
+> stories a single pass misses and loses 3, chi2 = 8.45, **p = 0.0037**. Recall 63.7% to
+> 69.9%, F1 0.778, at exactly double the cost. Set `passes: 1` to decline it.
+>
+> Two things must be said alongside that number. Against the *previously shipped*
+> configuration — one pass at temperature 0 — the net gain is +4.4 recall at p = 0.11,
+> which is **not** significant: the second pass is real, the end-to-end upgrade is not
+> proven. And the earlier claim that temperature 0.7 alone bought +5.6 recall points for
+> free **did not replicate** at full scale and is retracted; it survives only as a
+> precondition, because two passes at temperature 0 are the same pass twice.
+>
+> That is the third consecutive time on this benchmark that a number shrank when the
+> sample grew — twice into retraction. The registration is why the shrinking is visible
+> rather than shipped. See `benchmarks/PREREGISTRATION.md`.
 >
 > This does not undercut § 4. The scope experiment is direct evidence *for* it: the same
 > stories at scene scope scored recall 40%, at chapter scope 70%, and neither run passed

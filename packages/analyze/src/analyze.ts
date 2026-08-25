@@ -50,23 +50,49 @@ export const ANCHOR_FLOOR = QUOTE_SIMILARITY_FLOOR;
  */
 export const DEFAULT_TEMPERATURE = 0.7;
 
+/**
+ * How many sampled passes to union. See `AnalyzerOptions.passes`.
+ *
+ * Two, measured on all 414 FlawedFictions stories: a second sample catches 17 flawed
+ * stories the first missed and loses 3, p = 0.0037 paired. It is the only Tier 2 change
+ * this project has adopted that reached significance at the benchmark's full size.
+ */
+export const DEFAULT_PASSES = 2;
+
 export interface AnalyzerOptions {
   model: LanguageModel;
   lenses: readonly Lens[];
   policy?: NetworkPolicy | undefined;
   /**
-   * Sampling temperature. **0.7 by default**, which is a measured choice.
+   * Sampling temperature. **0.7 by default** — as a *precondition of `passes`*, not as a
+   * win in its own right.
    *
-   * At 0 the same passage always yields the same questions, which is the obvious thing
-   * to want. But on FlawedFictions, 0.7 recovers +5.6 points of recall for 3.1 points of
-   * precision — F1 0.797 to 0.822, paired on 146 stories — and that is a better trade
-   * for a tier whose findings are questions in a sidebar rather than inline marks.
+   * An earlier measurement on 146 stories put 0.7 ahead of 0 by 5.6 recall points and it
+   * was adopted on that basis. At the full 414 it did not replicate: 8 stories caught
+   * against 13 lost, p = 0.38, with the point estimate slightly *negative*. That claim is
+   * retracted — see benchmarks/PREREGISTRATION.md.
    *
-   * The cost is determinism: a writer whose cache is cold may see a slightly different
-   * set of questions on a re-run. Within a session the per-passage cache keeps it
-   * stable. Set 0 if reproducibility matters more than coverage.
+   * It stays at 0.7 because two passes at temperature 0 are the same pass twice, and the
+   * second pass is what the evidence actually supports. Setting `temperature: 0` makes
+   * `passes` meaningless, and the Analyzer collapses to a single call rather than paying
+   * for a duplicate.
    */
   temperature?: number | undefined;
+  /**
+   * How many sampled passes to union, **2 by default**. A finding from any pass counts,
+   * deduplicated by suppression key so a writer is never shown the same question twice.
+   *
+   * This is the one Tier 2 change that survived the full benchmark. On all 414
+   * FlawedFictions stories, paired against a single pass at the same temperature: +17
+   * flawed stories caught, -3 lost, chi2 = 8.45, **p = 0.0037**. Recall 63.7% to 70.6%.
+   *
+   * It costs exactly double. Two honest caveats, both recorded rather than buried:
+   * precision falls 91.5% to 87.8%, and measured against the *original* default of one
+   * pass at temperature 0 the net gain is +4.4 recall points at p = 0.11 — real by the
+   * registered test, unproven as an end-to-end upgrade. Set `passes: 1` to halve the
+   * spend; single-pass at temperature 0 is the pre-experiment behaviour exactly.
+   */
+  passes?: number | undefined;
   onError?: ((segmentId: string, lens: string, error: Error) => void) | undefined;
   /** Announce each passage before it is analysed, for progress and for consent UX. */
   onProgress?: ((segmentId: string, lens: string) => void) | undefined;
@@ -113,11 +139,66 @@ export class Analyzer {
       return { segmentId: segment.id, lens: lens.id, diagnostics: [], durationMs: 0, cached: false, dropped: 0 };
     }
 
-    const key = `${lens.id}:${segment.hash}`;
-    const cached = this.cache.get(key);
-    if (cached) {
-      return { segmentId: segment.id, lens: lens.id, diagnostics: cached, durationMs: 0, cached: true, dropped: 0 };
+    const passes = this.effectivePasses();
+
+    // Passes run concurrently. They are independent samples of the same passage, and a
+    // writer waiting on a sidebar should wait for the slower of two calls, not the sum.
+    const results = await Promise.all(
+      Array.from({ length: passes }, (_unused, pass) => this.runPass(doc, segment, lens, pass, graph)),
+    );
+
+    // Union, deduplicated. Two samples of the same passage frequently raise the same
+    // concern about the same line; the suppression key already identifies a finding by
+    // lens, passage and quote, so it is exactly the right identity here. Without this the
+    // second pass would mostly manifest as the sidebar saying everything twice.
+    const seen = new Set<string>();
+    const diagnostics: Diagnostic[] = [];
+    for (const result of results) {
+      for (const diagnostic of result.diagnostics) {
+        if (seen.has(diagnostic.suppressionKey)) continue;
+        seen.add(diagnostic.suppressionKey);
+        diagnostics.push(diagnostic);
+      }
     }
+
+    return {
+      segmentId: segment.id,
+      lens: lens.id,
+      diagnostics,
+      // Wall-clock, not billed time: the passes overlapped.
+      durationMs: Math.max(0, ...results.map((r) => r.durationMs)),
+      cached: results.every((r) => r.cached),
+      dropped: results.reduce((sum, r) => sum + r.dropped, 0),
+    };
+  }
+
+  /**
+   * Passes actually worth running.
+   *
+   * At temperature 0 the model is deterministic, so a second pass re-asks an identical
+   * question and gets an identical answer — pure cost for no coverage. Self-consistency
+   * needs sampling diversity to have anything to be diverse about.
+   */
+  private effectivePasses(): number {
+    const requested = Math.max(1, Math.floor(this.options.passes ?? DEFAULT_PASSES));
+    const temperature = this.options.temperature ?? DEFAULT_TEMPERATURE;
+    return temperature === 0 ? 1 : requested;
+  }
+
+  /** One sample of one passage. Cached per pass, so a re-analysis is free. */
+  private async runPass(
+    doc: Document,
+    segment: Segment,
+    lens: Lens,
+    pass: number,
+    graph?: ContinuityGraph,
+  ): Promise<{ diagnostics: Diagnostic[]; durationMs: number; cached: boolean; dropped: number }> {
+    // The pass index is part of the key. Sharing one key across passes would make pass 2
+    // a cache hit and silently turn self-consistency back into a single sample — the
+    // same trap the benchmark runner had to avoid by using one Analyzer per pass.
+    const key = `${lens.id}:${segment.hash}:${pass}`;
+    const cached = this.cache.get(key);
+    if (cached) return { diagnostics: cached, durationMs: 0, cached: true, dropped: 0 };
 
     this.options.onProgress?.(segment.id, lens.id);
 
@@ -140,23 +221,17 @@ export class Analyzer {
       const { diagnostics, dropped } = anchorFindings(result.findings, doc, segment, lens);
 
       this.cache.set(key, diagnostics);
-      return {
-        segmentId: segment.id,
-        lens: lens.id,
-        diagnostics,
-        durationMs: response.durationMs,
-        cached: false,
-        dropped,
-      };
+      return { diagnostics, durationMs: response.durationMs, cached: false, dropped };
     } catch (error) {
       if (!(error instanceof ModelUnavailableError)) {
         this.options.onError?.(segment.id, lens.id, error as Error);
       } else {
         this.options.onError?.(segment.id, lens.id, error);
       }
-      // Tier 2 failing costs the writer nothing they had. Tiers 0 and 1 are untouched.
+      // Tier 2 failing costs the writer nothing they had. Tiers 0 and 1 are untouched,
+      // and a sibling pass that succeeded still contributes its findings.
       this.cache.set(key, []);
-      return { segmentId: segment.id, lens: lens.id, diagnostics: [], durationMs: 0, cached: false, dropped: 0 };
+      return { diagnostics: [], durationMs: 0, cached: false, dropped: 0 };
     }
   }
 

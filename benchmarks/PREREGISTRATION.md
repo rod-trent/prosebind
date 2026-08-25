@@ -180,3 +180,97 @@ the fact.
 ## Registered
 
 2026-08-25, before execution.
+
+---
+
+# Amendment result: the second pass is real, and the temperature result was not
+
+Run 2026-08-25 over all 414 stories. Analysed with `benchmarks/src/mcnemar.ts`, which
+implements exactly the test named above and nothing else.
+
+## Primary — significant
+
+Paired on 408 stories common to both arms; 204 flawed.
+
+| arm | calls | accuracy | precision | recall | F1 |
+| --- | --- | --- | --- | --- | --- |
+| 1-pass T=0.7 | 1x | 78.9% | 91.5% | 63.7% | 0.751 |
+| **2-pass T=0.7** | 2x | 80.4% | 87.8% | **70.6%** | 0.783 |
+
+Two-pass caught **17** flawed stories the single pass missed and lost **3**.
+chi2 = 8.45, **p = 0.0037**; exact binomial p = 0.0026.
+
+By the registered rule: **adopt.** The 2x cost is the price of the recall, recorded here
+and in `AnalyzerOptions.passes`.
+
+## The unregistered thing the same run exposed
+
+The full set also re-measured 1-pass at T=0.7 against the T=0 baseline — the contrast
+that motivated adopting temperature 0.7 in the first place. **It did not replicate.**
+
+| contrast | caught | lost | p | verdict |
+| --- | --- | --- | --- | --- |
+| T=0.7 vs T=0, one pass | 8 | 13 | 0.383 | not significant, point estimate negative |
+| 2-pass vs 1-pass, both T=0.7 | 17 | 3 | **0.0037** | significant |
+| 2-pass T=0.7 vs the shipped 1-pass T=0 | 17 | 8 | 0.110 | not significant |
+
+The "+5.6 recall points, free" claim from commit `cc3a7e7` is **retracted**. It came from
+146 stories with no significance test applied to that particular contrast — the same
+error as the retracted v2 claim, committed inside the very document written to prevent
+it. Pre-registering the primary did not protect the secondary comparison reported
+alongside it.
+
+Temperature stays at 0.7 for a different and smaller reason: two passes at temperature 0
+are the same pass twice, so sampling diversity is a **precondition** of the thing that
+did replicate, not a win of its own. The Analyzer now collapses to a single call at
+temperature 0 rather than billing for a duplicate.
+
+## What this actually buys, stated plainly
+
+Against the configuration that shipped before this experiment — one pass at temperature 0
+— the adopted default gains **+4.4 recall points at p = 0.11**, loses 4.0 points of
+precision, and costs twice as much.
+
+The registered primary is real: a second sample finds things the first missed. The
+end-to-end upgrade is not proven. Both are true, and the registration deliberately fixed
+the primary in advance so that this ambiguity could not be settled by picking whichever
+framing looked better after the fact. Adoption follows the rule as written.
+
+This is the benchmark's ceiling. 204 positives is all FlawedFictions has, and the
+registration already committed to reading that as **"the effect is below this
+benchmark's resolution"** rather than as a reason to keep testing. Recorded, closed.
+
+## Exploratory, not adopted
+
+Both single-pass arms were already recorded per story, so the union of T=0 and T=0.7 —
+cost-identical to two passes — was free to evaluate:
+
+| arm | calls | precision | recall | F1 |
+| --- | --- | --- | --- | --- |
+| 2-pass T=0.7 | 2x | 87.8% | 70.6% | 0.783 |
+| union(T=0, T=0.7) | 2x | 90.5% | 70.1% | 0.790 |
+
+The two are statistically indistinguishable — 9 caught against 10, p = 1.00. The
+precision and F1 edge is noise. Recorded so nobody re-runs it, and **not** adopted.
+
+## What the process was worth, again
+
+The first registration caught a bad claim in its primary. This one caught a bad claim in
+its own prior result. The number that survives is smaller than the one before it, and
+that has now happened three times running on this benchmark.
+
+## Reproducing
+
+```
+node --env-file=.env.local benchmarks/dist/run-ff-t2.js --all --lens v1 --passes 1 \
+  --temperature 0.7 --concurrency 6 --out benchmarks/results/ff-onepass-t07-150.json
+node --env-file=.env.local benchmarks/dist/run-ff-t2.js --all --lens v1 --passes 2 \
+  --temperature 0.7 --concurrency 6 --out benchmarks/results/ff-twopass-150.json
+node benchmarks/dist/mcnemar.js \
+  "1-pass T=0 (baseline)"  benchmarks/results/ff-tier2-full.json \
+  "2-pass T=0.7"           benchmarks/results/ff-twopass-150.json \
+  "1-pass T=0.7"           benchmarks/results/ff-onepass-t07-150.json
+```
+
+`mcnemar.js` pairs on the intersection of every arm, so an arm that resumed further than
+another cannot be judged on stories the others never saw.

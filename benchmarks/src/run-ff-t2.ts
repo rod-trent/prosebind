@@ -38,7 +38,7 @@ interface Options {
 }
 
 function parse(argv: readonly string[]): Options {
-  const options: Options = { scope: 'chapter', lens: 'v1', passes: 1, temperature: 0, concurrency: 4, all: false, limit: 10, seed: 3, model: undefined, out: undefined };
+  const options: Options = { scope: 'chapter', lens: 'v1', passes: 2, temperature: 0.7, concurrency: 4, all: false, limit: 10, seed: 3, model: undefined, out: undefined };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i]!;
     const next = (): string => argv[++i] ?? '';
@@ -51,7 +51,13 @@ function parse(argv: readonly string[]): Options {
     else if (arg === '--all') options.all = true;
     else if (arg === '--lens') options.lens = next() === 'v2' ? 'v2' : 'v1';
     else if (arg === '--passes') options.passes = Math.max(1, Number.parseInt(next(), 10) || options.passes);
-    else if (arg === '--temperature') options.temperature = Number.parseFloat(next()) || options.temperature;
+    else if (arg === '--temperature') {
+      // Not `|| options.temperature`: 0 is falsy, and the default is now 0.7. That form
+      // turned `--temperature 0` — the flag that reproduces the original baseline — into
+      // a silent 0.7. Parse, then reject only a genuine non-number.
+      const value = Number.parseFloat(next());
+      if (Number.isFinite(value)) options.temperature = value;
+    }
   }
   return options;
 }
@@ -84,19 +90,20 @@ async function evaluate(
   // would silently become a confident "clean" verdict and deflate recall. So any error
   // here aborts the story instead, leaving it unrecorded for the resume pass.
   let failure: Error | undefined;
-  // One Analyzer per pass: the cache is per-instance, so sharing one would make pass 2
-  // a cache hit and silently turn self-consistency into a single sample.
-  const makeAnalyzer = (): Analyzer =>
-    new Analyzer({
-      model,
-      lenses: [lens],
-      temperature,
-      // Gutenberg text, already public. A writer's manuscript is a different decision.
-      policy: { cloudAllowed: true },
-      onError: (_s, _l, error) => {
-        failure ??= error;
-      },
-    });
+  // Passes are the Analyzer's own concern now — it keys its cache per pass and unions
+  // the results, which is what this runner used to do by hand with one Analyzer each.
+  // Looping here as well would multiply the two together and quietly double the bill.
+  const analyzer = new Analyzer({
+    model,
+    lenses: [lens],
+    temperature,
+    passes,
+    // Gutenberg text, already public. A writer's manuscript is a different decision.
+    policy: { cloudAllowed: true },
+    onError: (_s, _l, error) => {
+      failure ??= error;
+    },
+  });
 
   // One passage per call, and each passage exactly once. Scenes and chapters overlap —
   // taking both analysed the same prose twice, doubling cost and duplicating findings.
@@ -111,17 +118,14 @@ async function evaluate(
   const fallback = scope === 'chapter' ? scenes : chapters;
   const targets = preferred.length > 0 ? preferred : fallback.length > 0 ? fallback : doc.segments.slice(0, 1);
 
-  // Union across passes: a story is flawed if ANY pass finds something.
+  // A story is flawed if ANY pass over ANY passage finds something.
   const findings: string[] = [];
   let dropped = 0;
-  for (let pass = 0; pass < passes; pass++) {
-    const analyzer = makeAnalyzer();
-    for (const passage of targets) {
-      const record = await analyzer.analyzeSegment(doc, passage, lens);
-      if (failure) throw failure;
-      dropped += record.dropped;
-      for (const diagnostic of record.diagnostics) findings.push(diagnostic.message);
-    }
+  for (const passage of targets) {
+    const record = await analyzer.analyzeSegment(doc, passage, lens);
+    if (failure) throw failure;
+    dropped += record.dropped;
+    for (const diagnostic of record.diagnostics) findings.push(diagnostic.message);
   }
 
   return {

@@ -31,7 +31,7 @@ model, then Tier 0 checks the story against it; any finding predicts "flawed".
   No check fired on any story.
 ```
 
-**Tier 0 scores exactly chance. It detects nothing.** Tier 2 scores F1 0.824 on the
+**Tier 0 scores exactly chance. It detects nothing.** Tier 2 scores F1 0.778 on the
 same benchmark — see below. The rest of this section explains why Tier 0 cannot, because
 that reason is architectural and worth understanding before reading the Tier 2 numbers.
 
@@ -122,17 +122,44 @@ That is the second time in this project a small sample pointed the wrong way. Th
 cost nothing because the full run followed. This one produced a claim that had to be
 retracted.
 
-### What would actually move recall
+### What actually moved recall
 
-Untested, in rough order of expected value:
+**Two-pass self-consistency — tested, significant, adopted.** Both arms run over all 414
+stories, pre-registered before execution, analysed by McNemar with the decision rule
+fixed in advance. `benchmarks/PREREGISTRATION.md` has the full record.
 
-- **Two-pass self-consistency.** Run the lens twice and union the findings. Roughly
-  doubles cost; recall gains from union are usually real but precision falls.
+| arm | calls | accuracy | precision | recall | F1 |
+| --- | --- | --- | --- | --- | --- |
+| 1-pass T=0 (the run above) | 1x | 79.9% | 91.8% | 65.5% | 0.765 |
+| 1-pass T=0.7 | 1x | 78.9% | 91.5% | 63.7% | 0.751 |
+| **2-pass T=0.7 (adopted)** | 2x | **80.1%** | **87.8%** | **69.9%** | **0.778** |
+
+Against a single pass at the same temperature, the second pass caught 17 flawed stories
+it missed and lost 3 — chi2 = 8.45, **p = 0.0037**. That is the registered primary, and
+the only Tier 2 change this project has adopted that reached significance at the
+benchmark's full size.
+
+Two caveats, both load-bearing:
+
+- Measured against the *shipped* configuration — one pass at temperature 0 — the net gain
+  is **+4.4 recall at p = 0.11**, which is not significant. The second pass is real; the
+  end-to-end upgrade is not proven.
+- It costs exactly double, and precision falls 4 points. `passes: 1` reverts it.
+
+An earlier claim that temperature 0.7 alone bought +5.6 recall points for free **did not
+replicate** and has been retracted — at full scale it is 8 caught against 13 lost,
+p = 0.38. Temperature stays at 0.7 only because two passes at 0 are the same pass twice.
+
+Still untested:
+
 - **A different or larger model.** Only one was tested. FlawedFictions' own finding is
   that SOTA models struggle here regardless of reasoning effort, so the ceiling may be
   low for all of them.
-- **Accepting the ceiling.** A third of injected errors may simply be beyond a single
-  cold read, which is what the paper reports and what this run is consistent with.
+- **Accepting the ceiling.** Roughly a third of injected errors may simply be beyond a
+  cold read, which is what the paper reports and what these runs are consistent with.
+
+There is no more of this benchmark to spend. 204 positives is its maximum, and anything
+it cannot resolve at that size is not going to be resolved here at all.
 
 ### Scope turned out to matter more than anything else
 
@@ -226,8 +253,8 @@ What the tiers are actually for, stated plainly:
 | --- | --- | --- |
 | Needs | A bible the writer wrote | Nothing |
 | Proves | Contradiction against declared canon | Nothing — it asks |
-| FlawedFictions | F1 0.000 | F1 0.824 |
-| Cost | Free, milliseconds | ~53s and an API call per chapter |
+| FlawedFictions | F1 0.000 | F1 0.778 |
+| Cost | Free, milliseconds | ~53s and two API calls per chapter |
 | Runs | Every pause | Session boundaries, opt-in |
 
 ## What the run was actually worth
