@@ -69,3 +69,61 @@ concurrency 6.
 ## Registered
 
 2026-08-25, before execution. Commit this file before running the experiment.
+
+---
+
+# Result
+
+Run 2026-08-25, analysed exactly as registered above.
+
+## Primary — met
+
+Paired on 148 stories; 74 flawed.
+
+|  | accuracy | precision | recall | F1 |
+| --- | --- | --- | --- | --- |
+| 1-pass, T=0 (baseline) | 82.4% | 96.2% | 67.6% | 0.794 |
+| 2-pass, T=0.7 | 85.8% | 92.1% | 78.4% | 0.847 |
+
+McNemar on the flawed stories: two-pass caught **8** the baseline missed and lost **0**.
+χ² = 6.13, **p = 0.0133** — significant. Guard passed: F1 rose 0.794 → 0.847.
+
+By the registered rule: **adopt.**
+
+## The confound, resolved
+
+The registration said this would not be called "two passes help" without a
+single-pass-at-0.7 arm. That arm was run. Paired on 146 stories common to all three:
+
+| arm | accuracy | precision | recall | F1 | cost |
+| --- | --- | --- | --- | --- | --- |
+| 1-pass T=0 | 82.9% | 96.1% | 68.1% | 0.797 | 1× |
+| **1-pass T=0.7** | 84.2% | 93.0% | **73.6%** | 0.822 | **1×** |
+| 2-pass T=0.7 | 86.3% | 91.9% | 79.2% | 0.851 | 2× |
+
+Temperature and the second pass contribute **+5.6 recall points each**. Half the effect
+was never about self-consistency at all — it was sampling diversity, available for free.
+
+The second pass's marginal contribution is **not significant** at this size: 5 stories
+caught against 1 lost, χ² = 1.50, p = 0.22. Underpowered rather than disproven — 72
+positives cannot resolve a 4-story difference, which is the same limit the registration
+anticipated.
+
+## What was adopted
+
+**Temperature 0.7, single pass.** Free, and it captures half the available recall.
+
+**Two-pass is not adopted.** It looks better on every metric and may well be real, but
+its marginal value is unproven and it doubles cost. Adopting an unproven 2× spend on a
+p = 0.22 result would repeat the mistake this registration exists to prevent — the
+difference being that this time the number is labelled honestly instead of shipped as a
+win.
+
+Resolving it needs roughly 3–4× the positives. Worth doing before paying 2× per chapter
+in production.
+
+## What the process was worth
+
+The previous attempt reported +16.7 recall points from an untested comparison and had to
+be retracted. This one reports +5.6, adopted, with the mechanism identified and the
+unproven half named as unproven. The smaller number is the one that survived.
