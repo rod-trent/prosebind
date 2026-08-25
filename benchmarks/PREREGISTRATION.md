@@ -127,3 +127,56 @@ in production.
 The previous attempt reported +16.7 recall points from an untested comparison and had to
 be retracted. This one reports +5.6, adopted, with the mechanism identified and the
 unproven half named as unproven. The smaller number is the one that survived.
+
+---
+
+# Amendment: settling the second pass
+
+**Written and committed before this run. No data from it has been seen.**
+
+The first registration left one question open: the second pass added +5.6 recall points
+over temperature alone, but at p = 0.22 on 72 positives — underpowered, not disproven.
+This resolves it at the largest sample the benchmark permits.
+
+## Hypothesis
+
+Two sampled passes, unioned, detect more flawed stories than one sampled pass, at equal
+temperature.
+
+## Sample — and its ceiling
+
+**Every story in FlawedFictions: 207 flawed, 207 clean.** Both arms run on the full set.
+
+That is 2.9× the positives of the first test, and it is the **maximum this benchmark can
+supply**. Scaling the observed discordance (5 vs 1 on 72 positives) to 207 predicts
+roughly 14 vs 3, giving χ² ≈ 5.9, p ≈ 0.015 — significant *if the effect is real at the
+rate observed*.
+
+This matters for how a null is read. If the difference is still not significant at 207
+positives, the honest conclusion is **"any effect is smaller than this benchmark can
+resolve"** — not "collect more data." There is no more data. That conclusion will be
+recorded as the answer, not as a reason to keep testing.
+
+Both arms extend existing runs by resume, so the 148 and 147 stories already completed
+are reused rather than repeated.
+
+## Primary
+
+McNemar on the flawed stories both arms cover, paired, two-sided, **α = 0.05**:
+1-pass @ T=0.7 against 2-pass @ T=0.7. Same lens, same scope, same model, same
+temperature — pass count is the only variable.
+
+## Decision rule
+
+- **Significant in favour of two-pass** → adopt it as the Tier 2 default, and record the
+  2× cost as the price of the recall.
+- **Not significant** → the second pass is not adopted, permanently, on this evidence.
+  Record the effect as below the benchmark's resolution and stop asking.
+
+Precision and F1 are reported but are **not** decision criteria this time; the question
+is specifically whether the second pass finds more. No metric will be substituted after
+the fact.
+
+## Registered
+
+2026-08-25, before execution.
